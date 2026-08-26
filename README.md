@@ -2,6 +2,10 @@
 
 《SPX 日内实战入门（买方篇）》的响应式网页阅读版。
 
+## 在线阅读
+
+[打开《期权墙 · 买方篇》网页版](https://options-wall-book.mmoptions.workers.dev/)
+
 ## 本地运行
 
 ```bash
