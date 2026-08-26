@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type AnchorHTMLAttributes, type ReactNode } from 'react';
-import { chapters, renderMarkdown, totalMinutes, type Chapter } from './content';
+import { chapters, renderMarkdown, type Chapter } from './content';
 
 type Navigate = (path: string) => void;
 type ReaderLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & {
@@ -99,7 +99,7 @@ function Home({ navigate, openMenu }: { navigate: Navigate; openMenu: () => void
               <ReaderLink className="primary-action" href={`/read/${startChapter.slug}`} navigate={navigate}>
                 {lastSlug ? '继续阅读' : '开始阅读'} <span>→</span>
               </ReaderLink>
-              <span className="reading-time">9 章 · 7 个复盘日 · 约 {Math.round(totalMinutes / 60)} 小时</span>
+              <span className="reading-time">9 章 · 7 个复盘日</span>
             </div>
           </div>
           <figure className="cover-card">
@@ -115,7 +115,7 @@ function Home({ navigate, openMenu }: { navigate: Navigate; openMenu: () => void
 
         <section className="manifesto">
           <p className="section-kicker">这本书是什么</p>
-          <blockquote>“不是喊单，也不是收益展示。写我怎么看结构，也写我怎么下单、怎么出场、怎么亏。”</blockquote>
+          <blockquote>“不是喊单，也不是收益展示。写我怎么看结构，怎么进场、出场，也写判断失误与亏损。”</blockquote>
           <div className="manifesto-grid">
             <p>先判断今天偏减震，还是偏加速；再谈方向，最后才轮到下单。</p>
             <p>墙会动、会塌、会被穿。真正要练的，是结构失效时那只按得住的手。</p>

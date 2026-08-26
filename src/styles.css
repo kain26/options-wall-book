@@ -175,6 +175,55 @@ footer { display: flex; justify-content: space-between; gap: 24px; padding: 32px
 .book-article code { padding: .12em .38em; border-radius: 4px; background: var(--surface); font-family: "SFMono-Regular", Consolas, monospace; font-size: .86em; }
 .book-article pre { margin: 2rem 0; padding: 20px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-family: "SFMono-Regular", Consolas, monospace; font-size: 13px; line-height: 1.6; }
 .book-article pre code { padding: 0; background: none; }
+.book-article .poem-title {
+  position: relative;
+  margin: 3.5rem 0 0;
+  padding: 38px 42px 16px;
+  border: 1px solid color-mix(in srgb, var(--line-strong) 70%, var(--green) 30%);
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  background:
+    radial-gradient(circle at 88% 16%, color-mix(in srgb, var(--red) 7%, transparent) 0, transparent 28%),
+    linear-gradient(145deg, color-mix(in srgb, var(--green) 5%, var(--paper)), color-mix(in srgb, var(--red) 3%, var(--paper)));
+  text-align: center;
+}
+.book-article .poem-title small {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--red);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .36em;
+}
+.book-article .poem-title span { font-size: calc(25px * var(--reader-scale)); letter-spacing: .08em; }
+.book-article .poem-body {
+  margin: 0 0 4rem;
+  padding: 8px 42px 38px;
+  border: 1px solid color-mix(in srgb, var(--line-strong) 70%, var(--green) 30%);
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  background:
+    radial-gradient(circle at 88% 0, color-mix(in srgb, var(--red) 7%, transparent) 0, transparent 30%),
+    linear-gradient(145deg, color-mix(in srgb, var(--green) 5%, var(--paper)), color-mix(in srgb, var(--red) 3%, var(--paper)));
+}
+.book-article .poem-body::before {
+  content: "";
+  display: block;
+  width: 38px;
+  margin: 0 auto 24px;
+  border-top: 1px solid color-mix(in srgb, var(--red) 55%, transparent);
+}
+.book-article .poem-body p {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 1.35em;
+  font-family: "Kaiti SC", "STKaiti", "Songti SC", "STSong", serif;
+  font-size: calc(17px * var(--reader-scale));
+  line-height: 2;
+  letter-spacing: .055em;
+}
+.book-article .poem-body p:last-child { margin-bottom: 0; }
 .book-article table { display: block; width: 100%; margin: 2.4rem 0; overflow-x: auto; border-collapse: collapse; font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: calc(14px * var(--reader-scale)); line-height: 1.55; }
 .book-article th, .book-article td { min-width: 110px; padding: 12px 14px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
 .book-article th { color: var(--green); background: var(--surface); font-weight: 750; }
@@ -236,6 +285,10 @@ footer { display: flex; justify-content: space-between; gap: 24px; padding: 32px
   .book-article h1 { margin-bottom: 42px; font-size: clamp(39px, 11vw, 54px); }
   .book-article h2 { margin-top: 4.3rem; font-size: calc(27px * var(--reader-scale)); }
   .book-article h3 { font-size: calc(21px * var(--reader-scale)); }
+  .book-article .poem-title { padding: 30px 20px 13px; border-radius: 16px 16px 0 0; }
+  .book-article .poem-title span { font-size: calc(22px * var(--reader-scale)); }
+  .book-article .poem-body { padding: 7px 20px 30px; border-radius: 0 0 16px 16px; }
+  .book-article .poem-body p { width: auto; max-width: 29em; font-size: calc(16px * var(--reader-scale)); line-height: 1.95; }
   .book-article blockquote { margin-left: 0; padding-left: 18px; }
   .book-figure { width: calc(100% + 12px); margin-left: -6px; }
   .book-figure img { border-radius: 8px; }

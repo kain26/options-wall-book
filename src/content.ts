@@ -54,6 +54,25 @@ function plainText(value: string) {
     .trim();
 }
 
+const ciPaiNames = [
+  '水调歌头', '念奴娇', '临江仙', '浣溪沙', '蝶恋花', '定风波',
+  '江城子', '虞美人', '卜算子', '鹧鸪天', '采桑子',
+];
+
+function isPoemTitle(value: string) {
+  const title = plainText(value);
+  return ciPaiNames.some((name) => title.startsWith(name));
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function outlineFor(raw: string): OutlineItem[] {
   let section = 0;
   const outline: OutlineItem[] = [];
@@ -90,6 +109,7 @@ export const totalMinutes = chapters.reduce((sum, chapter) => sum + chapter.minu
 
 export function renderMarkdown(raw: string) {
   let section = 0;
+  let poemPending = false;
   const marked = new Marked({
     gfm: true,
     renderer: {
@@ -98,9 +118,22 @@ export function renderMarkdown(raw: string) {
         if (depth === 1) return `<h1 id="chapter-top">${content}</h1>`;
         if (depth >= 2 && depth <= 3) {
           section += 1;
+          if (depth === 3 && isPoemTitle(content)) {
+            poemPending = true;
+            return `<h3 class="poem-title" id="section-${section}"><small>卷首词</small><span>${content}</span></h3>`;
+          }
           return `<h${depth} id="section-${section}">${content}</h${depth}>`;
         }
         return `<h${depth}>${content}</h${depth}>`;
+      },
+      code({ text }) {
+        if (!poemPending) return false;
+        poemPending = false;
+        const stanzas = text.trim().split(/\n\s*\n/);
+        const body = stanzas
+          .map((stanza) => `<p>${stanza.split('\n').map(escapeHtml).join('<br />')}</p>`)
+          .join('');
+        return `<section class="poem-body" aria-label="词作正文">${body}</section>`;
       },
     },
   });
