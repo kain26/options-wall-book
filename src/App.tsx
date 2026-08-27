@@ -57,19 +57,8 @@ function SiteHeader({ language, path, navigate, openMenu, reading }: { language:
   </header>;
 }
 
-function InteractiveBook({ language, href, action, navigate }: { language: Language; href: string; action: string; navigate: Navigate }) {
+function InteractiveBook({ language, action, opening, openBook }: { language: Language; action: string; opening: boolean; openBook: () => void }) {
   const text = copy[language];
-  const [opening, setOpening] = useState(false);
-  const timer = useRef<number | null>(null);
-
-  useEffect(() => () => { if (timer.current !== null) window.clearTimeout(timer.current); }, []);
-
-  const openBook = () => {
-    if (timer.current !== null) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { navigate(href); return; }
-    setOpening(true);
-    timer.current = window.setTimeout(() => navigate(href), 1080);
-  };
 
   return <button
     className={`book-launch ${opening ? 'is-opening' : ''}`}
@@ -92,16 +81,15 @@ function InteractiveBook({ language, href, action, navigate }: { language: Langu
   >
     <span className="book-stage" aria-hidden="true">
       <span className="book-object">
-        <span className="book-page-block"><span className="book-page-content"><small>{text.bookInsideKicker}</small><strong>{text.bookInsideTitle}</strong><span>{text.bookInsideCta}</span></span></span>
+        <span className="book-page-block" />
         <span className="book-spine" />
         <span className="book-cover-panel"><img className="book-cover-art" src="/images/cover.png" alt="" /><span className="book-cover-back" /></span>
       </span>
     </span>
-    <span className="book-hint" aria-hidden="true">{text.bookHint}<b>↗</b></span>
   </button>;
 }
 
-function Home({ language, path, chapters, navigate, openMenu }: { language: Language; path: string; chapters: Chapter[]; navigate: Navigate; openMenu: () => void }) {
+function Home({ language, path, chapters, navigate, openMenu, bookOpening, openBook }: { language: Language; path: string; chapters: Chapter[]; navigate: Navigate; openMenu: () => void; bookOpening: boolean; openBook: Navigate }) {
   const text = copy[language];
   const lastSlug = localStorage.getItem(`option-wall:last-chapter:${language}`);
   const startChapter = chapters.find((chapter) => chapter.slug === lastSlug) ?? chapters[0];
@@ -110,7 +98,7 @@ function Home({ language, path, chapters, navigate, openMenu }: { language: Lang
   return <div className={`site-shell language-${language}`}>
     <SiteHeader language={language} path={path} navigate={navigate} openMenu={openMenu} />
     <main>
-      <section className="hero"><div className="hero-copy"><p className="eyebrow">{text.eyebrow}</p><h1><span className="hero-title-line">{text.heroLead}</span><em className="hero-title-line">{text.heroEm}</em></h1><p className="dek">{text.dek}</p><div className="hero-actions"><ReaderLink className="primary-action" href={localizedPath(language, `/read/${startChapter.slug}`)} navigate={navigate}>{lastSlug ? text.continueReading : text.startReading} <span>→</span></ReaderLink><span className="reading-time">{text.bookStats}</span></div></div><div className="cover-card"><InteractiveBook language={language} href={localizedPath(language, `/read/${startChapter.slug}`)} action={lastSlug ? text.continueReading : text.startReading} navigate={navigate} /></div></section>
+      <section className="hero"><div className="hero-copy"><p className="eyebrow">{text.eyebrow}</p><h1><span className="hero-title-line">{text.heroLead}</span><em className="hero-title-line">{text.heroEm}</em></h1><p className="dek">{text.dek}</p><div className="hero-actions"><ReaderLink className="primary-action" href={localizedPath(language, `/read/${startChapter.slug}`)} navigate={navigate}>{lastSlug ? text.continueReading : text.startReading} <span>→</span></ReaderLink><span className="reading-time">{text.bookStats}</span></div></div><div className="cover-card"><InteractiveBook language={language} action={lastSlug ? text.continueReading : text.startReading} opening={bookOpening} openBook={() => openBook(localizedPath(language, `/read/${startChapter.slug}`))} /></div></section>
       <section className="front-note" aria-label={language === 'zh' ? '卷首寄语' : 'Opening note'}><p>{text.frontBrand}</p><div>{text.frontWords.map((word) => <span key={word}>{word}</span>)}</div><strong>{text.frontWish}</strong></section>
       <section className="manifesto"><p className="section-kicker">{text.manifestoKicker}</p><blockquote>{text.manifestoQuote}</blockquote><div className="manifesto-grid"><p>{text.manifestoOne}</p><p>{text.manifestoTwo}</p></div></section>
       <section className="library" id="chapters"><div className="library-head"><div><p className="section-kicker">{text.libraryKicker}</p><h2>{text.libraryTitle}</h2></div><p>{text.libraryDek}</p></div><div className="chapter-grid">{chapters.map((chapter, index) => <ReaderLink className="chapter-card" href={localizedPath(language, `/read/${chapter.slug}`)} navigate={navigate} key={chapter.slug}><div className="chapter-card-top"><span>{String(index + 1).padStart(2, '0')}</span><small>{chapter.minutes} {text.minute}</small></div><p>{chapter.label}</p><h3>{chapter.title.replace(titlePattern, '')}</h3><div className="chapter-card-bottom"><span>{chapter.description}</span><b>↗</b></div></ReaderLink>)}</div></section>
@@ -153,13 +141,31 @@ function Reader({ language, path, chapter, chapters, navigate, openMenu }: { lan
 export default function App() {
   const [path, setPath] = useState(window.location.pathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [bookTransition, setBookTransition] = useState(false);
+  const bookTransitioning = useRef(false);
+  const transitionTimers = useRef<number[]>([]);
   const language: Language = path === '/en' || path.startsWith('/en/') ? 'en' : 'zh';
   const chapters = useMemo(() => getChapters(language), [language]);
   const navigate: Navigate = useCallback((nextPath) => { if (nextPath === window.location.pathname) return; window.history.pushState({}, '', nextPath); setPath(nextPath); }, []);
   const openDrawer = useCallback(() => setDrawerOpen(true), []);
   const closeDrawer = useCallback(() => setDrawerOpen(false), []);
+  const openBook: Navigate = useCallback((nextPath) => {
+    if (bookTransitioning.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { navigate(nextPath); return; }
+    bookTransitioning.current = true;
+    setBookTransition(true);
+    transitionTimers.current = [
+      window.setTimeout(() => navigate(nextPath), 980),
+      window.setTimeout(() => {
+        setBookTransition(false);
+        bookTransitioning.current = false;
+        transitionTimers.current = [];
+      }, 1080),
+    ];
+  }, [navigate]);
 
   useEffect(() => { const onPopState = () => setPath(window.location.pathname); window.addEventListener('popstate', onPopState); return () => window.removeEventListener('popstate', onPopState); }, []);
+  useEffect(() => () => transitionTimers.current.forEach((timer) => window.clearTimeout(timer)), []);
   useEffect(() => {
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
     const home = path === '/' || path === '/en' || path === '/en/';
@@ -180,5 +186,5 @@ export default function App() {
   const slug = cleanPath.match(/^\/read\/([^/]+)\/?$/)?.[1];
   const chapter = chapters.find((item) => item.slug === slug);
 
-  return <>{chapter ? <Reader language={language} path={path} chapter={chapter} chapters={chapters} navigate={navigate} openMenu={openDrawer} /> : <Home language={language} path={path} chapters={chapters} navigate={navigate} openMenu={openDrawer} />}<ChapterDrawer open={drawerOpen} close={closeDrawer} current={chapter?.slug} navigate={navigate} language={language} chapters={chapters} /></>;
+  return <>{chapter ? <Reader language={language} path={path} chapter={chapter} chapters={chapters} navigate={navigate} openMenu={openDrawer} /> : <Home language={language} path={path} chapters={chapters} navigate={navigate} openMenu={openDrawer} bookOpening={bookTransition} openBook={openBook} />}<ChapterDrawer open={drawerOpen} close={closeDrawer} current={chapter?.slug} navigate={navigate} language={language} chapters={chapters} /><div className={`route-fade ${bookTransition ? 'is-active' : ''}`} aria-hidden="true" /></>;
 }
