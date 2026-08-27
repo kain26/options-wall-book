@@ -62,6 +62,20 @@ img { max-width: 100%; }
 .wordmark-symbol i { display: block; width: 10px; height: 10px; border-radius: 50%; background: var(--red); }
 .wordmark-symbol i:last-child { background: var(--green); }
 .topbar-note { color: var(--muted); font-size: 12px; letter-spacing: .15em; }
+.topbar-actions { justify-self: end; display: flex; align-items: center; gap: 8px; }
+.language-switch {
+  min-width: 42px;
+  padding: 9px 11px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--green);
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+.language-switch:hover { background: var(--surface); }
 .quiet-button, .icon-button {
   border: 1px solid var(--line);
   color: var(--ink);
@@ -245,6 +259,22 @@ footer { display: flex; justify-content: space-between; gap: 24px; padding: 32px
 .chapter-pagination strong { margin-top: auto; font-size: 13px; }
 .chapter-pagination span { font-family: "Songti SC", "STSong", serif; font-size: 16px; line-height: 1.45; }
 .mobile-reader-nav { display: none; }
+.language-en .book-article,
+.language-en .hero h1,
+.language-en .dek,
+.language-en .library-head h2,
+.language-en .map-section h2,
+.language-en .chapter-card h3,
+.language-en .book-article h1,
+.language-en .book-article h2,
+.language-en .book-article h3,
+.language-en .chapter-pagination span { font-family: Georgia, "Times New Roman", serif; }
+.language-en .book-article { line-height: 1.82; overflow-wrap: break-word; }
+.language-en .book-article p { margin: 1.05em 0; }
+.language-en .hero h1 { letter-spacing: -.035em; }
+.language-en .front-note p { letter-spacing: .22em; }
+.language-en .front-note div { font-family: Georgia, "Times New Roman", serif; font-size: 17px; }
+.language-en .front-note strong { font-family: Georgia, "Times New Roman", serif; font-size: 17px; }
 
 @media (max-width: 1100px) {
   .chapter-grid { grid-template-columns: repeat(2, 1fr); }
@@ -301,6 +331,8 @@ footer { display: flex; justify-content: space-between; gap: 24px; padding: 32px
 
 @media (max-width: 430px) {
   .quiet-button { padding: 8px 12px; }
+  .quiet-button > span { display: none; }
+  .topbar-actions { gap: 2px; }
   .chapter-drawer { padding-right: 20px; padding-left: 20px; }
   .hero h1 { letter-spacing: -.055em; }
   .primary-action { width: 100%; }

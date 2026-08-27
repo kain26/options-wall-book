@@ -1,0 +1,7 @@
+{
+  "mode": "chapter-and-section",
+  "sourceRoot": "content/chapters",
+  "translationRoot": "content/en/chapters",
+  "pairing": "same filename; headings preserve source order and generate matching section-N anchors",
+  "parallelReader": false
+}

@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify:bilingual": "node scripts/verify-bilingual.mjs"
   },
   "dependencies": {
     "marked": "17.0.5",

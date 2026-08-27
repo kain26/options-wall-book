@@ -1,4 +1,7 @@
+<a id="top"></a>
+
 <div align="center">
+  <p><strong>中文</strong> · <a href="#english">English</a></p>
   <img src="public/images/cover.png" alt="《期权墙 · SPX 日内实战入门（买方篇）》封面" width="360" />
 
   <h1>期权墙 · 买方篇</h1>
@@ -35,6 +38,8 @@
 
 > **范围说明：** 本书只讨论买方视角，以 SPX 当天到期（0DTE）的单腿 Long Call / Long Put 为主；多腿组合与卖方策略不在本书范围内。
 
+> **翻译说明：** 本书初稿以中文写成，英文版由 GPT-5.6 sol 大模型翻译。如发现术语、机制或表达上的不足，欢迎提交 Issue 或 PR 指正，谢谢。
+
 ## 你会读到什么
 
 - 做市商为什么需要 Delta 对冲，以及正负 Gamma 如何改变市场性格
@@ -62,7 +67,7 @@
 
 ## 在线阅读
 
-网页版本为长文阅读设计，支持响应式布局、章节导航、阅读进度、字号调节和深色模式。
+网页版本为长文阅读设计，支持中英文切换、响应式布局、章节导航、阅读进度、字号调节和深色模式；默认显示中文。
 
 ### [打开《期权墙 · 买方篇》网页版 →](https://options-wall-book.mmoptions.workers.dev/)
 
@@ -108,4 +113,83 @@ src/                网页阅读器
 
 <div align="center">
   <sub>方向是人猜的。结构是市场给的。</sub>
+</div>
+
+---
+
+<a id="english"></a>
+
+<div align="center">
+  <p><a href="#top">中文</a> · <strong>English</strong></p>
+  <h1>Options Wall · Buyer Edition</h1>
+  <p><strong>Stop guessing direction. Start reading structure.</strong></p>
+  <p>A Chinese-English web book about GEX, market-maker hedging, and SPX 0DTE trading.</p>
+  <p>
+    <a href="https://options-wall-book.mmoptions.workers.dev/en/"><strong>Read in English</strong></a>
+    ·
+    <a href="https://options-wall-book.mmoptions.workers.dev/"><strong>阅读中文版</strong></a>
+  </p>
+</div>
+
+## What This Book Is
+
+This is not a signal service or a highlight reel. It documents how I read structure, enter and exit trades, and deal with bad calls and losses.
+
+The book is built around one shift in perspective: stop obsessing over whether the market will rise or fall today. First identify the market structure, understand whether hedging flow is absorbing or amplifying movement, and decide whether the environment supports a trade at all.
+
+It includes **nine core chapters and seven historical trade reviews**, supported by GEX charts, structural diagrams, a glossary, and a practical checklist.
+
+> **Scope:** This is the Buyer Edition. It focuses on single-leg SPX 0DTE Long Calls and Long Puts. Multi-leg structures and option-selling strategies are outside the scope of this edition.
+
+> **Translation note:** The original manuscript was written in Chinese, and the English edition was translated by the GPT-5.6 sol model. If you find an issue with the terminology, mechanics, or wording, please open an Issue or PR. Corrections are welcome—thank you.
+
+## Topics
+
+- Why market makers delta hedge, and how positive and negative gamma change market behavior
+- How to read Call Wall, Put Wall, and Gamma Flip—and recognize when those levels fail
+- How Vanna, Charm, Theta, and Pin affect the 0DTE session
+- How to combine GEX, VWAP, and price action into a premarket and intraday framework
+- How structure, execution, and psychology interact across seven real trading days
+- Stops, staged exits, event risk, position sizing, and cooling-off rules after large wins or losses
+
+## Read Online
+
+The responsive reader includes chapter navigation, reading progress, font controls, dark mode, and a Chinese-English language switch. Chinese remains the default language.
+
+### [Open the English Buyer Edition →](https://options-wall-book.mmoptions.workers.dev/en/)
+
+## Run Locally
+
+Requires Node.js 22.13 or newer and pnpm.
+
+```bash
+git clone https://github.com/kain26/options-wall-book.git
+cd options-wall-book
+pnpm install
+pnpm dev
+```
+
+Production build:
+
+```bash
+pnpm build
+pnpm preview
+```
+
+## License
+
+- Website source and build configuration: MIT License
+- Original writing under `content/`: CC BY-NC-SA 4.0
+- Images and screenshots: excluded unless separately stated
+
+See [LICENSE.md](LICENSE.md) for the full terms.
+
+## Risk Disclosure
+
+This book is a collection of personal trading notes and historical reviews. It is not investment advice, a signal service, or a performance guarantee. SPX 0DTE options can expire worthless. Readers are responsible for their own decisions and risk.
+
+---
+
+<div align="center">
+  <sub>Direction is guessed. Structure is given by the market.</sub>
 </div>

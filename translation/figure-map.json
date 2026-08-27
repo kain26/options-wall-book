@@ -1,0 +1,6 @@
+{
+  "assetRoot": "public/images/figures",
+  "mapping": "English chapters reuse the exact figure paths from their paired Chinese chapters",
+  "captionPolicy": "alt text and figcaptions are translated in Markdown; artwork is unchanged",
+  "status": "verify path parity before release"
+}
