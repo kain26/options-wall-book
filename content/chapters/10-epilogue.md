@@ -116,3 +116,11 @@ GEX、VWAP、价格行为（趋势），三个维度放在一起，给的不是�
 慢慢写。我们，江湖见。
 
 ---
+
+## 更新与讨论
+
+这本书会随着市场与认知继续修订。如果你发现术语、机制或表达上的问题，欢迎在 GitHub 提交 Issue；后续交易笔记与复盘，会继续发布在 X。
+
+[在 X 上关注更新 →](https://x.com/mm_options) · [在 GitHub 提出修正 →](https://github.com/kain26/options-wall-book/issues)
+
+---

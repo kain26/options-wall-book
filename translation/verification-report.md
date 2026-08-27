@@ -1,6 +1,6 @@
 # Bilingual Verification Report
 
-Generated: 2026-08-27T13:54:46.278Z
+Generated: 2026-08-27T17:45:03.156Z
 
 | File | Heading parity | Figure parity | Chinese characters remaining |
 | --- | --- | --- | ---: |

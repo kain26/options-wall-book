@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type AnchorHTMLAttributes, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type AnchorHTMLAttributes, type ReactNode } from 'react';
 import { getChapters, renderMarkdown, type Chapter } from './content';
 import { copy, localizedPath, type Language } from './i18n';
 
@@ -57,6 +57,50 @@ function SiteHeader({ language, path, navigate, openMenu, reading }: { language:
   </header>;
 }
 
+function InteractiveBook({ language, href, action, navigate }: { language: Language; href: string; action: string; navigate: Navigate }) {
+  const text = copy[language];
+  const [opening, setOpening] = useState(false);
+  const timer = useRef<number | null>(null);
+
+  useEffect(() => () => { if (timer.current !== null) window.clearTimeout(timer.current); }, []);
+
+  const openBook = () => {
+    if (timer.current !== null) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { navigate(href); return; }
+    setOpening(true);
+    timer.current = window.setTimeout(() => navigate(href), 1080);
+  };
+
+  return <button
+    className={`book-launch ${opening ? 'is-opening' : ''}`}
+    type="button"
+    onClick={openBook}
+    onPointerMove={(event) => {
+      if (opening || event.pointerType === 'touch') return;
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - .5;
+      const y = (event.clientY - rect.top) / rect.height - .5;
+      event.currentTarget.style.setProperty('--book-tilt-x', `${2 - y * 5}deg`);
+      event.currentTarget.style.setProperty('--book-tilt-y', `${-11 + x * 9}deg`);
+    }}
+    onPointerLeave={(event) => {
+      event.currentTarget.style.removeProperty('--book-tilt-x');
+      event.currentTarget.style.removeProperty('--book-tilt-y');
+    }}
+    aria-label={`${text.bookOpenLabel}：${action}`}
+    aria-busy={opening}
+  >
+    <span className="book-stage" aria-hidden="true">
+      <span className="book-object">
+        <span className="book-page-block"><span className="book-page-content"><small>{text.bookInsideKicker}</small><strong>{text.bookInsideTitle}</strong><span>{text.bookInsideCta}</span></span></span>
+        <span className="book-spine" />
+        <span className="book-cover-panel"><img className="book-cover-art" src="/images/cover.png" alt="" /><span className="book-cover-back" /></span>
+      </span>
+    </span>
+    <span className="book-hint" aria-hidden="true">{text.bookHint}<b>↗</b></span>
+  </button>;
+}
+
 function Home({ language, path, chapters, navigate, openMenu }: { language: Language; path: string; chapters: Chapter[]; navigate: Navigate; openMenu: () => void }) {
   const text = copy[language];
   const lastSlug = localStorage.getItem(`option-wall:last-chapter:${language}`);
@@ -66,13 +110,13 @@ function Home({ language, path, chapters, navigate, openMenu }: { language: Lang
   return <div className={`site-shell language-${language}`}>
     <SiteHeader language={language} path={path} navigate={navigate} openMenu={openMenu} />
     <main>
-      <section className="hero"><div className="hero-copy"><p className="eyebrow">{text.eyebrow}</p><h1><span className="hero-title-line">{text.heroLead}</span><em className="hero-title-line">{text.heroEm}</em></h1><p className="dek">{text.dek}</p><div className="hero-actions"><ReaderLink className="primary-action" href={localizedPath(language, `/read/${startChapter.slug}`)} navigate={navigate}>{lastSlug ? text.continueReading : text.startReading} <span>→</span></ReaderLink><span className="reading-time">{text.bookStats}</span></div></div><figure className="cover-card"><img src="/images/cover-3d.png" alt={text.coverAlt} /></figure></section>
+      <section className="hero"><div className="hero-copy"><p className="eyebrow">{text.eyebrow}</p><h1><span className="hero-title-line">{text.heroLead}</span><em className="hero-title-line">{text.heroEm}</em></h1><p className="dek">{text.dek}</p><div className="hero-actions"><ReaderLink className="primary-action" href={localizedPath(language, `/read/${startChapter.slug}`)} navigate={navigate}>{lastSlug ? text.continueReading : text.startReading} <span>→</span></ReaderLink><span className="reading-time">{text.bookStats}</span></div></div><div className="cover-card"><InteractiveBook language={language} href={localizedPath(language, `/read/${startChapter.slug}`)} action={lastSlug ? text.continueReading : text.startReading} navigate={navigate} /></div></section>
       <section className="front-note" aria-label={language === 'zh' ? '卷首寄语' : 'Opening note'}><p>{text.frontBrand}</p><div>{text.frontWords.map((word) => <span key={word}>{word}</span>)}</div><strong>{text.frontWish}</strong></section>
       <section className="manifesto"><p className="section-kicker">{text.manifestoKicker}</p><blockquote>{text.manifestoQuote}</blockquote><div className="manifesto-grid"><p>{text.manifestoOne}</p><p>{text.manifestoTwo}</p></div></section>
       <section className="library" id="chapters"><div className="library-head"><div><p className="section-kicker">{text.libraryKicker}</p><h2>{text.libraryTitle}</h2></div><p>{text.libraryDek}</p></div><div className="chapter-grid">{chapters.map((chapter, index) => <ReaderLink className="chapter-card" href={localizedPath(language, `/read/${chapter.slug}`)} navigate={navigate} key={chapter.slug}><div className="chapter-card-top"><span>{String(index + 1).padStart(2, '0')}</span><small>{chapter.minutes} {text.minute}</small></div><p>{chapter.label}</p><h3>{chapter.title.replace(titlePattern, '')}</h3><div className="chapter-card-bottom"><span>{chapter.description}</span><b>↗</b></div></ReaderLink>)}</div></section>
       <section className="map-section"><figure className="map-preview"><img src="/images/gex-map.png" alt={text.mapAlt} /><figcaption>{text.mapCaption}</figcaption></figure><div><p className="section-kicker">{text.mapKicker}</p><h2>{text.mapTitle.split('\n').map((line, index) => <span key={line}>{line}{index === 0 && <br />}</span>)}</h2><p>{text.mapDek}</p><ReaderLink className="text-action" href={localizedPath(language, '/read/gex-guide')} navigate={navigate}>{text.readGuide} <span>→</span></ReaderLink></div></section>
     </main>
-    <footer><span>{text.footerOne}</span><span>{text.footerTwo}</span></footer>
+    <footer><span>{text.footerOne}</span><nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer">{text.footerX}</a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer">{text.footerGithub}</a></nav><span>{text.footerTwo}</span></footer>
   </div>;
 }
 

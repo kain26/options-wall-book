@@ -120,3 +120,11 @@ There will always be another opportunity. Whether you can wait for it depends on
 Write slowly. Until we meet again in the markets.
 
 ---
+
+## Updates and Discussion
+
+This book will continue to evolve with the market and my own understanding. If you spot an issue with the terminology, mechanics, or wording, please open an Issue on GitHub. Future trading notes and reviews will be shared on X.
+
+[Follow updates on X →](https://x.com/mm_options) · [Suggest a correction on GitHub →](https://github.com/kain26/options-wall-book/issues)
+
+---
