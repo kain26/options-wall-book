@@ -4,7 +4,7 @@ export const copy = {
   zh: {
     siteName: '期权墙', homeLabel: '期权墙首页', edition: '买方篇', contents: '目录', fullContents: '全书目录', closeContents: '关闭目录',
     topNote: 'SPX · 0DTE · 买方篇', languageLabel: 'EN', languageAria: 'Read in English',
-    eyebrow: '一本写给真实交易者的结构手记', heroLead: '别急着猜涨跌。', heroEm: '先看市场的性格。',
+    eyebrow: '一本写给真实交易者的结构手记', heroLead: '别急着猜涨跌，', heroEm: '先看市场的性格。',
     dek: '从期权墙与 GEX 地图出发，读懂做市商对冲、0DTE 的时间压力，以及那些“方向看对了，利润却没留下”的交易日。',
     continueReading: '继续阅读', startReading: '开始阅读', bookStats: '9 章 · 7 个复盘日',
     frontBrand: '期 权 墙', frontWords: ['读盘', '读结构', '读风险', '也读人性'], frontWish: '愿你少交一点学费',
