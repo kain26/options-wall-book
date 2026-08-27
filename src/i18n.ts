@@ -15,7 +15,7 @@ export const copy = {
     mapAlt: 'GEX 期权墙示意图', mapCaption: 'GEX 图谱：先看厚柱，再看价格站在哪一侧。', mapKicker: '先学会看图', mapTitle: '三根线，\n一种市场性格。', mapDek: 'Call Wall、Gamma Flip、Put Wall 不是机械买卖点。它们是坐标，是市场对冲压力留下的地形。', readGuide: '读导读',
     footerOne: '麦麦 · 个人交易笔记与历史复盘', footerTwo: '期权可能归零 · 不构成投资建议',
     poemLabel: '卷首词', poemBody: '词作正文', theme: '切换明暗主题', smaller: '缩小字号', larger: '放大字号',
-    title: '期权墙 · SPX 日内实战入门（买方篇）', coverAlt: '《期权墙》买方篇封面',
+    title: '期权墙 · SPX 日内实战入门（买方篇）', coverAlt: '《期权墙》买方篇 3D 精装书封面',
   },
   en: {
     siteName: 'Options Wall', homeLabel: 'Options Wall home', edition: 'Buyer Edition', contents: 'Contents', fullContents: 'Book contents', closeContents: 'Close contents',
@@ -31,7 +31,7 @@ export const copy = {
     mapAlt: 'Illustration of a GEX options-wall map', mapCaption: 'A GEX map: find the largest concentrations, then locate price within the structure.', mapKicker: 'LEARN THE MAP FIRST', mapTitle: 'Three levels.\nOne market character.', mapDek: 'Call Wall, Gamma Flip, and Put Wall are not mechanical entry signals. They are coordinates—the terrain left by hedging pressure.', readGuide: 'Read the guide',
     footerOne: 'Maimai · Personal trading notes and historical reviews', footerTwo: 'Options can expire worthless · Not investment advice',
     poemLabel: 'Opening verse', poemBody: 'Opening verse text', theme: 'Toggle light or dark theme', smaller: 'Decrease font size', larger: 'Increase font size',
-    title: 'Options Wall · An SPX Intraday Field Guide (Buyer Edition)', coverAlt: 'Options Wall Buyer Edition book cover',
+    title: 'Options Wall · An SPX Intraday Field Guide (Buyer Edition)', coverAlt: 'Options Wall Buyer Edition 3D hardcover book',
   },
 } as const;
 
