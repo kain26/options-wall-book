@@ -160,9 +160,10 @@ img { max-width: 100%; }
 
 footer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; padding: 32px 5vw; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
 footer > span:last-child { justify-self: end; text-align: right; }
-.footer-links { display: flex; gap: 18px; align-items: center; }
-.footer-links a { padding-bottom: 3px; border-bottom: 1px solid transparent; color: var(--ink); font-weight: 700; transition: color .2s ease, border-color .2s ease; }
-.footer-links a:hover { border-color: var(--green); color: var(--green); }
+.footer-links { display: flex; gap: 8px; align-items: center; }
+.footer-links a { display: grid; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); place-items: center; transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+.footer-links svg { width: 15px; height: 15px; fill: currentColor; }
+.footer-links a:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
 
 .drawer-layer { position: fixed; inset: 0; z-index: 100; visibility: hidden; pointer-events: none; }
 .drawer-layer.is-open { visibility: visible; pointer-events: auto; }
