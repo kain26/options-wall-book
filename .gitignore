@@ -1,5 +1,6 @@
 # dependencies
 /node_modules
+/.pnpm-store/
 /.pnp
 .pnp.*
 .yarn/*
@@ -33,6 +34,7 @@ yarn-error.log*
 .vercel
 next-env.d.ts
 /dist/
+/.seo-ssr/
 *.tsbuildinfo
 /.wrangler/
 /outputs/

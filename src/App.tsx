@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type AnchorHTMLAttributes, type ReactNode } from 'react';
 import { getChapters, renderMarkdown, type Chapter } from './content';
 import { copy, localizedPath, type Language } from './i18n';
+import { applySeoToDocument, seoForPath } from './seo';
 
 type Navigate = (path: string) => void;
 type ReaderLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { href: string; navigate: Navigate; children: ReactNode };
@@ -97,7 +98,8 @@ function InteractiveBook({ language, action, opening, openBook }: { language: La
 
 function Home({ language, path, chapters, navigate, openMenu, bookOpening, openBook }: { language: Language; path: string; chapters: Chapter[]; navigate: Navigate; openMenu: () => void; bookOpening: boolean; openBook: Navigate }) {
   const text = copy[language];
-  const lastSlug = localStorage.getItem(`option-wall:last-chapter:${language}`);
+  const [lastSlug, setLastSlug] = useState<string | null>(null);
+  useEffect(() => setLastSlug(localStorage.getItem(`option-wall:last-chapter:${language}`)), [language]);
   const startChapter = chapters.find((chapter) => chapter.slug === lastSlug) ?? chapters[0];
   const titlePattern = language === 'zh' ? /^第\s*\d+\s*章\s*/ : /^Chapter\s+\d+[:.]?\s*/i;
 
@@ -121,13 +123,26 @@ function Reader({ language, path, chapter, chapters, navigate, openMenu }: { lan
   const next = chapters[index + 1];
   const html = useMemo(() => renderMarkdown(chapter.raw, language), [chapter.raw, language]);
   const [progress, setProgress] = useState(0);
-  const [theme, setTheme] = useState(() => localStorage.getItem('option-wall:theme') === 'dark' ? 'dark' : 'light');
-  const [fontSize, setFontSize] = useState(() => { const stored = Number(localStorage.getItem('option-wall:font-size') ?? 1); return Number.isFinite(stored) ? Math.min(1.2, Math.max(.9, stored)) : 1; });
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [fontSize, setFontSize] = useState(1);
+  const [settingsLoaded, setSettingsLoaded] = useState(false);
   const titlePattern = language === 'zh' ? /^第\s*\d+\s*章\s*/ : /^Chapter\s+\d+[:.]?\s*/i;
 
-  useEffect(() => { localStorage.setItem(`option-wall:last-chapter:${language}`, chapter.slug); document.title = `${chapter.title} · ${text.siteName}`; window.scrollTo(0, 0); }, [chapter, language, text.siteName]);
-  useEffect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem('option-wall:theme', theme); }, [theme]);
-  useEffect(() => { document.documentElement.style.setProperty('--reader-scale', String(fontSize)); localStorage.setItem('option-wall:font-size', String(fontSize)); }, [fontSize]);
+  useEffect(() => {
+    const storedFontSize = Number(localStorage.getItem('option-wall:font-size') ?? 1);
+    setTheme(localStorage.getItem('option-wall:theme') === 'dark' ? 'dark' : 'light');
+    setFontSize(Number.isFinite(storedFontSize) ? Math.min(1.2, Math.max(.9, storedFontSize)) : 1);
+    setSettingsLoaded(true);
+  }, []);
+  useEffect(() => { localStorage.setItem(`option-wall:last-chapter:${language}`, chapter.slug); window.scrollTo(0, 0); }, [chapter, language]);
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    if (settingsLoaded) localStorage.setItem('option-wall:theme', theme);
+  }, [theme, settingsLoaded]);
+  useEffect(() => {
+    document.documentElement.style.setProperty('--reader-scale', String(fontSize));
+    if (settingsLoaded) localStorage.setItem('option-wall:font-size', String(fontSize));
+  }, [fontSize, settingsLoaded]);
   useEffect(() => {
     let frame = 0;
     const measure = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => { const available = document.documentElement.scrollHeight - window.innerHeight; const nextProgress = available > 0 ? Math.round(Math.min(100, (window.scrollY / available) * 100)) : 0; setProgress((current) => current === nextProgress ? current : nextProgress); }); };
@@ -144,8 +159,8 @@ function Reader({ language, path, chapter, chapters, navigate, openMenu }: { lan
   </div>;
 }
 
-export default function App() {
-  const [path, setPath] = useState(window.location.pathname);
+export default function App({ initialPath }: { initialPath?: string }) {
+  const [path, setPath] = useState(() => initialPath ?? window.location.pathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [bookTransition, setBookTransition] = useState(false);
   const bookTransitioning = useRef(false);
@@ -173,20 +188,8 @@ export default function App() {
   useEffect(() => { const onPopState = () => setPath(window.location.pathname); window.addEventListener('popstate', onPopState); return () => window.removeEventListener('popstate', onPopState); }, []);
   useEffect(() => () => transitionTimers.current.forEach((timer) => window.clearTimeout(timer)), []);
   useEffect(() => {
-    document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
-    const home = path === '/' || path === '/en' || path === '/en/';
-    if (home) document.title = copy[language].title;
-    const description = language === 'zh'
-      ? '《期权墙》买方篇——SPX 0DTE 期权墙、GEX 结构与个人实盘复盘的网页阅读版。'
-      : 'Options Wall Buyer Edition: a bilingual web book on SPX 0DTE, GEX structure, market-maker hedging, and historical trade reviews.';
-    const shortDescription = language === 'zh' ? '别急着猜涨跌，先看市场的性格。' : 'Stop guessing direction. Start reading structure.';
-    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
-    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', language === 'zh' ? 'zh_CN' : 'en_US');
-    document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
-    document.querySelector('meta[property="og:description"]')?.setAttribute('content', shortDescription);
-    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', document.title);
-    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', shortDescription);
-  }, [language, path]);
+    applySeoToDocument(seoForPath(path));
+  }, [path]);
 
   const cleanPath = path.replace(/^\/en(?=\/|$)/, '') || '/';
   const slug = cleanPath.match(/^\/read\/([^/]+)\/?$/)?.[1];

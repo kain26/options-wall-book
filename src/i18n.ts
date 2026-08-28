@@ -4,7 +4,7 @@ export const copy = {
   zh: {
     siteName: '期权墙', homeLabel: '期权墙首页', edition: '买方篇', contents: '目录', fullContents: '全书目录', closeContents: '关闭目录',
     topNote: 'SPX · 0DTE · 买方篇', languageLabel: 'EN', languageAria: 'Read in English',
-    eyebrow: '一本写给真实交易者的结构手记', heroLead: '别急着猜涨跌，', heroEm: '先看市场的性格。',
+    eyebrow: '《期权墙》· 一本写给真实交易者的结构手记', heroLead: '别急着猜涨跌，', heroEm: '先看市场的性格。',
     dek: '从期权墙与 GEX 地图出发，读懂做市商对冲、0DTE 的时间压力，以及那些“方向看对了，利润却没留下”的交易日。',
     continueReading: '继续阅读', startReading: '开始阅读', bookStats: '9 章 · 7 个复盘日', bookOpenLabel: '翻开《期权墙》',
     frontBrand: '期 权 墙', frontWords: ['读盘', '读结构', '读风险', '也读人性'], frontWish: '愿你少交一点学费',
@@ -15,12 +15,12 @@ export const copy = {
     mapAlt: 'GEX 期权墙示意图', mapCaption: 'GEX 图谱：先看厚柱，再看价格站在哪一侧。', mapKicker: '先学会看图', mapTitle: '三根线，\n一种市场性格。', mapDek: 'Call Wall、Gamma Flip、Put Wall 不是机械买卖点。它们是坐标，是市场对冲压力留下的地形。', readGuide: '读导读',
     footerOne: '麦麦 · 个人交易笔记与历史复盘', footerTwo: '期权可能归零 · 不构成投资建议', footerX: 'X · 更新', footerGithub: 'GitHub · 纠错', footerNav: '更新与纠错',
     poemLabel: '卷首词', poemBody: '词作正文', theme: '切换明暗主题', smaller: '缩小字号', larger: '放大字号',
-    title: '期权墙 · SPX 日内实战入门（买方篇）', coverAlt: '《期权墙》买方篇 3D 精装书封面',
+    title: '期权墙｜SPX 0DTE、GEX 与做市商对冲实战指南', coverAlt: '《期权墙》买方篇 3D 精装书封面',
   },
   en: {
     siteName: 'Options Wall', homeLabel: 'Options Wall home', edition: 'Buyer Edition', contents: 'Contents', fullContents: 'Book contents', closeContents: 'Close contents',
     topNote: 'SPX · 0DTE · BUYER EDITION', languageLabel: '中文', languageAria: '切换到中文',
-    eyebrow: 'A STRUCTURAL FIELD GUIDE FOR REAL TRADERS', heroLead: 'Before you guess direction,', heroEm: 'read the market\'s character.',
+    eyebrow: 'OPTIONS WALL · A STRUCTURAL FIELD GUIDE FOR REAL TRADERS', heroLead: 'Before you guess direction,', heroEm: 'read the market\'s character.',
     dek: 'Start with options walls and the GEX map. Learn how market-maker hedging, the 0DTE clock, and shifting structure shape the days when your direction was right but the profit still slipped away.',
     continueReading: 'Continue reading', startReading: 'Start reading', bookStats: '9 chapters · 7 trade reviews', bookOpenLabel: 'Open Options Wall',
     frontBrand: 'OPTIONS WALL', frontWords: ['Read price', 'Read structure', 'Read risk', 'Read yourself'], frontWish: 'May you pay less tuition to the market',
@@ -36,6 +36,7 @@ export const copy = {
 } as const;
 
 export function localizedPath(language: Language, path: string) {
-  const clean = path === '/' ? '' : path;
-  return language === 'en' ? `/en${clean}` : path;
+  const clean = path === '/' ? '/' : `${path.replace(/\/+$/, '')}/`;
+  if (language === 'zh') return clean;
+  return clean === '/' ? '/en/' : `/en${clean}`;
 }
