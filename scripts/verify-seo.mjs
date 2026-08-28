@@ -47,6 +47,8 @@ for (const file of files) {
   expect(html.includes(`hreflang="x-default"`), `${route}: missing x-default alternate`);
   expect(html.includes('name="googlebot"'), `${route}: missing Googlebot directive`);
   expect(html.includes('name="bingbot"'), `${route}: missing Bingbot directive`);
+  expect(html.includes('name="google-site-verification" content="QGtjnK3u5aQK5SwLzrHjCXJe5wpaIOFD_rI9spDc-fE"'), `${route}: missing Google verification tag`);
+  expect(html.includes('name="msvalidate.01" content="0BF00965E467D2C3B2B4D1244E4383D0"'), `${route}: missing Microsoft verification tag`);
   expect(html.includes('<div id="root"><'), `${route}: missing server-rendered content`);
   JSON.parse(structuredData);
 

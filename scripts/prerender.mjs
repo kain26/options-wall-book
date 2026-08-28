@@ -1,12 +1,19 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { getPrerenderRoutes, renderPage } from '../.seo-ssr/entry-server.js';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { basename, dirname, join } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const distDirectory = join(projectRoot, 'dist');
+const ssrDirectory = join(projectRoot, '.seo-ssr');
 const templatePath = join(distDirectory, 'index.html');
 const template = await readFile(templatePath, 'utf8');
+const ssrFiles = await readdir(ssrDirectory, { recursive: true });
+const ssrEntry = ssrFiles.find((file) => file === 'entry-server.js')
+  ?? ssrFiles.find((file) => /^entry-server(?:-[\w-]+)?\.js$/.test(basename(file)));
+
+if (!ssrEntry) throw new Error(`Prerender entry was not found in ${ssrDirectory}`);
+
+const { getPrerenderRoutes, renderPage } = await import(pathToFileURL(join(ssrDirectory, ssrEntry)).href);
 
 function escapeHtml(value) {
   return value
