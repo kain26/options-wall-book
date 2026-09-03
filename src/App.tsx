@@ -5,6 +5,27 @@ import { applySeoToDocument, seoForPath } from './seo';
 
 type Navigate = (path: string) => void;
 type ReaderLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> & { href: string; navigate: Navigate; children: ReactNode };
+type PageViewResponse = { count: number };
+
+let pageViewRequest: Promise<number> | null = null;
+
+function recordPageView() {
+  if (pageViewRequest) return pageViewRequest;
+
+  pageViewRequest = fetch('/api/page-views', {
+    method: 'POST',
+    headers: { Accept: 'application/json' },
+    cache: 'no-store',
+    keepalive: true,
+  }).then(async (response) => {
+    if (!response.ok) throw new Error(`Page-view request failed with ${response.status}`);
+    const data = await response.json() as PageViewResponse;
+    if (!Number.isSafeInteger(data.count) || data.count < 0) throw new Error('Page-view response was invalid');
+    return data.count;
+  });
+
+  return pageViewRequest;
+}
 
 function ReaderLink({ href, navigate, children, ...props }: ReaderLinkProps) {
   return <a {...props} href={href} onClick={(event) => {
@@ -64,6 +85,20 @@ function SocialIcon({ name }: { name: 'x' | 'github' }) {
     : <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.59 2 12.253c0 4.53 2.865 8.374 6.839 9.73.5.095.682-.222.682-.494 0-.244-.009-.888-.014-1.744-2.782.62-3.369-1.374-3.369-1.374-.455-1.185-1.11-1.5-1.11-1.5-.908-.637.069-.624.069-.624 1.003.073 1.531 1.057 1.531 1.057.892 1.566 2.341 1.114 2.91.852.091-.663.35-1.114.635-1.37-2.221-.259-4.556-1.14-4.556-5.068 0-1.12.39-2.034 1.029-2.752-.103-.26-.446-1.303.098-2.714 0 0 .84-.276 2.75 1.051A9.35 9.35 0 0 1 12 6.977a9.35 9.35 0 0 1 2.504.346c1.909-1.327 2.748-1.051 2.748-1.051.546 1.411.202 2.454.1 2.714.64.718 1.027 1.632 1.027 2.752 0 3.938-2.339 4.806-4.566 5.06.359.317.678.943.678 1.9 0 1.371-.012 2.477-.012 2.814 0 .274.18.594.688.493C19.138 20.624 22 16.782 22 12.253 22 6.59 17.523 2 12 2Z" /></svg>;
 }
 
+function Footer({ language, pageViews }: { language: Language; pageViews: number | null }) {
+  const text = copy[language];
+  const formattedPageViews = pageViews === null ? '—' : new Intl.NumberFormat(language === 'zh' ? 'zh-CN' : 'en-US').format(pageViews);
+
+  return <footer>
+    <span>{text.footerOne}</span>
+    <div className="footer-center">
+      <span className="page-view-count" aria-live="polite"><span>{text.pageViews}</span><strong>{formattedPageViews}</strong></span>
+      <nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer" aria-label={text.footerX}><SocialIcon name="x" /></a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer" aria-label={text.footerGithub}><SocialIcon name="github" /></a></nav>
+    </div>
+    <span>{text.footerTwo}</span>
+  </footer>;
+}
+
 function InteractiveBook({ language, action, opening, openBook }: { language: Language; action: string; opening: boolean; openBook: () => void }) {
   const text = copy[language];
 
@@ -96,7 +131,7 @@ function InteractiveBook({ language, action, opening, openBook }: { language: La
   </button>;
 }
 
-function Home({ language, path, chapters, navigate, openMenu, bookOpening, openBook }: { language: Language; path: string; chapters: Chapter[]; navigate: Navigate; openMenu: () => void; bookOpening: boolean; openBook: Navigate }) {
+function Home({ language, path, chapters, navigate, openMenu, bookOpening, openBook, pageViews }: { language: Language; path: string; chapters: Chapter[]; navigate: Navigate; openMenu: () => void; bookOpening: boolean; openBook: Navigate; pageViews: number | null }) {
   const text = copy[language];
   const [lastSlug, setLastSlug] = useState<string | null>(null);
   useEffect(() => setLastSlug(localStorage.getItem(`option-wall:last-chapter:${language}`)), [language]);
@@ -112,11 +147,11 @@ function Home({ language, path, chapters, navigate, openMenu, bookOpening, openB
       <section className="library" id="chapters"><div className="library-head"><div><p className="section-kicker">{text.libraryKicker}</p><h2>{text.libraryTitle}</h2></div><p>{text.libraryDek}</p></div><div className="chapter-grid">{chapters.map((chapter, index) => <ReaderLink className="chapter-card" href={localizedPath(language, `/read/${chapter.slug}`)} navigate={navigate} key={chapter.slug}><div className="chapter-card-top"><span>{String(index + 1).padStart(2, '0')}</span><small>{chapter.minutes} {text.minute}</small></div><p>{chapter.label}</p><h3>{chapter.title.replace(titlePattern, '')}</h3><div className="chapter-card-bottom"><span>{chapter.description}</span><b>↗</b></div></ReaderLink>)}</div></section>
       <section className="map-section"><figure className="map-preview"><img src="/images/gex-map.png" alt={text.mapAlt} /><figcaption>{text.mapCaption}</figcaption></figure><div><p className="section-kicker">{text.mapKicker}</p><h2>{text.mapTitle.split('\n').map((line, index) => <span key={line}>{line}{index === 0 && <br />}</span>)}</h2><p>{text.mapDek}</p><ReaderLink className="text-action" href={localizedPath(language, '/read/gex-guide')} navigate={navigate}>{text.readGuide} <span>→</span></ReaderLink></div></section>
     </main>
-    <footer><span>{text.footerOne}</span><nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer" aria-label={text.footerX}><SocialIcon name="x" /></a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer" aria-label={text.footerGithub}><SocialIcon name="github" /></a></nav><span>{text.footerTwo}</span></footer>
+    <Footer language={language} pageViews={pageViews} />
   </div>;
 }
 
-function Reader({ language, path, chapter, chapters, navigate, openMenu }: { language: Language; path: string; chapter: Chapter; chapters: Chapter[]; navigate: Navigate; openMenu: () => void }) {
+function Reader({ language, path, chapter, chapters, navigate, openMenu, pageViews }: { language: Language; path: string; chapter: Chapter; chapters: Chapter[]; navigate: Navigate; openMenu: () => void; pageViews: number | null }) {
   const text = copy[language];
   const index = chapters.findIndex((item) => item.slug === chapter.slug);
   const previous = chapters[index - 1];
@@ -155,6 +190,7 @@ function Reader({ language, path, chapter, chapters, navigate, openMenu }: { lan
       <main className="reader-main"><div className="chapter-meta"><span>{chapter.label}</span><span>{text.approx} {chapter.minutes} {text.minute}</span><span>{Math.round(progress)}%</span></div><article className="book-article" dangerouslySetInnerHTML={{ __html: html }} /><nav className="chapter-pagination" aria-label={language === 'zh' ? '章节翻页' : 'Chapter navigation'}>{previous ? <ReaderLink href={localizedPath(language, `/read/${previous.slug}`)} navigate={navigate}><small>{text.previous}</small><strong>← {previous.label}</strong><span>{previous.title.replace(titlePattern, '')}</span></ReaderLink> : <span />}{next ? <ReaderLink href={localizedPath(language, `/read/${next.slug}`)} navigate={navigate}><small>{text.next}</small><strong>{next.label} →</strong><span>{next.title.replace(titlePattern, '')}</span></ReaderLink> : <span />}</nav></main>
       <aside className="reader-tools"><div className="tool-panel"><p>{text.thisChapter}</p><nav>{chapter.outline.slice(0, 14).map((item) => <a className={item.depth === 3 ? 'is-sub' : ''} href={`#${item.id}`} key={item.id}>{item.title}</a>)}</nav></div><div className="display-tools"><button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} type="button" aria-label={text.theme}>{theme === 'light' ? '◐' : '☀'}</button><button onClick={() => setFontSize(Math.max(.9, Number((fontSize - .1).toFixed(1))))} type="button" aria-label={text.smaller}>A−</button><button onClick={() => setFontSize(Math.min(1.2, Number((fontSize + .1).toFixed(1))))} type="button" aria-label={text.larger}>A+</button></div></aside>
     </div>
+    <Footer language={language} pageViews={pageViews} />
     <div className="mobile-reader-nav">{previous ? <ReaderLink href={localizedPath(language, `/read/${previous.slug}`)} navigate={navigate} aria-label={text.previous}>←</ReaderLink> : <span />}<button type="button" onClick={openMenu}>{index + 1} / {chapters.length} · {text.contents}</button>{next ? <ReaderLink href={localizedPath(language, `/read/${next.slug}`)} navigate={navigate} aria-label={text.next}>→</ReaderLink> : <span />}</div>
   </div>;
 }
@@ -163,6 +199,7 @@ export default function App({ initialPath }: { initialPath?: string }) {
   const [path, setPath] = useState(() => initialPath ?? window.location.pathname);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [bookTransition, setBookTransition] = useState(false);
+  const [pageViews, setPageViews] = useState<number | null>(null);
   const bookTransitioning = useRef(false);
   const transitionTimers = useRef<number[]>([]);
   const language: Language = path === '/en' || path.startsWith('/en/') ? 'en' : 'zh';
@@ -188,6 +225,11 @@ export default function App({ initialPath }: { initialPath?: string }) {
   useEffect(() => { const onPopState = () => setPath(window.location.pathname); window.addEventListener('popstate', onPopState); return () => window.removeEventListener('popstate', onPopState); }, []);
   useEffect(() => () => transitionTimers.current.forEach((timer) => window.clearTimeout(timer)), []);
   useEffect(() => {
+    let active = true;
+    recordPageView().then((count) => { if (active) setPageViews(count); }).catch(() => {});
+    return () => { active = false; };
+  }, []);
+  useEffect(() => {
     applySeoToDocument(seoForPath(path));
   }, [path]);
 
@@ -195,5 +237,5 @@ export default function App({ initialPath }: { initialPath?: string }) {
   const slug = cleanPath.match(/^\/read\/([^/]+)\/?$/)?.[1];
   const chapter = chapters.find((item) => item.slug === slug);
 
-  return <>{chapter ? <Reader language={language} path={path} chapter={chapter} chapters={chapters} navigate={navigate} openMenu={openDrawer} /> : <Home language={language} path={path} chapters={chapters} navigate={navigate} openMenu={openDrawer} bookOpening={bookTransition} openBook={openBook} />}<ChapterDrawer open={drawerOpen} close={closeDrawer} current={chapter?.slug} navigate={navigate} language={language} chapters={chapters} /><div className={`route-fade ${bookTransition ? 'is-active' : ''}`} aria-hidden="true" /></>;
+  return <>{chapter ? <Reader language={language} path={path} chapter={chapter} chapters={chapters} navigate={navigate} openMenu={openDrawer} pageViews={pageViews} /> : <Home language={language} path={path} chapters={chapters} navigate={navigate} openMenu={openDrawer} bookOpening={bookTransition} openBook={openBook} pageViews={pageViews} />}<ChapterDrawer open={drawerOpen} close={closeDrawer} current={chapter?.slug} navigate={navigate} language={language} chapters={chapters} /><div className={`route-fade ${bookTransition ? 'is-active' : ''}`} aria-hidden="true" /></>;
 }

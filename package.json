@@ -7,8 +7,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build && vite build --config vite.ssr.config.ts && node scripts/prerender.mjs",
+    "build": "tsc --noEmit && tsc --noEmit -p tsconfig.worker.json && vite build && vite build --config vite.ssr.config.ts && node scripts/prerender.mjs",
+    "deploy": "pnpm run build && wrangler deploy",
     "preview": "vite preview",
+    "preview:worker": "wrangler dev",
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:bilingual": "node scripts/verify-bilingual.mjs"
   },
@@ -18,13 +20,15 @@
     "react-dom": "19.2.6"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "5.20260902.1",
     "@openai/sites-vite-plugin": "^0.1.0 || ^0.2.0",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
     "typescript": "5.9.3",
-    "vite": "8.0.13"
+    "vite": "8.0.13",
+    "wrangler": "4.128.0"
   },
   "type": "module"
 }
