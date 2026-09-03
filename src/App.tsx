@@ -92,7 +92,10 @@ function Footer({ language, pageViews }: { language: Language; pageViews: number
   return <footer>
     <span>{text.footerOne}</span>
     <div className="footer-center">
-      <span className="page-view-count" aria-live="polite"><span>{text.pageViews}</span><strong>{formattedPageViews}</strong></span>
+      <span className="page-view-count" aria-live="polite">
+        <span className="page-view-mark" aria-hidden="true"><i /><i /></span>
+        <span>{text.pageViews}</span><strong>{formattedPageViews}</strong><small>{text.pageViewUnit}</small>
+      </span>
       <nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer" aria-label={text.footerX}><SocialIcon name="x" /></a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer" aria-label={text.footerGithub}><SocialIcon name="github" /></a></nav>
     </div>
     <span>{text.footerTwo}</span>
