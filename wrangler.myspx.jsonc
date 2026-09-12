@@ -1,0 +1,35 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "options-wall-book",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-09-03",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "book.myspx.trade",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "PAGE_VIEW_COUNTER",
+        "class_name": "PageViewCounter"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["PageViewCounter"]
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

@@ -10,7 +10,7 @@
   <p>一本关于 GEX、做市商对冲与 SPX 0DTE 实战的中文网页书。</p>
 
   <p>
-    <a href="https://options-wall-book.mmoptions.workers.dev/"><strong>在线阅读</strong></a>
+    <a href="https://book.myspx.trade/"><strong>在线阅读</strong></a>
     ·
     <a href="#内容地图">内容地图</a>
     ·
@@ -69,7 +69,7 @@
 
 网页版本为长文阅读设计，支持中英文切换、响应式布局、章节导航、阅读进度、字号调节和深色模式；默认显示中文。
 
-### [打开《期权墙 · 买方篇》网页版 →](https://options-wall-book.mmoptions.workers.dev/)
+### [打开《期权墙 · 买方篇》网页版 →](https://book.myspx.trade/)
 
 ## 本地运行
 
@@ -125,9 +125,9 @@ src/                网页阅读器
   <p><strong>Stop guessing direction. Start reading structure.</strong></p>
   <p>A Chinese-English web book about GEX, market-maker hedging, and SPX 0DTE trading.</p>
   <p>
-    <a href="https://options-wall-book.mmoptions.workers.dev/en/"><strong>Read in English</strong></a>
+    <a href="https://book.myspx.trade/en/"><strong>Read in English</strong></a>
     ·
-    <a href="https://options-wall-book.mmoptions.workers.dev/"><strong>阅读中文版</strong></a>
+    <a href="https://book.myspx.trade/"><strong>阅读中文版</strong></a>
   </p>
 </div>
 
@@ -156,7 +156,7 @@ It includes **nine core chapters and seven historical trade reviews**, supported
 
 The responsive reader includes chapter navigation, reading progress, font controls, dark mode, and a Chinese-English language switch. Chinese remains the default language.
 
-### [Open the English Buyer Edition →](https://options-wall-book.mmoptions.workers.dev/en/)
+### [Open the English Buyer Edition →](https://book.myspx.trade/en/)
 
 ## Run Locally
 

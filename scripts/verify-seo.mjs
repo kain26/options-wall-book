@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = join(fileURLToPath(new URL('.', import.meta.url)), '..');
 const distDirectory = join(projectRoot, 'dist');
-const origin = 'https://options-wall-book.mmoptions.workers.dev';
+const origin = 'https://book.myspx.trade';
 
 function expect(condition, message) {
   if (!condition) throw new Error(message);

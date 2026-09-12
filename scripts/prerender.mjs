@@ -126,7 +126,7 @@ const robots = [
   'User-agent: *',
   'Allow: /',
   '',
-  'Sitemap: https://options-wall-book.mmoptions.workers.dev/sitemap.xml',
+  'Sitemap: https://book.myspx.trade/sitemap.xml',
   '',
 ].join('\n');
 

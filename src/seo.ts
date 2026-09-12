@@ -1,7 +1,7 @@
 import { getChapters, type Chapter } from './content';
 import { copy, localizedPath, type Language } from './i18n';
 
-export const SITE_URL = 'https://options-wall-book.mmoptions.workers.dev';
+export const SITE_URL = 'https://book.myspx.trade';
 
 export type SeoData = {
   language: Language;
