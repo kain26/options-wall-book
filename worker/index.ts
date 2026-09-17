@@ -4,7 +4,6 @@ interface Env {
   PAGE_VIEW_COUNTER: DurableObjectNamespace<PageViewCounter>;
 }
 
-const INITIAL_PAGE_VIEWS = 500;
 const COUNTER_KEY = 'pageViews';
 
 const responseHeaders = {
@@ -15,10 +14,7 @@ const responseHeaders = {
 export class PageViewCounter extends DurableObject<Env> {
   async current() {
     const stored = await this.ctx.storage.get<number>(COUNTER_KEY);
-    if (stored !== undefined && stored >= INITIAL_PAGE_VIEWS) return stored;
-
-    await this.ctx.storage.put(COUNTER_KEY, INITIAL_PAGE_VIEWS);
-    return INITIAL_PAGE_VIEWS;
+    return stored ?? 0;
   }
 
   async increment() {
