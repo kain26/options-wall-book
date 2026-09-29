@@ -132,7 +132,7 @@ Not from confidence. I priced error into the position before entry: small size, 
 
 That may be the greatest change brought by thinking like a market maker: I no longer need the market to prove that I am right.
 
-This book has traveled through market makers, GEX, walls, VWAP, GVP, exits, sizing, and seven trading days. Its final message is simple:
+This book has traveled through market makers, GEX, walls, VWAP, GVP, exits, sizing, and eight trading days. Its final message is simple:
 
 **Do not rush to guess where the market will go. Learn from the calm hedging machine: read today's wind, control your risk, and give your actions to rules.**
 

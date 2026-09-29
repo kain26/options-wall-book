@@ -51,7 +51,7 @@ After a large loss, everyone wants an answer. Most of what you find falls at one
 
 > **If you are starting from zero:** Never heard of GEX, Gamma, or market-maker hedging? Read **“GEX Map Guide: Understand Options Walls in Half an Hour”** first, then return to Chapter 1.
 
-The seven trading-day reviews are woven together with GEX, tape reading, and exits; the concepts are not stockpiled first and matched with examples only at the end. **Chapters 2, 3, and 5 focus more on structure; Chapters 4, 6, and 8 focus more on individual days.** Use the **Appendix Glossary** for terminology and the **Appendix Trading Checklist** for a quick premarket reference.
+The eight live and historical trading days are woven together with GEX, tape reading, and exits; the concepts are not stockpiled first and matched with examples only at the end. **Chapters 2, 3, and 5 focus more on structure; Chapters 4, 6, and 8 plus the Live Note focus more on individual days.** Use the **Appendix Glossary** for terminology and the **Appendix Trading Checklist** for a quick premarket reference.
 
 **How to read the numbers:** In chapters built around a dated trading session, levels come from that day's actual market. For the other maps, numerical examples, and illustrations, see **“What a GEX Map Looks Like”** in the guide.
 

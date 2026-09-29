@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = join(fileURLToPath(new URL('.', import.meta.url)), '..');
 const distDirectory = join(projectRoot, 'dist');
+const chapterDirectory = join(projectRoot, 'content', 'chapters');
 const origin = 'https://book.myspx.trade';
 
 function expect(condition, message) {
@@ -25,8 +26,10 @@ const files = (await readdir(distDirectory, { recursive: true }))
   .filter((file) => file === 'index.html' || file.endsWith(`${sep}index.html`) || file.endsWith('/index.html'))
   .map((file) => join(distDirectory, file))
   .sort();
+const chapterCount = (await readdir(chapterDirectory)).filter((file) => file.endsWith('.md')).length;
+const expectedPageCount = 2 + chapterCount * 2;
 
-expect(files.length === 30, `Expected 30 prerendered pages, found ${files.length}`);
+expect(files.length === expectedPageCount, `Expected ${expectedPageCount} prerendered pages, found ${files.length}`);
 
 const canonicals = new Set();
 for (const file of files) {
@@ -66,12 +69,12 @@ for (const file of files) {
 
 const sitemap = await readFile(join(distDirectory, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-expect(sitemapUrls.length === 30, `Expected 30 sitemap URLs, found ${sitemapUrls.length}`);
-expect(new Set(sitemapUrls).size === 30, 'Sitemap contains duplicate URLs');
+expect(sitemapUrls.length === expectedPageCount, `Expected ${expectedPageCount} sitemap URLs, found ${sitemapUrls.length}`);
+expect(new Set(sitemapUrls).size === expectedPageCount, 'Sitemap contains duplicate URLs');
 expect(sitemapUrls.every((url) => canonicals.has(url)), 'Sitemap and page canonical URLs differ');
 
 const robots = await readFile(join(distDirectory, 'robots.txt'), 'utf8');
 expect(robots.includes('User-agent: *\nAllow: /'), 'robots.txt does not allow crawlers');
 expect(robots.includes(`${origin}/sitemap.xml`), 'robots.txt does not advertise the sitemap');
 
-console.log('SEO verification passed: 30 prerendered pages, 30 canonical sitemap URLs, valid JSON-LD, Googlebot and Bingbot access.');
+console.log(`SEO verification passed: ${expectedPageCount} prerendered pages, ${expectedPageCount} canonical sitemap URLs, valid JSON-LD, Googlebot and Bingbot access.`);

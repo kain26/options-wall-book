@@ -33,15 +33,15 @@ That is not simply bad luck. Some parts of the picture were still missing.
 1. **A shift in thinking**—from “Will the market rise or fall today?” to “What kind of market is this today, and does the structure justify taking a view?”
 2. **A personal trading journal**—what I watch before the open, how I read GEX, why I often choose a Delta between 0.45 and 0.55, why I avoid the first five minutes, and how I scale out. These are my actual decision-making habits, not theory dressed up as practice.
 
-I have also included reviews of seven real trading days. Use the data, structure, and execution details where they help; do not force them where they do not. Markets change, and so do I.
+I have also included eight live and historical trading days. Use the data, structure, and execution details where they help; do not force them where they do not. Markets change, and so do I.
 
-This is the **Buyer Edition**. It deals only with SPX options expiring the same day—0DTE—and the simplest long-premium trades: buying a single Long Call or Long Put, with no complex combinations. The main text begins with **Chapter 1**: first the story, then the map, then the trade reviews.
+This is the **Buyer Edition**. Its main text deals with SPX options expiring the same day—0DTE—and the simplest long-premium trades: buying a single Long Call or Long Put. The September 29, 2026 Live Note contains one limited observation of a defined-risk iron-condor model to distinguish a structural envelope from a position's working range; it does not expand into an option-selling tutorial. The main text begins with **Chapter 1**: first the story, then the map, then the trade reviews.
 
 ---
 
 ## A New Way to See the Market
 
-What kind of market is this today? Does the structure justify a trade? Why can the direction be right while the trade still loses? We will walk through seven real trading days from beginning to end.
+What kind of market is this today? Does the structure justify a trade? Why can the direction be right while the trade still loses? We will walk through eight live and historical trading days from beginning to end.
 
 Markets change, and so do I. Use what fits; leave what does not.
 

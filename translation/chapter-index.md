@@ -16,6 +16,7 @@ Chinese source files live in `content/chapters/`. English reading files live in 
 | `07-exit-events-sizing.md` | Chapter 7 · Exits, Events, and Sizing |
 | `08-story-0123.md` | Chapter 8 · The Liquidity Sweep |
 | `09-think-like-mm.md` | Chapter 9 · Think in Structure |
+| `10-live-2026-09-29.md` | Live Note · September 29, 2026 |
 | `10-epilogue.md` | Epilogue |
 | `appendix.md` | Appendix |
 
