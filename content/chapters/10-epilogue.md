@@ -124,3 +124,34 @@ GEX、VWAP、价格行为（趋势），三个维度放在一起，给的不是�
 [在 X 上关注更新 →](https://x.com/mm_options) · [在 GitHub 提出修正 →](https://github.com/kain26/options-wall-book/issues)
 
 ---
+
+## 后记 · 读者回声
+
+<p class="reader-voices-note">节选自 X 公开评论。为保护读者隐私，头像、显示名称与账号均已隐去；日期与评论原文保留。</p>
+
+<section class="reader-voices" aria-label="来自 X 评论区的读者反馈">
+  <figure class="reader-voice">
+    <blockquote><p>少數看過能讓人真的理解的好書！</p></blockquote>
+    <figcaption><span>X 用户</span><time>Sep 2</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p>通俗易懂👍</p></blockquote>
+    <figcaption><span>X 用户</span><time>Sep 2</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p>读完 学习了很多 期待卖方篇</p></blockquote>
+    <figcaption><span>X 用户</span><time>Sep 4</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p>已读了两章。太赞了写的。 谢谢啊。</p></blockquote>
+    <figcaption><span>X 用户</span><time>Sep 3</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p>一本值得看的书 谢谢🙏🏻</p></blockquote>
+    <figcaption><span>X 用户</span><time>Sep 3</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p>感谢博主无私分享</p></blockquote>
+    <figcaption><span>X 用户</span><time>Sep 4</time></figcaption>
+  </figure>
+</section>

@@ -1,8 +1,8 @@
 # Bilingual Verification Report
 
-Generated: 2026-08-27T17:45:03.156Z
+Generated: 2026-09-29T11:43:53.682Z
 
-| File | Heading parity | Figure parity | Chinese characters remaining |
+| File | Heading parity | Figure parity | Unmarked Chinese characters remaining |
 | --- | --- | --- | ---: |
 | 00-disclaimer.md | pass | pass | 0 |
 | 00-guide-gex.md | pass | pass | 0 |

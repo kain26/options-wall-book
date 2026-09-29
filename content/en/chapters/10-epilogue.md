@@ -128,3 +128,34 @@ This book will continue to evolve with the market and my own understanding. If y
 [Follow updates on X →](https://x.com/mm_options) · [Suggest a correction on GitHub →](https://github.com/kain26/options-wall-book/issues)
 
 ---
+
+## Afterword · Reader Voices
+
+<p class="reader-voices-note">Selected from public comments on X. Avatars, display names, and handles have been withheld for reader privacy; dates and original wording are preserved. English translations appear beneath the original comments.</p>
+
+<section class="reader-voices" aria-label="Reader responses from the X comments">
+  <figure class="reader-voice">
+    <blockquote><p lang="zh-Hant">少數看過能讓人真的理解的好書！</p><p class="reader-voice-translation">One of the few good books that helps people truly understand!</p></blockquote>
+    <figcaption><span>X reader</span><time>Sep 2</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p lang="zh-Hans">通俗易懂👍</p><p class="reader-voice-translation">Clear and easy to understand 👍</p></blockquote>
+    <figcaption><span>X reader</span><time>Sep 2</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p lang="zh-Hans">读完 学习了很多 期待卖方篇</p><p class="reader-voice-translation">I learned a lot from reading it. Looking forward to the Seller Edition.</p></blockquote>
+    <figcaption><span>X reader</span><time>Sep 4</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p lang="zh-Hans">已读了两章。太赞了写的。 谢谢啊。</p><p class="reader-voice-translation">I have read two chapters. The writing is excellent. Thank you.</p></blockquote>
+    <figcaption><span>X reader</span><time>Sep 3</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p lang="zh-Hans">一本值得看的书 谢谢🙏🏻</p><p class="reader-voice-translation">A book worth reading. Thank you 🙏🏻</p></blockquote>
+    <figcaption><span>X reader</span><time>Sep 3</time></figcaption>
+  </figure>
+  <figure class="reader-voice">
+    <blockquote><p lang="zh-Hans">感谢博主无私分享</p><p class="reader-voice-translation">Thank you for sharing so generously.</p></blockquote>
+    <figcaption><span>X reader</span><time>Sep 4</time></figcaption>
+  </figure>
+</section>

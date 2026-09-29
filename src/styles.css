@@ -277,6 +277,14 @@ footer > span:last-child { justify-self: end; text-align: right; }
 .book-figure { width: min(100%, 860px); margin: 3rem auto; }
 .book-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 16px 46px rgba(24, 28, 25, .1); }
 .book-figure figcaption { max-width: 650px; margin: 12px auto 0; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: 12px; line-height: 1.6; text-align: center; }
+.book-article .reader-voices-note { max-width: 39rem; margin-bottom: 2rem; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: calc(13px * var(--reader-scale)); line-height: 1.75; }
+.reader-voices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 2rem 0 1rem; }
+.reader-voice { display: flex; flex-direction: column; min-width: 0; min-height: 170px; margin: 0; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--paper) 92%, transparent)); }
+.book-article .reader-voice blockquote { flex: 1; margin: 0; padding: 0; border: 0; color: var(--ink); font-size: calc(17px * var(--reader-scale)); }
+.book-article .reader-voice blockquote p { margin: 0; }
+.book-article .reader-voice .reader-voice-translation { margin-top: .75rem; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: calc(12px * var(--reader-scale)); line-height: 1.55; }
+.reader-voice figcaption { display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 24px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: 11px; letter-spacing: .04em; }
+.reader-voice time { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .tool-panel nav { display: flex; flex-direction: column; gap: 10px; padding-left: 12px; border-left: 1px solid var(--line); }
 .tool-panel a { color: var(--muted); font-size: 11px; line-height: 1.5; }
@@ -357,6 +365,8 @@ footer > span:last-child { justify-self: end; text-align: right; }
   .book-article .poem-body { padding: 7px 20px 30px; border-radius: 0 0 16px 16px; }
   .book-article .poem-body p { width: auto; max-width: 29em; font-size: calc(16px * var(--reader-scale)); line-height: 1.95; }
   .book-article blockquote { margin-left: 0; padding-left: 18px; }
+  .reader-voices { grid-template-columns: 1fr; }
+  .reader-voice { min-height: 145px; }
   .book-figure { width: calc(100% + 12px); margin-left: -6px; }
   .book-figure img { border-radius: 8px; }
   .chapter-pagination { grid-template-columns: 1fr; margin-top: 72px; }

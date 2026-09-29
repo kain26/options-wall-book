@@ -12,6 +12,10 @@ const rows = [];
 
 function matches(text, pattern) { return [...text.matchAll(pattern)].map((match) => match[1] ?? match[0]); }
 
+function stripMarkedChineseQuotations(text) {
+  return text.replace(/<([a-z][\w-]*)\b[^>]*\blang="zh(?:-Hans|-Hant)?"[^>]*>[\s\S]*?<\/\1>/gi, '');
+}
+
 for (const file of zhFiles) {
   if (!enFiles.includes(file)) {
     failures.push(`${file}: missing English file`);
@@ -25,7 +29,7 @@ for (const file of zhFiles) {
   const enFigures = matches(en, /<img[^>]+src="([^"]+)"/g);
   const zhUrls = matches(zh, /https?:\/\/[^\s)>\]]+/g);
   const enUrls = matches(en, /https?:\/\/[^\s)>\]]+/g);
-  const chineseLeft = (en.match(/[\u3400-\u9fff]/g) ?? []).length;
+  const chineseLeft = (stripMarkedChineseQuotations(en).match(/[\u3400-\u9fff]/g) ?? []).length;
   const headingOk = zhHeadings.join('|') === enHeadings.join('|');
   const figureOk = zhFigures.join('|') === enFigures.join('|');
   const urlOk = zhUrls.join('|') === enUrls.join('|');
@@ -42,7 +46,7 @@ const report = `# Bilingual Verification Report
 
 Generated: ${new Date().toISOString()}
 
-| File | Heading parity | Figure parity | Chinese characters remaining |
+| File | Heading parity | Figure parity | Unmarked Chinese characters remaining |
 | --- | --- | --- | ---: |
 ${rows.join('\n')}
 
