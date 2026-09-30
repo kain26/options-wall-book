@@ -34,9 +34,9 @@
 
 全书围绕一个转变展开：不再执着于预测“今天涨还是跌”，而是先判断市场处在什么结构、波动如何被对冲流放大或压制，以及当前环境是否值得交易。
 
-书中包含 **9 章正文、8 个实盘与历史交易日**，并配有 GEX 图、结构示意图和实战速查表。
+书中包含 **9 章正文、7 个交易日复盘**，并配有 GEX 图、结构示意图和实战速查表。
 
-> **范围说明：** 正文以买方视角为主，讨论 SPX 当天到期（0DTE）的单腿 Long Call / Long Put；2026-09-29 实盘补记有限记录了一次定义风险铁鹰模型观察，不作为卖方策略教程。
+> **范围说明：** 本书只讨论买方视角，以 SPX 当天到期（0DTE）的单腿 Long Call / Long Put 为主；多腿组合与卖方策略不在本书范围内。
 
 > **翻译说明：** 本书初稿以中文写成，英文版由 GPT-5.6 sol 大模型翻译。如发现术语、机制或表达上的不足，欢迎提交 Issue 或 PR 指正，谢谢。
 
@@ -46,7 +46,7 @@
 - Call Wall、Put Wall、Gamma Flip 应该怎样读，又会在什么情况下失效
 - 0DTE 中 Vanna、Charm、Theta 与 Pin 对盘面的影响
 - 如何把 GEX、VWAP 和价格行为组合成一套盘前与盘中框架
-- 八个实盘与历史交易日中，结构、执行和心理如何共同决定结果
+- 七个真实交易日中，结构、执行和心理如何共同决定结果
 - 如何处理止损、分批出场、事件日、仓位和大赚大亏后的冷却期
 
 ## 内容地图
@@ -63,7 +63,6 @@
 | 第 7 章 | 出场、事件与仓位：活着比赢一把重要 |
 | 第 8 章 | 流动性猎杀：心理墙撞上期权墙 |
 | 第 9 章 | 从猜方向，转向读结构 |
-| 实盘补记 | 2026-09-29：大家都知道在磨，在等 |
 | 终章与附录 | 概率、结构、执行；术语与实战速查 |
 
 ## 在线阅读
@@ -138,9 +137,9 @@ This is not a signal service or a highlight reel. It documents how I read struct
 
 The book is built around one shift in perspective: stop obsessing over whether the market will rise or fall today. First identify the market structure, understand whether hedging flow is absorbing or amplifying movement, and decide whether the environment supports a trade at all.
 
-It includes **nine core chapters and eight live or historical trading days**, supported by GEX charts, structural diagrams, a glossary, and a practical checklist.
+It includes **nine core chapters and seven historical trade reviews**, supported by GEX charts, structural diagrams, a glossary, and a practical checklist.
 
-> **Scope:** The main text focuses on the buyer's perspective and single-leg SPX 0DTE Long Calls and Long Puts. The September 29, 2026 live note includes one limited observation of a defined-risk iron-condor model; it is not an option-selling tutorial.
+> **Scope:** This is the Buyer Edition. It focuses on single-leg SPX 0DTE Long Calls and Long Puts. Multi-leg structures and option-selling strategies are outside the scope of this edition.
 
 > **Translation note:** The original manuscript was written in Chinese, and the English edition was translated by the GPT-5.6 sol model. If you find an issue with the terminology, mechanics, or wording, please open an Issue or PR. Corrections are welcome—thank you.
 
@@ -150,7 +149,7 @@ It includes **nine core chapters and eight live or historical trading days**, su
 - How to read Call Wall, Put Wall, and Gamma Flip—and recognize when those levels fail
 - How Vanna, Charm, Theta, and Pin affect the 0DTE session
 - How to combine GEX, VWAP, and price action into a premarket and intraday framework
-- How structure, execution, and psychology interact across eight live and historical trading days
+- How structure, execution, and psychology interact across seven real trading days
 - Stops, staged exits, event risk, position sizing, and cooling-off rules after large wins or losses
 
 ## Read Online

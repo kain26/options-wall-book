@@ -1,6 +1,6 @@
 # Bilingual Verification Report
 
-Generated: 2026-09-29T15:23:22.140Z
+Generated: 2026-09-29T11:43:53.682Z
 
 | File | Heading parity | Figure parity | Unmarked Chinese characters remaining |
 | --- | --- | --- | ---: |
@@ -17,7 +17,6 @@ Generated: 2026-09-29T15:23:22.140Z
 | 08-story-0123.md | pass | pass | 0 |
 | 09-think-like-mm.md | pass | pass | 0 |
 | 10-epilogue.md | pass | pass | 0 |
-| 10-live-2026-09-29.md | pass | pass | 0 |
 | appendix.md | pass | pass | 0 |
 
 ## Result

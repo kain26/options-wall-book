@@ -275,7 +275,6 @@ footer > span:last-child { justify-self: end; text-align: right; }
 .book-article th, .book-article td { min-width: 110px; padding: 12px 14px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
 .book-article th { color: var(--green); background: var(--surface); font-weight: 750; }
 .book-figure { width: min(100%, 860px); margin: 3rem auto; }
-.book-figure-compact { width: min(100%, 560px); }
 .book-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 16px 46px rgba(24, 28, 25, .1); }
 .book-figure figcaption { max-width: 650px; margin: 12px auto 0; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: 12px; line-height: 1.6; text-align: center; }
 .book-article .reader-voices-note { max-width: 39rem; margin-bottom: 2rem; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: calc(13px * var(--reader-scale)); line-height: 1.75; }

@@ -29,7 +29,6 @@ const chapterMeta = [
   ['07-exit-events-sizing.md', 'exits-events-sizing', ['第 7 章', 'Chapter 7'], ['出场、事件与仓位：活着比赢一把重要。', 'Exits, events, and sizing: survival matters more than one big win.']],
   ['08-story-0123.md', 'liquidity-sweep', ['第 8 章', 'Chapter 8'], ['流动性猎杀：心理墙撞上期权墙。', 'Liquidity sweeps: when the psychological wall meets the options wall.']],
   ['09-think-like-mm.md', 'think-like-mm', ['第 9 章', 'Chapter 9'], ['从猜方向，转向读结构。', 'Stop guessing direction. Start reading structure.']],
-  ['10-live-2026-09-29.md', 'live-2026-09-29', ['实盘补记', 'Live Note'], ['7640–7720：大家都知道在磨，在等。', '7640–7720: everyone knows the market is grinding—and waiting.']],
   ['10-epilogue.md', 'epilogue', ['终章', 'Epilogue'], ['概率、结构与执行。', 'Probability, structure, and execution.']],
   ['appendix.md', 'appendix', ['附录', 'Appendix'], ['术语、速查表、参考文献与风险提示。', 'Glossary, quick-reference tables, sources, and risk disclosures.']],
 ] as const;
