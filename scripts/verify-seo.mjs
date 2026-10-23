@@ -56,7 +56,14 @@ for (const file of files) {
   if (route.includes('/read/')) {
     expect(html.includes('<article class="book-article">'), `${route}: missing prerendered chapter article`);
     expect(html.includes('property="og:type" content="article"'), `${route}: chapter is not marked as an article`);
-    expect(!html.includes('property="og:image"'), `${route}: chapter should not inherit the generic social image`);
+    const data = JSON.parse(structuredData);
+    const article = data['@graph'].find((item) => item['@type'] === 'Article');
+    expect(!html.includes('property="og:image" content="https://book.myspx.trade/og.png"'), `${route}: generic chapter image`);
+    expect(html.includes('type="text/markdown"'), `${route}: missing Markdown alternate`);
+    for (const image of article.image) {
+      expect(html.includes(image.contentUrl.replace(origin, '')), `${route}: structured image is not visible`);
+      expect(image.caption.length > 0, `${route}: missing image description`);
+    }
   } else {
     expect(html.includes('property="og:type" content="website"'), `${route}: home is not marked as a website`);
     expect(html.includes('property="og:image"'), `${route}: home is missing its social image`);
@@ -75,3 +82,23 @@ expect(robots.includes('User-agent: *\nAllow: /'), 'robots.txt does not allow cr
 expect(robots.includes(`${origin}/sitemap.xml`), 'robots.txt does not advertise the sitemap');
 
 console.log('SEO verification passed: 30 prerendered pages, 30 canonical sitemap URLs, valid JSON-LD, Googlebot and Bingbot access.');
+
+const index = JSON.parse(await readFile(join(distDirectory, 'content-index.json'), 'utf8'));
+expect(index.chapters.length === 28, 'Expected 28 machine-readable chapters');
+const llms = await readFile(join(distDirectory, 'llms.txt'), 'utf8');
+const headers = await readFile(join(distDirectory, '_headers'), 'utf8');
+for (const chapter of index.chapters) {
+  expect(canonicals.has(chapter.canonical), 'Catalog canonical is not a rendered page');
+  const markdownPath = new URL(chapter.markdown).pathname;
+  const markdown = await readFile(join(distDirectory, markdownPath.slice(1)), 'utf8');
+  expect(markdown.includes(chapter.canonical) && markdown.includes('# '), 'Markdown missing source or body');
+  expect(llms.includes(chapter.markdown), 'llms index missing chapter');
+  expect(headers.includes(`Link: <${chapter.canonical}>; rel="canonical"`), 'Missing Markdown canonical header');
+  const page = await readFile(join(distDirectory, new URL(chapter.canonical).pathname, 'index.html'), 'utf8');
+  for (const section of chapter.sections) expect(page.includes(`id="${new URL(section.url).hash.slice(1)}"`), 'Broken section anchor');
+  for (const image of chapter.images) {
+    await readFile(join(distDirectory, new URL(image.url).pathname));
+    expect(sitemap.includes(`<image:loc>${image.url}</image:loc>`), 'Image absent from sitemap');
+  }
+}
+console.log('Agent/image verification passed: 28 Markdown mirrors, catalog anchors, image files and sitemap entries.');

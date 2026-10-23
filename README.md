@@ -193,3 +193,18 @@ This book is a collection of personal trading notes and historical reviews. It i
 <div align="center">
   <sub>Direction is guessed. Structure is given by the market.</sub>
 </div>
+
+## Search and agent-readable editions / 搜索与 Agent 阅读入口
+
+All 28 Chinese/English chapter pages contain the full text in the initial HTML, with canonical URLs, language alternates and Article/Breadcrumb structured data. The [sitemap](https://book.myspx.trade/sitemap.xml) associates each page with its visible images. Article images use the manuscript's existing descriptions, without assigning rights to third-party screenshots.
+
+- [llms.txt](https://book.myspx.trade/llms.txt): optional discovery index for reading agents; not a Google requirement.
+- [content-index.json](https://book.myspx.trade/content-index.json): chapter metadata, canonical URLs, source files, section anchors and image descriptions.
+- Each chapter advertises a `text/markdown` alternate, e.g. [GEX guide Markdown](https://book.myspx.trade/content/zh/gex-guide.md). These are generated from the same manuscript; HTTP Link headers point back to the canonical HTML.
+- [AGENTS.md](AGENTS.md): repository map, edition boundaries, checks and publishing conventions for coding agents.
+
+这些入口帮助搜索引擎与 Agent 发现、理解和引用正文与图片，不保证 Google 收录、排名、AI 引用或模型训练。公开访问不改变 [许可](LICENSE.md)：原创正文 CC BY-NC-SA 4.0，代码 MIT，图片与截图除另有说明外不在上述授权内。
+
+After publishing, use Google Search Console to submit `/sitemap.xml` and inspect representative chapter URLs. Track page indexing and image-search impressions there; build checks cannot establish indexing status.
+
+Implementation references: [Google image guidance](https://developers.google.com/search/docs/appearance/google-images), [image sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps), [AI features](https://developers.google.com/search/docs/appearance/ai-features).
