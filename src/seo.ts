@@ -31,8 +31,8 @@ function routeDetails(path: string) {
 
 function homeDescription(language: Language) {
   return language === 'zh'
-    ? '期权墙中文入门与实战指南：系统讲解 SPX 0DTE、GEX、Call Wall、Put Wall、Gamma Flip、做市商对冲与历史交易复盘。'
-    : 'Options Wall is a bilingual field guide to SPX 0DTE, GEX, call and put walls, gamma flips, market-maker hedging, and historical trade reviews.';
+    ? '期权墙买方篇：学习 SPX 0DTE、GEX、Call Wall、Put Wall 与做市商对冲。加入香港美股期权交流社群，聚焦美股期权三巨头 SPY、QQQ、SPX 的日内成交、流动性、交易复盘与风险管理。'
+    : 'Read the SPX 0DTE and GEX buyer guide. Join our Hong Kong community to discuss SPY, QQQ and SPX options, intraday volume, liquidity, trade reviews and risk management.';
 }
 
 function chapterDescription(chapter: Chapter, language: Language) {
