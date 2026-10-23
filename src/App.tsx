@@ -79,8 +79,9 @@ function SiteHeader({ language, path, navigate, openMenu, reading }: { language:
   </header>;
 }
 
-function SocialIcon({ name }: { name: 'x' | 'github' }) {
-  return name === 'x'
+function SocialIcon({ name }: { name: 'x' | 'github' | 'discord' }) {
+  return name === 'discord' ? <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M19.73 5.27a18.7 18.7 0 0 0-4.61-1.43l-.56 1.14a17.3 17.3 0 0 0-5.12 0l-.56-1.14a18.7 18.7 0 0 0-4.61 1.43C1.35 9.6.56 13.82.96 18a18.8 18.8 0 0 0 5.65 2.85l1.21-1.96a12 12 0 0 1-1.91-.93l.47-.37c3.69 1.73 7.69 1.73 11.34 0l.47.37c-.61.36-1.25.67-1.92.93l1.21 1.96A18.8 18.8 0 0 0 23.13 18c.47-4.85-.8-9.02-3.4-12.73ZM8.52 15.45c-1.11 0-2.02-1.02-2.02-2.27s.89-2.28 2.02-2.28 2.04 1.03 2.02 2.28c0 1.25-.9 2.27-2.02 2.27Zm6.96 0c-1.11 0-2.02-1.02-2.02-2.27s.89-2.28 2.02-2.28 2.04 1.03 2.02 2.28c0 1.25-.9 2.27-2.02 2.27Z" /></svg>
+    : name === 'x'
     ? <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" /></svg>
     : <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.59 2 12.253c0 4.53 2.865 8.374 6.839 9.73.5.095.682-.222.682-.494 0-.244-.009-.888-.014-1.744-2.782.62-3.369-1.374-3.369-1.374-.455-1.185-1.11-1.5-1.11-1.5-.908-.637.069-.624.069-.624 1.003.073 1.531 1.057 1.531 1.057.892 1.566 2.341 1.114 2.91.852.091-.663.35-1.114.635-1.37-2.221-.259-4.556-1.14-4.556-5.068 0-1.12.39-2.034 1.029-2.752-.103-.26-.446-1.303.098-2.714 0 0 .84-.276 2.75 1.051A9.35 9.35 0 0 1 12 6.977a9.35 9.35 0 0 1 2.504.346c1.909-1.327 2.748-1.051 2.748-1.051.546 1.411.202 2.454.1 2.714.64.718 1.027 1.632 1.027 2.752 0 3.938-2.339 4.806-4.566 5.06.359.317.678.943.678 1.9 0 1.371-.012 2.477-.012 2.814 0 .274.18.594.688.493C19.138 20.624 22 16.782 22 12.253 22 6.59 17.523 2 12 2Z" /></svg>;
 }
@@ -96,17 +97,9 @@ function Footer({ language, pageViews }: { language: Language; pageViews: number
         <span className="page-view-mark" aria-hidden="true"><i /><i /></span>
         <span>{text.pageViews}</span><strong>{formattedPageViews}</strong><small>{text.pageViewUnit}</small>
       </span>
-      <nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer" aria-label={text.footerX}><SocialIcon name="x" /></a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer" aria-label={text.footerGithub}><SocialIcon name="github" /></a><a className="discord-link" href="https://discord.gg/Yp9UrBaWe9" target="_blank" rel="noreferrer" aria-label={text.footerDiscord}>Discord</a></nav>
+      <nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer" aria-label={text.footerX}><SocialIcon name="x" /></a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer" aria-label={text.footerGithub}><SocialIcon name="github" /></a><a href="https://discord.gg/Yp9UrBaWe9" target="_blank" rel="noreferrer" aria-label={text.footerDiscord} title="Discord"><SocialIcon name="discord" /></a></nav>
     </div>
     <span>{text.footerTwo}</span>
-    <section className="footer-community" lang={language === 'zh' ? 'zh-HK' : 'en'} aria-labelledby="community-title">
-      <div>
-        <h2 id="community-title">{text.communityTitle}</h2>
-        <p>{text.communityDescription}</p>
-        <ul className="community-topics" aria-label={language === 'zh' ? '交流主題' : 'Discussion topics'}>{text.communityTopics.map((topic) => <li key={topic}>{topic}</li>)}</ul>
-      </div>
-      <a className="community-join" href="https://discord.gg/Yp9UrBaWe9" target="_blank" rel="noreferrer">{text.communityJoin}</a>
-    </section>
   </footer>;
 }
 
