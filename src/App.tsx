@@ -96,9 +96,17 @@ function Footer({ language, pageViews }: { language: Language; pageViews: number
         <span className="page-view-mark" aria-hidden="true"><i /><i /></span>
         <span>{text.pageViews}</span><strong>{formattedPageViews}</strong><small>{text.pageViewUnit}</small>
       </span>
-      <nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer" aria-label={text.footerX}><SocialIcon name="x" /></a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer" aria-label={text.footerGithub}><SocialIcon name="github" /></a></nav>
+      <nav className="footer-links" aria-label={text.footerNav}><a href="https://x.com/mm_options" target="_blank" rel="noreferrer" aria-label={text.footerX}><SocialIcon name="x" /></a><a href="https://github.com/kain26/options-wall-book/issues" target="_blank" rel="noreferrer" aria-label={text.footerGithub}><SocialIcon name="github" /></a><a className="discord-link" href="https://discord.gg/Yp9UrBaWe9" target="_blank" rel="noreferrer" aria-label={text.footerDiscord}>Discord</a></nav>
     </div>
     <span>{text.footerTwo}</span>
+    <section className="footer-community" lang={language === 'zh' ? 'zh-HK' : 'en'} aria-labelledby="community-title">
+      <div>
+        <h2 id="community-title">{text.communityTitle}</h2>
+        <p>{text.communityDescription}</p>
+        <ul className="community-topics" aria-label={language === 'zh' ? '交流主題' : 'Discussion topics'}>{text.communityTopics.map((topic) => <li key={topic}>{topic}</li>)}</ul>
+      </div>
+      <a className="community-join" href="https://discord.gg/Yp9UrBaWe9" target="_blank" rel="noreferrer">{text.communityJoin}</a>
+    </section>
   </footer>;
 }
 

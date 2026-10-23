@@ -159,7 +159,7 @@ img { max-width: 100%; }
 .text-action { display: inline-flex; gap: 38px; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--line-strong); color: var(--green); font-weight: 750; }
 
 footer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; padding: 32px 5vw; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
-footer > span:last-child { justify-self: end; text-align: right; }
+footer > span:last-of-type { justify-self: end; text-align: right; }
 .footer-center { display: flex; gap: 14px; align-items: center; }
 .page-view-count { display: inline-flex; gap: 6px; align-items: baseline; padding: 4px 0; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .04em; white-space: nowrap; }
 .page-view-mark { display: inline-flex; gap: 4px; align-self: center; margin-right: 3px; }
@@ -349,7 +349,7 @@ footer > span:last-child { justify-self: end; text-align: right; }
   .map-section { grid-template-columns: 1fr; padding: 20px 22px 100px; }
   .map-section > div { order: -1; }
   footer { display: flex; flex-direction: column; align-items: flex-start; padding: 28px 22px calc(28px + env(safe-area-inset-bottom)); }
-  footer > span:last-child { text-align: left; }
+  footer > span:last-of-type { text-align: left; }
   .footer-center { flex-wrap: wrap; }
 
   .reader-layout { display: block; padding: 42px 20px 130px; }
@@ -392,4 +392,18 @@ footer > span:last-child { justify-self: end; text-align: right; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Community discovery remains readable content in every prerendered page. */
+.footer-links .discord-link { width: auto; min-height: 44px; padding: 0 14px; border-radius: 24px; font-size: 12px; font-weight: 600; }
+.footer-community { grid-column: 1 / -1; display: flex; align-items: center; gap: 24px; padding-top: 24px; border-top: 1px solid var(--line); }
+.footer-community > div { flex: 1; min-width: 0; }
+.footer-community h2 { margin: 0 0 10px; color: var(--ink); font-size: 18px; line-height: 1.5; }
+.footer-community p { max-width: 780px; margin: 0; font-size: 14px; line-height: 1.9; }
+.community-topics { display: flex; flex-wrap: wrap; gap: 8px 16px; padding: 0; margin: 14px 0 0; list-style: none; font-size: 12px; }
+.community-join { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 24px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.community-join:hover { color: var(--green); border-color: var(--green); }
+.community-join:focus-visible, .footer-links a:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+@media (max-width: 760px) {
+  .footer-community { flex-direction: column; align-items: flex-start; }
 }

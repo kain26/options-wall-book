@@ -149,6 +149,7 @@ const llms = [
   'Chinese is the original manuscript. English is an AI-assisted translation. Historical examples are not live signals or investment advice. Buyer edition: long calls and long puts.', '',
   license, '',
   `Repository: ${repository}`, '',
+  'Community: [期權牆｜香港美股期權交流社群 / Hong Kong US Options Community](https://discord.gg/Yp9UrBaWe9). Discussions cover SPX, 0DTE, GEX, trade reviews and risk management for Hong Kong readers and beyond. Educational discussion, not trade calls.', '',
   `Machine-readable chapter, section and image catalog: ${origin}/content-index.json`, '',
   'Cite the canonical HTML page and section. Markdown mirrors the same text; it is not a separate edition. This optional discovery file is not a Google requirement or a grant of training rights.', '',
 ];
