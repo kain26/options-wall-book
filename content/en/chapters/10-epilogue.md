@@ -159,3 +159,11 @@ This book will continue to evolve with the market and my own understanding. If y
     <figcaption><span>X reader</span><time>Sep 4</time></figcaption>
   </figure>
 </section>
+
+---
+
+## Keep the Conversation Going
+
+The book ends, but the market keeps moving. Join us on Discord to discuss SPY, QQQ and SPX options walls, 0DTE and trade reviews.
+
+[Join Discord ↗](https://discord.gg/Yp9UrBaWe9)
