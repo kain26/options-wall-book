@@ -155,3 +155,11 @@ GEX、VWAP、价格行为（趋势），三个维度放在一起，给的不是�
     <figcaption><span>X 用户</span><time>Sep 4</time></figcaption>
   </figure>
 </section>
+
+---
+
+## 继续交流
+
+读完书，交易还在继续。欢迎来 Discord，聊 SPY、QQQ、SPX 的期权墙与 0DTE，一起看盘、复盘，交换想法。
+
+[加入 Discord ↗](https://discord.gg/Yp9UrBaWe9)
