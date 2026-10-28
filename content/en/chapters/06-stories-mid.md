@@ -121,7 +121,7 @@ Not every day produces a textbook move. March 18 nonetheless displayed the beari
   <figcaption>Figure 6-4 · Bearish GVP: structural and cost pressure overhead</figcaption>
 </figure>
 
-**My reading after the open:** spot was **below the Gamma Flip**, so I prepared for the negative-Gamma side. The first zone of concentrated Volume below was 6800.
+**My reading after the open:** spot was **below the Gamma Flip**, so I prepared for the negative-Gamma side. <span class="revision-mark">The first zone of concentrated Volume below was 6800.</span><sup><button type="button" class="revision-trigger" popovertarget="revision-1" aria-label="Revision note 1">[1]</button></sup><span id="revision-1" class="revision-note" popover="auto"><strong>Revision note [1]</strong><br>Unverified; original retained. The original figure “6800” and the reference for “below” are ambiguous and imprecise. The historical options-volume snapshot is unavailable for this review, so the actual strike cannot be confirmed or inferred as 6600 from daily prices. Do not treat this sentence as a verified level. See <a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>.</span>
 
 Premarket defined only a **draft of character**. After the first 30 minutes, the location of Volume determined the day's real battlefield.
 
@@ -229,7 +229,7 @@ The market then traded sideways between 6490 and 6500 for almost **59 minutes**.
 
 Only then did I fully accept it: **the Put Wall had become resistance rather than support.**
 
-Price continued lower near the close, finishing the one-way session down roughly **1.3%**.
+Price continued lower near the close, <span class="revision-mark">finishing the session down roughly <strong>1.74% from the previous close</strong>.</span><sup><button type="button" class="revision-trigger" popovertarget="revision-2" aria-label="Revision note 2">[2]</button></sup><span id="revision-2" class="revision-note" popover="auto"><strong>Revision note [2]</strong><br>Corrected. Originally “finishing the one-way session down roughly 1.3%,” which did not state a reference price and was imprecise. Using the previous close of 6591.90 and the session close of 6477.16: (6477.16 / 6591.90 − 1) × 100% ≈ −1.74%. This is a close-to-close change, not a measurement of the entire intraday path. Sources: <a href="https://apnews.com/article/9f0c2281f1de0bb4abe66bd568598aa5">AP · 2026-03-26</a>; <a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>.</span>
 
 <figure class="book-figure">
   <img src="/images/figures/figure-047.webp" alt="Figure 6-6 · Put Wall mechanism" loading="lazy" decoding="async" />

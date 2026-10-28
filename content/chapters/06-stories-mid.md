@@ -133,7 +133,7 @@ Gamma 还是红的（负的）→ 无脑追空 → 被 V 轧平。**以前的我
 </figure>
 
 
-**开盘后我读到的**：现价在 Gamma Flip**下方**——默认按负 Gamma 侧准备。6800 是下方第一道成交量密集区。
+**开盘后我读到的**：现价在 Gamma Flip**下方**——默认按负 Gamma 侧准备。<span class="revision-mark">6800 是下方第一道成交量密集区。</span><sup><button type="button" class="revision-trigger" popovertarget="revision-1" aria-label="修订说明 1">[1]</button></sup><span id="revision-1" class="revision-note" popover="auto"><strong>修订说明 [1]</strong><br>待核，原文保留。原笔记“6800 是下方第一道成交量密集区”的数字与“下方”基准模糊，描述不准确；目前缺少当日期权成交量分布快照，无法确认实际档位，也不能凭日线推成 6600。此句不作为已核实价位。见 <a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>。</span>
 
 盘前只定**性格草稿**。开盘 30 分钟后，Volume 重心是否下移，才是当天主战场（第 2 章）。
 
@@ -247,7 +247,7 @@ Gamma 还是红的（负的）→ 无脑追空 → 被 V 轧平。**以前的我
 
 那一刻我才真正确认：**Put Wall 已经变成了压力，不是支撑。**
 
-尾盘价格继续下跌，全天单边跌幅约 **1.3%**。
+尾盘价格继续下跌，<span class="revision-mark">全天较昨收下跌约 <strong>1.74%</strong>。</span><sup><button type="button" class="revision-trigger" popovertarget="revision-2" aria-label="修订说明 2">[2]</button></sup><span id="revision-2" class="revision-note" popover="auto"><strong>修订说明 [2]</strong><br>已修改。原来是“全天单边跌幅约 1.3%”，未交代基准，描述不准确。现按昨收 6591.90 至当日收盘 6477.16 计算：(6477.16 ÷ 6591.90 − 1) × 100% ≈ −1.74%。这里指收盘较昨收的变化，不是整段盘中路径的跌幅。来源：<a href="https://apnews.com/article/9f0c2281f1de0bb4abe66bd568598aa5">AP · 2026-03-26</a>；<a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>。</span>
 
 
 <figure class="book-figure">

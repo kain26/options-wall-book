@@ -393,3 +393,10 @@ footer > span:last-of-type { justify-self: end; text-align: right; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Small, click-to-open editorial footnotes; preserve the book's typography. */
+.book-article .revision-mark { text-decoration: underline; text-decoration-color: #dc2626; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.book-article .revision-trigger { min-width: 28px; min-height: 28px; padding: 2px 5px; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+.book-article .revision-trigger:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.book-article .revision-note { width: min(34rem, calc(100vw - 40px)); max-height: 75vh; box-sizing: border-box; overflow: auto; padding: 22px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--paper); color: var(--ink); font: 16px/1.8 ui-sans-serif, sans-serif; text-align: left; }
+.book-article .revision-note::backdrop { background: rgb(0 0 0 / .18); }
