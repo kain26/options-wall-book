@@ -46,7 +46,17 @@ This section uses that session to answer the question. Chapter 3 gives the compl
   <figcaption>Figure 6-2 · Deep-V mechanism: selloff, IV surge, and Vanna-related covering</figcaption>
 </figure>
 
+**Before the mechanism, put the day's numbers on the table.**
+
+SPX had already **gapped lower overnight**. What actually hurt was the first fifteen minutes: **at 09:44 the index was knocked down to 6832.66, 1.10% below the prior close**—and that was the session low. VWAP at that moment stood at **6848.04**, leaving price fifteen points under the cost line.
+
+Then it began to walk back. A leg up after 10:00 reached **around 6877 by 11:53**; the afternoon bled some of it off, grinding between 6845 and 6850 for more than two hours, until price **reclaimed VWAP around 15:08** and pushed once more into the close, **finishing at 6878.88, down 0.43% on the day—essentially the session high.**
+
+**Measured from the low, the close was 46 points higher.** The gap between the traders who chased the short that morning and the traders who did nothing is those 46 points.
+
 ### What Happened That Day
+
+Read against **Figure 6-2**, the session ran roughly like this.
 
 **Stage 1: the selloff**
 
@@ -63,7 +73,7 @@ This section uses that session to answer the question. Chapter 3 gives the compl
 **Stage 3: Vanna added force**
 
 - As price stabilized, IV began to fall
-- Short hedges held against tail risk became excessive
+- The short futures previously held against the Puts they had sold became excessive (Chapter 3, “Vanna”)
 - Market makers had to **buy them back**
 - At the start of a V, that flow can be more violent than Gamma itself
 
@@ -89,9 +99,17 @@ I waited.
 
 Not because I was clever, but because previous squeezes had taught me fear. I had written one sentence after the last one: negative Gamma chooses no side; it helps whoever moves. If I do not know which side moves next, I do not choose a side after an extended decline.
 
+**The mechanism above applies to everyone. This is a buyer's book, though, so a deep V needs half a sentence more: the V leg is “direction right, Vega against you” for anyone holding a Call.**
+
+Finish the Vanna story and it becomes clear—what pushes price up is precisely the *fall* in IV. And the Call in your hand has positive Vega: as IV drops, the option itself loses value. Some of what direction earns you, implied volatility takes back.
+
+So buying a Call at the most panicked moment means buying **the most expensive insurance of the day**: your entry price contains the IV peak, and that peak now has to collapse—because its collapse is what lets price rise.
+
+My approach is: **do not grab the first bite of the V. Wait for IV to top out and for price to reclaim VWAP.** On February 27, that moment was after 10:00, not at 09:44. You give up a slice of the move, and in exchange you stop receiving the kind of bill that reads “direction correct, still lost money.”
+
 ### The Three Dimensions I Watched
 
-After a large decline inside a negative-Gamma region, I ask three questions:
+After a large decline inside a negative-Gamma region, I ask three questions rather than looking only at the sign of Gamma. (Chapter 3 establishes these three under “Three Dimensions for Evaluating a Possible V”; here is what they look like on live tape.)
 
 1. **Is the absolute magnitude of GEX shrinking or expanding?** Movement toward zero means hedging pressure is easing
 2. **How far is price from the Gamma Flip?** Stabilization and movement toward the Flip can precede structural change
@@ -101,7 +119,7 @@ After a large decline inside a negative-Gamma region, I ask three questions:
 
 > *Any one dimension can become a trap.*
 
-I used to see red, negative Gamma, chase the short, and be flattened by the V. Now, after a major decline, I first ask **“Could this reverse in a V?”**, not “Can I still short?”
+Net GEX was still negative → chase the short blindly → get flattened by the V. **The earlier me** did exactly that. Now, after a major decline, I first ask **“Could this reverse in a V?”**, not “Can I still short?”
 
 ---
 
@@ -121,21 +139,30 @@ Not every day produces a textbook move. March 18 nonetheless displayed the beari
   <figcaption>Figure 6-4 · Bearish GVP: structural and cost pressure overhead</figcaption>
 </figure>
 
-**My reading after the open:** spot was **below the Gamma Flip**, so I prepared for the negative-Gamma side. The first zone of concentrated Volume below was 6800.
+**My reading after the open:** spot was **below the Gamma Flip**, so I prepared for the negative-Gamma side—today's character was an accelerator, not a shock absorber. The first zone of concentrated Volume below it was the first level to watch.
 
-Premarket defined only a **draft of character**. After the first 30 minutes, the location of Volume determined the day's real battlefield.
+The premarket chart only drafts the **character**. Whether the Volume center of gravity shifts lower in the **15–30 minutes after the open** is what decides the day's real battlefield (Chapter 2).
 
 ### VWAP as a Ceiling
 
-SPX failed to hold above VWAP after the open. Every subsequent rebound toward VWAP was rejected.
+This part is the easiest to remember backwards, so state it plainly: **March 18 was not a day that failed to hold VWAP from the open.**
 
-Most buyers who entered above VWAP quickly became trapped. On each return to the cost line, trapped longs seeking breakeven, short covering, and new short entries combined into recurring pressure.
+For the first 40 minutes SPX was in fact above VWAP, reaching as high as about 6705 (right panel of Figure 6-4). The turn came at **10:12**, when price fell through VWAP from above and then **slid 29.28 points in one stretch**.
 
-| Approximate period | Price vs VWAP | Reading |
+After that it never got back.
+
+Across the rest of the session price pressed up against the underside of VWAP five times—at roughly **11:18, 11:40, 12:23, 12:57, and 14:03**—and failed every time. The last attempt was 14:03; it touched, turned, and **fell another 53.43 points into the close**, finishing at **6624.70, down 1.36% on the day, with the close essentially at the session low**.
+
+Which means: **most of the people who bought above VWAP that day spent the whole day underwater.** On each rebound to VWAP, trapped longs wanting out and new shorts wanting in pressed on the same line, producing a **recurring band of pressure**.
+
+One more thing worth recording: **VWAP is not a horizontal line.** That day it declined on its own from 6700 to 6672—the ceiling was coming down—and price could not reach even that sinking line. That is a good deal heavier than “the rebound was capped by a moving average.”
+
+| Period | Price vs VWAP | Reading |
 | --- | --- | --- |
-| 09:45–11:00 | Continuously below | Cost basis became a ceiling, not a moving average |
-| 11:00–13:00 | Repeated VWAP tests failed | Bearish structure remained intact |
-| After 14:00 | Still unable to hold above | The cost dimension of GVP remained valid all day |
+| 09:30–10:12 | Above, with a high near 6705 | Nothing is settled yet; do not call the day early |
+| 10:12 | Broke through from above, −29.28 points | Losing the line was the day's starting gun |
+| 10:12–14:03 | Five returns to VWAP, all failed | The cost line became a ceiling, not a moving average |
+| 14:03 to close | −53.43 points after the last failure | The cost dimension held all day; closed at the low |
 
 ### Below the Gamma Flip
 
@@ -176,6 +203,8 @@ But every rebound to VWAP failed. Those short-lived green candles reminded me of
 
 I learned that bearish GVP does not say, “Price must fall.” It says, “Following the move offers far better conditions than fighting it today.” You do not need to prove that you are clever. You need to restrain the hand that wants to pick the bottom.
 
+**One more line for a buyer:** the direction was with you that day, but it fell **slowly**. From losing the line at 10:12 to the close, roughly seventy points took nearly six hours. Buying a Put earns the direction and pays for the time—every intraday impulse to “wait for a push back to VWAP and add there” should first be costed against the Theta that waiting consumes (Chapter 3, “Charm”; Chapter 7, “Position Size”). The most common way to lose on a trend day is not getting the direction wrong. It is **holding too long and turning over too often in the right direction.**
+
 ### Where a Long Could Have Failed
 
 1. **“It has fallen enough and must bounce.”** Catching a knife below VWAP in negative Gamma; the rebound reaches VWAP and fails
@@ -201,64 +230,76 @@ I watched three moments:
   <figcaption>Figure 6-5 · SPX intraday on 2026-03-26</figcaption>
 </figure>
 
-Soon after the open, price fell below VWAP—the thin orange line in Figure 6-5—and below the Gamma Flip. The market was in negative Gamma, with market makers hedging pro-cyclically: selling futures during declines, while buying into rebounds produced only brief recoveries.
+As Figure 6-5 shows, SPX first pushed up after the open and **touched about 6572 at 10:14**. The turn came at **10:44**, when price fell through VWAP—the thin orange line—from above; **it tried once more at 11:52 and could not hold it.** From then on it ran below VWAP and below the Gamma Flip. The market was in negative Gamma, with market makers hedging pro-cyclically: selling futures into declines and buying into rebounds, which bought only short-lived recoveries.
 
 **First contact with the 6520 Put Wall**
 
-Around 10:43, price moved toward the first Put Wall at **6520**. It touched and did not rebound. It broke straight through.
+After losing VWAP, price did not fall straight down. It ground for nearly two hours. **Around 12:28 it touched 6520 for the first time in earnest.** It touched and did not rebound. It broke straight through.
 
 I thought: perhaps this is only a liquidity sweep. Let me see whether it returns.
 
-**A W bottom attempted a reclaim**
+**A W bottom—and it genuinely did reclaim**
 
-From 12:11 to 12:54, price tried to build a W below 6520 and repeatedly tested upward.
+From **12:29 to 12:54, a full 25 minutes**, price probed repeatedly below 6520 and traced out a W bottom. Both feet reached only **about 6515**, four or five points under the wall.
 
-Every rebound failed. It was not that buying had no force; too much weight remained overhead. VWAP was distant, the Gamma Flip sat above, and pro-cyclical hedging made each buying wave feel as though it struck padding.
+Then it **genuinely reclaimed the level.** Around 13:00 the index stood back above 6520 and reached a high near **6525**.
+
+By the February 13 script, that step is called “break, then reclaim quickly.” That is how I read it at the time.
+
+**But it held for only twenty minutes.**
 
 **Second break: the wall was gone**
 
-At 13:10, price broke 6520 again. This time the Put Wall no longer stood there. It had **moved lower**.
+After 13:20 price dropped back below 6520. This time it did not come back—the Put Wall was no longer a wall. It had **moved lower**.
 
-I refreshed the platform. The new Put Wall appeared at **6500**, also a psychological round number with clustered stops.
+I refreshed the platform. The new Put Wall appeared at **6500**, which is also a psychological round number with clustered stops.
+
+**Here is the sentence from that day most worth remembering: reclaiming is not the same as holding.** Chapter 5 said it about the Call Wall—breaking a wall is not the wall moving up, and the judgment comes from which side price sits on into the close, not the highest print it touched. The Put Wall is the same rule in reverse: **getting back above the wall does not mean the wall held; the question is whether price can stay up there.**
 
 **Breaking 6500**
 
-At 13:50, price broke 6500 and continued to **6490**, exactly ten points below the round number—a classic stop-run location.
+Around 13:45, 6500 broke and price continued to **6490**—exactly ten points below the round number, a classic stop-run location.
 
-The market then traded sideways between 6490 and 6500 for almost **59 minutes**. Five or six attempts to rebound above 6500 all failed.
+The market then traded sideways between 6490 and 6500 for **59 minutes (13:47–14:46)**, with repeated rebounds capped under 6500. One last attempt came around 14:50 and also failed.
 
 Only then did I fully accept it: **the Put Wall had become resistance rather than support.**
 
-Price continued lower near the close, finishing the one-way session down roughly **1.3%**.
+Price bled lower into the close, finishing at **6477.16—the low of the day, down 1.74%**. From the 6572 high early in the session, that is a slide of nearly 100 points.
 
 <figure class="book-figure">
-  <img src="/images/figures/figure-047.webp" alt="Figure 6-6 · Put Wall mechanism" loading="lazy" decoding="async" />
-  <figcaption>Figure 6-6 · Put Wall mechanism</figcaption>
+  <img src="/images/figures/figure-047.webp" alt="Figure 6-6 · Breaking the Put Wall without a reclaim: the three steps of a genuine break" loading="lazy" decoding="async" />
+  <figcaption>Figure 6-6 · Breaking the Put Wall without a reclaim: the three steps of a genuine break</figcaption>
 </figure>
 
-The Put Wall rebound did not materialize. That session turned “a wall is probability, not a guarantee” from an idea into something I witnessed. Figure 6-7 compares the two fates of the same structure: reclaim produces one script; failure to reclaim produces another.
+**Figure 6-6** breaks that path into its three steps on its own: approach the wall, break the wall, and continue without reclaiming it. March 26 walked that road, and it is what turned “a wall is probability, not a guarantee” from an idea into something I witnessed. **Figure 6-7** then places the two outcomes side by side: one Put Wall, one script where price reclaims and another where it does not.
 
 ---
 
 ### February 13 Held; March 26 Collapsed
 
 <figure class="book-figure">
-  <img src="/images/figures/figure-048.webp" alt="Figure 6-7 · Two fates of a Put Wall: rebound and failure" loading="lazy" decoding="async" />
-  <figcaption>Figure 6-7 · Two fates of a Put Wall: rebound and failure</figcaption>
+  <img src="/images/figures/figure-048.webp" alt="Figure 6-7 · Two fates of a Put Wall: reclaim and failure" loading="lazy" decoding="async" />
+  <figcaption>Figure 6-7 · Two fates of a Put Wall: reclaim and failure</figcaption>
 </figure>
 
-Recall February 13. Price also attacked a Put Wall, but that wall held. The market briefly broke it, swept stops, and reclaimed it. Positive Gamma dampened the decline: a textbook false break.
+Recall February 13 from Chapter 4: price also drove into a Put Wall, and that day the wall held—**the 9:43 low of 6795.49 was four and a half points under the 6800 wall, and the same candle closed at 6799.62**, less than half a point below it. Positive Gamma ground the decline flat: a textbook liquidity sweep.
 
-On March 26, **the same kind of wall and the same general logic failed**.
+On March 26, **the same kind of wall and the same logic failed**.
 
-A Put Wall is not absolute support. Under negative Gamma, a strong trend, or a macro event that overwhelms structure, **the wall can collapse**.
+So a Put Wall is not absolute support. Under negative Gamma, a powerful trend, or a macro event that overwhelms structure, **the wall can collapse**.
+
+Where is the difference? Put the two days side by side and you can see how hard they are to tell apart:
 
 | | **February 13** | **March 26** |
 | --- | --- | --- |
-| After the break | Brief excursion, then **quick reclaim** | **Two breaks**, no reclaim |
+| Depth of the break | 4.5 points (low 6795.49) | The first one was also only four or five points (about 6515) |
+| Speed of the reclaim | Reclaimed within the same candle, closing 6799.62 | Ground for 25 minutes, back above the wall around 13:00 |
+| After the reclaim | Never went below the wall again | Held twenty minutes, dropped back at 13:20, and never returned |
 | Regime | Positive Gamma | Negative Gamma |
-| Wall response | Held and became support | Moved lower and **became resistance** |
+| Wall response | Held and became support | Moved down to 6500 and **became resistance** |
 | Outcome | Liquidity sweep | **Wall collapse** |
+
+**At the moment of the break, the two days looked almost identical**: the same depth, the same single stab, the same reclaim. The fork is not in the break. It is in **the twenty minutes after the reclaim.**
 
 > *A wall is probability, not a guarantee.*
 
@@ -274,15 +315,15 @@ A Put Wall is not absolute support. Under negative Gamma, a strong trend, or a m
 
 ### False Break vs Genuine Break
 
-Before acting, I watch one thing: **after breaking below, does price return above the wall?**
+**Figure 6-7** is the overview, with both outcomes side by side. Before I act, I watch one thing only: **after the break, can price get back above the wall and stay there?**
 
-On a genuine break like March 26, price cannot regain the Put Wall and offers no meaningful bounce. Do not rush to buy or force the false-break script.
+**Figure 6-6** enlarges the genuine-break path on its own: after cutting through the Put Wall, price cannot stand back above it and offers no meaningful bounce. On days like that, do not rush to buy, and do not force the false-break script.
 
 **The earlier me:** a wall breaks, so I must either chase the short or buy the dip. I always needed an action.
 
 **The current me:** a wall breaks, so I **watch how price tries to return**. If it cannot, I do not trade the rebound script.
 
-> *Most false breaks reclaim relatively quickly, like February 13. On a genuine break like March 26, stop forcing the rebound. Watch the reclaim and VWAP.*
+> *Most false breaks reclaim relatively quickly—and stay up afterward (February 13). On a genuine break like March 26, even a reclaim cannot hold: first watch for the reclaim, then watch whether it holds, and check which side of VWAP price is on.*
 
 ### Breaking Through Human Nature
 
