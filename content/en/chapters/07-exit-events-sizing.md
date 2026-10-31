@@ -69,11 +69,11 @@ Many single-leg traders believe that if direction is right, they should continue
 
 **For a single-leg 0DTE option, the Gamma-burst window often lasts only 5–30 minutes after entry.**
 
-That is not a precise law. I grouped many trades roughly by minutes after entry and found that the richest segment of profit commonly fell in that range. The reason is straightforward: the first volatility expansion, accelerating Delta, and directional extension after a liquidity sweep are concentrated in those early minutes.
+That is not a precise law. I grouped many trades roughly by minutes after entry and found that the richest segment of profit commonly fell in that range. The reason is straightforward: the first volatility expansion, accelerating Delta, and directional extension after a liquidity sweep are concentrated in those early minutes. **Figure 7-1** draws exactly that stretch—the window where Gamma and Delta amplify together, and what it looks like once the window shuts.
 
 <figure class="book-figure">
-  <img src="/images/figures/figure-050.webp" alt="Figure 7-2 · First impulsive move: the Gamma and Delta amplification window" loading="lazy" decoding="async" />
-  <figcaption>Figure 7-2 · First impulsive move: the Gamma and Delta amplification window</figcaption>
+  <img src="/images/figures/figure-050.webp" alt="Figure 7-1 · First impulsive move: the Gamma and Delta amplification window" loading="lazy" decoding="async" />
+  <figcaption>Figure 7-1 · First impulsive move: the Gamma and Delta amplification window</figcaption>
 </figure>
 
 Gamma and Delta often amplify profit together during this stage. The trade leaves its cost area quickly and may not offer a retest.
@@ -118,11 +118,13 @@ A single-leg option is not designed for patient long-term holding. Its advantage
 
 ### You Will Miss Trends—and That Is the Cost of Higher-Probability Repetition
 
-This method will **miss the latter half of many one-way trends**. If you bank profit before 11:00 on a day like February 17, the rest of the move from the Flip to the Call Wall happens without you. That is not poor execution. It is the cost built into the method.
+This method will **miss the latter half of some one-way trends**. March 18 is the clearest case: after VWAP was lost at 10:12, price ground down into the close for −1.36% on the day, and I had almost certainly bagged my profit in the first half of the session (Chapter 6). Those last few dozen points had nothing to do with me—that is not a cold hand, it is **a cost built into the method**.
+
+In fairness, though: **a day that looks like a one-way trend may not actually have a second half.** February 17 ran from the Gamma Flip up to the Call Wall and traces a shape very much like a single line—but after touching 6849.56, price fell back 40 points, and although the afternoon pushed through 6850 to a high near 6868, the close was dragged back to 6843, under the wall again (Chapter 4). Whoever took profit in front of the wall captured **the richest part of the move**; whoever waited for the “second half” got a forty-point retracement and a full day of Theta. So keep the accounting straight: **what you genuinely miss are days like March 18 and March 26 that close at the extreme, not days like February 17 that grind back and forth around a wall.**
 
 Someone may ask: if you take only one segment and must guess which days become trends, what skill is that?
 
-My answer is direct: **we are not betting that we can hold the entire day.** GVP, the first-30-minute observation, and fewer event-day trades improve the probability that an entry is worth taking. Gamma windows and staged exits improve the probability of retaining profit after being right. **Together they repeatedly pursue favorable probabilities.** They do not prove skill on every candle.
+My answer is direct: **we are not betting that we can hold the entire day.** GVP, the 15–30 minutes of observation after the open, and fewer event-day trades improve the probability that an entry is worth taking. Gamma windows and staged exits improve the probability of retaining profit after being right. **Together they repeatedly pursue favorable probabilities.** They do not prove skill on every candle.
 
 One-way trends exist and are seductive. But calling the missed tail a failure pushes the 0DTE buyer toward expensive habits: refusing to exit at +80%, enduring chop, chasing shorts after an extended decline, or buying Calls at the wall.
 
@@ -156,9 +158,11 @@ Indicators alone are not the answer. In a range, repeated signals only create wh
 
 That combination—structure, price action, and discipline—creates the relevant risk-reward.
 
+**Figure 7-2** is the exit framework I actually use: scale out when right, and have a structural level to admit it when wrong—three tiers unwound in sequence rather than one all-or-nothing decision. The table below is the written version; the figure makes it obvious at a glance which tier should move and which should stay.
+
 <figure class="book-figure">
-  <img src="/images/figures/figure-049.webp" alt="Figure 7-1 · Three-stage scaled exit" loading="lazy" decoding="async" />
-  <figcaption>Figure 7-1 · Three-stage scaled exit</figcaption>
+  <img src="/images/figures/figure-049.webp" alt="Figure 7-2 · Three-stage scaled exit" loading="lazy" decoding="async" />
+  <figcaption>Figure 7-2 · Three-stage scaled exit</figcaption>
 </figure>
 
 | Stage | Trigger | Action |
@@ -198,6 +202,14 @@ Walls have not disappeared. But **implied volatility, macro shocks, and capital 
 
 I do not predict CPI or the Federal Reserve. I do three things: **control size, wait for structure, and respect IV pricing.**
 
+The first two are developed below. The third belongs here, because it is where a buyer most often gets confused on an event day.
+
+**“Respect IV pricing” means this: the market has already put a price on the event, and what you are buying is the part that exceeds that price.** Roughly speaking, what the day's at-the-money straddle costs is how far the market thinks the session will travel—its **implied move**. If the SPX ATM straddle is quoted at 60 points, the market is saying that anything inside sixty points either way is already expected.
+
+The implication for a buyer is blunt: **the data lands, your direction is even right, the index travels 35 points—and your single leg still loses.** You paid for that 60-point expectation at the moment you entered. To actually make money, price has to travel further than it, or you have to be out before IV collapses.
+
+**So what I judge on an event day is not “do I think it goes up or down,” but “do I believe today's realized move will clearly exceed the move already priced in.”** Most of the time my answer is “I don't know.” And not knowing means not trading.
+
 > *An event day does not test your ability to read the market. It tests whether you can control your hand.*
 
 ### Three Shared Features of Event Days
@@ -211,7 +223,7 @@ I do not predict CPI or the Federal Reserve. I do three things: **control size, 
 
 **Volatility expands.** Positive- or negative-Gamma behavior can become more extreme. The shock absorber may temporarily disappear; the accelerator may press harder. Gaps and long wicks are normal rather than exceptional. I do not treat quiet as the default or walls as laws.
 
-**Structure speaks later.** GEX and VWAP are not useless; they are **delayed**. The macro shock speaks first. I treat the 15–60 minutes after release as a period when structure resets. Whether the Flip, walls, and VWAP realign matters more than guessing the second move immediately.
+**Structure speaks later.** GEX and VWAP are not useless; they are **delayed**. The macro shock speaks first. I treat the 15–30 minutes after release as a period when structure resets. Whether the Flip, walls, and VWAP realign matters more than guessing the second move immediately.
 
 ### Event-Day Timeline
 
@@ -224,7 +236,7 @@ I do not predict CPI or the Federal Reserve. I do three things: **control size, 
 
 **At the release**, price and IV can jump in different directions. SPX can move your way while your Call shrinks as **IV crush** arrives. You predicted the number correctly and the account still asks, “What about me?” I do not chase the first wick; it often pierces the wallet rather than revealing direction.
 
-**After the release**, allow 15–60 minutes for GEX and VWAP to describe the new walls and cost basis. My rule is simple: **do less before; read structure afterward.** The macro spectacle exits before my ordinary method returns.
+**After the release**, allow 15–30 minutes for GEX and VWAP to describe the new walls and cost basis. My rule is simple: **do less before; read structure afterward.** The macro spectacle exits before my ordinary method returns.
 
 ### CPI, PPI, and Payrolls
 
@@ -242,7 +254,9 @@ I do not predict CPI or the Federal Reserve. I do three things: **control size, 
 
 **The classic pain of IV crush:** the data agrees with your direction, SPX rises, and your Call barely rises or even falls.
 
-Three forces act at once: direction helps, time hurts, and falling IV may hurt as well.
+**Three forces act on that one contract at once:** direction helps you, time decay drags you, and falling IV drags you too. A buyer makes money only when the first outweighs the other two combined—and the difficulty of an event day is that both of the other two grow at the same time.
+
+**How to read it:** do not bet the final minute before a release; after it, **wait for structure** and do not reach for the first spike.
 
 > *Correct direction does not guarantee profit when IV collapses. That is not a personal failure; it is an option's structure.*
 
@@ -295,7 +309,7 @@ I treat them as days when structure may be distorted. Raise the GVP threshold an
 1. A large directional bet before the event—expensive IV plus a binary outcome
 2. Holding through IV crush after the release—correct direction still loses
 3. Ignoring GEX and reading only news—or forcing wall logic while macro flow overwhelms it
-4. Revenge entry—trying immediately to recover a loss
+4. Revenge entry—trying immediately to recover a loss (March 26)
 5. Betting on a Pin at the OPEX close—a tendency is not a guarantee
 6. Treating one correct guess as repeatable skill
 
@@ -339,7 +353,7 @@ The appendix explains three facts about long options: **low hit rate, high payof
 
 In that structure, position size is not an optimization problem about profit. It is a survival problem: **will you remain for the next trade?**
 
-In June 4 and March 26 reviews, the deepest losses often came not from misunderstanding GEX but from the combination of **size + adding + no stop**.
+Looking back at March 26, the root cause of the loss was not failing to understand GEX. It was **size + adding + no stop** stacked together.
 
 > *The first rule of 0DTE is survival. The second is remembering the first.*
 
@@ -368,7 +382,7 @@ If not, the position is too large. GEX is irrelevant.
 
 **Rule 2: do not average down.**
 
-> Add to a mistake → reinforce the wrong direction → average down without limit
+> Add to a mistake → reinforce the wrong direction → average down without limit (March 26)
 
 Every addition to a wrong direction deepens the hole. That is an attempt to recover, not trading.
 
@@ -378,10 +392,10 @@ Every addition to a wrong direction deepens the hole. That is an attempt to reco
 
 > *Adding does not repair the cost basis. It extends the duration of the loss.*
 
-**Rule 3: cap simultaneous positions.** I avoid turning five long 0DTE contracts into a disguised portfolio gamble:
+**Rule 3: cap simultaneous positions.** I avoid opening a pile of long 0DTE positions at once and letting a “portfolio” turn into a wager:
 
-- correlated directions create **hidden doubled leverage**
-- when one loses, they often **lose together**
+- several positions pointing more or less the same way are **hidden doubled leverage**: nominally diversified, in practice the same bet placed several times over
+- when the market really drops, they **lose together**—and usually within the same minute
 
 Set the limit for your account. The principle is that you can calculate total risk.
 
@@ -391,15 +405,17 @@ Set the limit for your account. The principle is that you can calculate total ri
 
 > *After consecutive losses, the worst possible goal is winning everything back in one trade.*
 
+The “After a Large Win or Loss” section later in this chapter covers the psychological steps that follow a large loss.
+
 ---
 
 ### Position Size vs Structure: Which Comes First?
 
-Traders ask: if I read GEX correctly, why did I still lose? Figure 7-6 shows three pillars—**structure, position size, and stop**. Each has one job; remove one and the trade cannot stand.
+Traders ask: if I read GEX correctly, why did I still lose? **Figure 7-5** shows three pillars—**structure, position size, and stop**. Each has one job; remove one and the trade cannot stand.
 
 <figure class="book-figure">
-  <img src="/images/figures/figure-053.webp" alt="Figure 7-6 · Structure, position size, and stop" loading="lazy" decoding="async" />
-  <figcaption>Figure 7-6 · Structure, position size, and stop</figcaption>
+  <img src="/images/figures/figure-053.webp" alt="Figure 7-5 · Structure, position size, and stop" loading="lazy" decoding="async" />
+  <figcaption>Figure 7-5 · Structure, position size, and stop</figcaption>
 </figure>
 
 **Structure**—GEX and VWAP—decides whether the day is worth attention. GVP alignment raises priority. Conflict helps me trade less; it does not urge me to find an order.
@@ -408,16 +424,26 @@ Traders ask: if I read GEX correctly, why did I still lose? Figure 7-6 shows thr
 
 **The stop** decides whether the error ends. A stop is not cowardice. It is the **abandonment point** written when the order is placed. Structure may permit further observation; the stop says this particular trade is finished.
 
-Together: **structure filters, size limits pain, and the stop cuts the power.** On June 4, the data filled the page with an answer. Shorting against it, holding, and refusing to stop remained a fatal combination.
+This deserves a few more words, because a stop on a long 0DTE position is not the same thing as a stop on a stock. **I carry three brakes, and they govern different things:**
+
+- **The structural stop**—price breaks the reason I entered (the Gamma Flip is lost, VWAP is lost, the wall cannot be reclaimed). This is the **hardest of the three**, because it speaks the same language as my entry: the reason is gone, so the position has no reason to exist.
+- **The time stop**—the Gamma window has closed and the push is gone, so I leave even if price has broken nothing. The 5–30 minutes discussed earlier is this brake. **It is the easiest one to ignore, because when it triggers, nothing bad has happened on the chart.**
+- **The premium stop**—the contract is down 40% or 50%, so I leave.
+
+Of the three, **I put the premium stop last**, for a reason anyone who has traded 0DTE understands: spreads can widen sharply into the close, and one ordinary pullback plus one widening bid-ask is enough to print −50% while the structure is entirely intact. **Using a percentage as the only brake hands the exit decision to the order book rather than to the tape.**
+
+My practice is: **structure and time decide whether to leave; the premium only decides how much this one trade is allowed to hurt.** Put differently, that premium figure should already be fixed **before** the order, through contract count—position size is itself the final brake, rather than a percentage you watch intraday.
+
+Together: **structure filters, size limits pain, and the stop cuts the power.** On June 4, **the data filled the page with an answer**; shorting against it, holding on, and refusing to stop was still a fatal combination (Chapter 1).
 
 ### Six Red Lines to Write Before Ordering
 
 1. **“The option is cheap, so I can buy more.”** Wrong. With the $100 multiplier and possible full loss, a small quote can still cause serious damage.
 2. **“I can double after consecutive losses and recover.”** Wrong. Reduce size or stop; surviving the curve matters more than urgent recovery.
-3. **“One 0DTE contract is only a small bet.”** Wrong. The full premium can disappear.
+3. **“One 0DTE contract is only a small bet.”** Wrong. A buyer's full loss is the entire premium; controlling size is no easier than it is for a seller.
 4. **“A stop shows weakness.”** Wrong. It defines tuition and the abandonment point at entry.
 5. **“I can copy someone else's size.”** Wrong. Size belongs to the account and psychology of the individual.
-6. **“Excellent structure permits a large bet.”** Wrong. Good structure plus excessive size and no stop can still remove you from the game.
+6. **“Excellent structure permits a large bet.”** Wrong. However good the structure, **excessive size plus no stop** can still remove you from the game (June 4, Chapter 1).
 
 ### A Ten-Second Check Before the Order
 
@@ -452,8 +478,8 @@ I do not prescribe “always 2%,” but I distinguish stages:
 Event-day and sizing rules govern one trade. This section governs the period **after a large win or loss**. Emotion carries the last result forward even though the next trade remains a new statistical sample. My windows are **24 hours after a large loss and 72 hours after a large gain**.
 
 <figure class="book-figure">
-  <img src="/images/figures/figure-054.webp" alt="Figure 7-5 · Emotional trading and the account curve" loading="lazy" decoding="async" />
-  <figcaption>Figure 7-5 · Emotional trading and the account curve</figcaption>
+  <img src="/images/figures/figure-054.webp" alt="Figure 7-6 · Emotional trading and the account curve" loading="lazy" decoding="async" />
+  <figcaption>Figure 7-6 · Emotional trading and the account curve</figcaption>
 </figure>
 
 Both large wins and large losses can pull a trader away from the plan.
@@ -462,7 +488,7 @@ Many assume loss creates the greatest risk. **A large gain can be equally danger
 
 After a strong profit, the brain quietly concludes that it has finally “understood the market.” Standards loosen and bad trades become attractive. The market has not changed; perception of risk has.
 
-I experienced it. After four profitable days, I looked at Friday's market and thought, “At my current level, this trade cannot be wrong.” I refused a stop, kept full size, and held. One trade returned the week's entire profit and more.
+I experienced it. After four profitable days, I looked at Friday's market and thought, “At my current level, this trade cannot be wrong.” I refused a stop, kept full size, and held. One trade returned the week's entire profit and more. **Figure 7-6** is that shape.
 
 I sat before the screen after the close, angry not at the market but at myself. I knew every violated rule. The distance between knowing and doing was the belief that I could not be wrong.
 
@@ -481,13 +507,13 @@ When the answer is no, waiting is often best. My two windows are not vacations b
 **The first 72 hours after a large gain:** during the first day, normal trading is allowed but never above the ordinary size ceiling. From hour 24 through 72, no doubling and no “celebration trade.” Review whether the win came from structure or luck. Only after 72 hours do I allow the mind to return to its ordinary state. The hardest task after winning is not keeping the money. It is keeping the clarity that **I can still be wrong**.
 
 <figure class="book-figure">
-  <img src="/images/figures/figure-055.webp" alt="Figure 7-6 · Cooling-off mechanism after large losses and gains" loading="lazy" decoding="async" />
-  <figcaption>Figure 7-6 · Cooling-off mechanism after large losses and gains</figcaption>
+  <img src="/images/figures/figure-055.webp" alt="Figure 7-7 · Cooling-off mechanism after large losses and gains" loading="lazy" decoding="async" />
+  <figcaption>Figure 7-7 · Cooling-off mechanism after large losses and gains</figcaption>
 </figure>
 
-Books on trading psychology return to one plain idea: **each trade is a tiny part of a probability distribution, but the human brain turns it into a statement about identity.** Being “in the zone” means that whether this trade wins or loses does not change the fact that I will be both right and wrong again. A cooling-off period pulls me from the need to prove myself back into process: Is structure still present? Was size calculated? Is the stop written?
+Mark Douglas's *Trading in the Zone* returns to one plain idea: **each trade is a tiny part of a probability distribution, but the human brain turns it into a statement about identity.** Being “in the zone” means that whether this trade wins or loses does not change the fact that I will be both right and wrong again. A cooling-off period pulls me from the need to prove myself back into process: Is structure still present? Was size calculated? Is the stop written?
 
-June 4 taught respect for data, trend, and stops. March 26 showed the danger of averaging after structural failure. A large gain produces oversizing and the possibility of returning everything at once. The technical lessons differ; the psychological hole is often the same. Trading immediately after a win or loss, turning review into blame, treating cooling-off as weakness, and making “one exception” are all expensive. **Twenty-four hours to survive a loss, 72 hours to remain stable after a win, four review questions, and cooling-off to preserve decision quality** are not weakness. They acknowledge that the next trade is a new sample.
+June 4 taught respect for the data and the trend—the data filled the page that day, and those who followed it went with the move while those who did not were run over. March 26 is the one about averaging down after a wall failed and not leaving when I should have: I already knew the stop; what was hard was whether my hand obeyed. A large gain produces oversizing and the possibility of returning everything at once. The technical lessons differ; the psychological hole is often the same. Trading immediately after a win or loss, turning review into blame, treating cooling-off as weakness, and making “one exception” are all expensive. **Twenty-four hours to survive a loss, 72 hours to remain stable after a win, four review questions, and cooling-off to preserve decision quality** are not weakness. They acknowledge that the next trade is a new sample.
 
 I mark large-loss days red and large-win days yellow on the calendar. My review template begins with six Chinese characters that translate simply as: **survive the loss; stabilize the win.**
 
@@ -505,7 +531,7 @@ The market never promises that because the last trade was right, the next will b
 
 Clean does not mean emotionless. It means knowing what I am doing: **trading probability rather than seeking justice; managing exposure rather than proving intelligence.** The dividing line between gambler and trader often appears in the minutes after a large gain or loss—does the hand still obey?
 
-June 4 says: do not fight the trend; respect the data; leave when the stop is reached. March 26 says walls can collapse. A large win says: remain humble for 72 hours. These are not merely techniques to copy. They are the slow process of removing the hand from its default setting. Imperfection is acceptable. The market will be here tomorrow. **If you are still here, you have another opportunity to follow the rules.** Longevity comes not from one enormous win, but from keeping both the account and the person standing on most days.
+June 4 says: do not fight the trend and respect the data. March 26 says walls can collapse—and that the stop you already know means nothing if you do not take it. A large win says: remain humble for 72 hours. These are not merely techniques to copy. They are the slow process of removing the hand from its default setting. Imperfection is acceptable. The market will be here tomorrow. **If you are still here, you have another opportunity to follow the rules.** Longevity comes not from one enormous win, but from keeping both the account and the person standing on most days.
 
 January 23 waits in the next chapter—a day of narrow range and lukewarm price action, yet dense structure beneath the surface.
 

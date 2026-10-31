@@ -26,7 +26,8 @@ raise one cup again to the river moon.
 ---
 
 <figure class="book-figure">
-  <img src="/images/figures/figure-060.webp" alt="Illustration from Options Walls" loading="lazy" decoding="async" />
+  <img src="/images/figures/figure-060.webp" alt="A desk after the close: a closed laptop, a cup of coffee, and an open review notebook carrying a single line—“SPX plan for tomorrow's open.”" loading="lazy" decoding="async" />
+  <figcaption>Closing the book · one line in the review notebook: “SPX plan for tomorrow's open.”</figcaption>
 </figure>
 
 ## Probability, Structure, and Execution
@@ -47,9 +48,9 @@ That sounds obvious. Truly accepting it is harder than memorizing every formula.
 
 “What kind of market is this today?” is sometimes answerable.
 
-GEX, VWAP, and price action do not provide “the answer.” Together they suggest **whether today deserves an idea at all**.
+GEX, VWAP, and price action (trend)—three dimensions held together—do not provide “an answer.” What they give is **whether today is a day fit for having an idea**.
 
-There is a large difference between having an idea and trading only when the day's rules favor that kind of idea.
+The difference between the two is large: **having an idea is not the same as placing an order. A day being fit for an idea is what means today's rules of the game favor you.**
 
 I once had many ideas every day. Now I filter them, keeping only the small portion supported by GVP.
 
@@ -61,6 +62,8 @@ On one particular day, the data did not lie. GEX, VWAP, and price action broadly
 
 But I already held a contract in the wrong direction, had added to it, and was waiting for a miracle.
 
+That day was March 26 (Chapter 6). It comes up again and again in this book not because the tape was the hardest to read, but precisely because it was the easiest—through the afternoon price sat below VWAP and below the Gamma Flip, every rebound was short-lived, and all three lines said the same thing. The contract in my hand was standing on the other side of it.
+
 The data spoke in one direction while I searched for reasons in the other.
 
 I thought about that for a long time and reached one conclusion:
@@ -71,7 +74,7 @@ That is not a technical problem. It is a human one.
 
 My current method is to write the stop before entering—not only think it, but write it.
 
-The stop becomes a promise to myself. When the line breaks, leave, because the person who wrote it was more rational than the person overwhelmed by loss.
+Once it is written, the stop price becomes a promise—not a promise to the market, a promise to myself. When the line breaks, leave, because the person who wrote it was more rational than the person numbed by a loss.
 
 *Understanding is not hard. Admitting error is.*
 
@@ -83,7 +86,7 @@ I have seen traders refuse to accept a large loss, immediately attempt to recove
 
 The market does not remember whether the last trade made you a hero or a victim. It begins again every day.
 
-**Surviving long enough to continue is the only durable advantage.**
+**Surviving to keep playing is the precondition of every edge.**
 
 Every strategy and system assumes that you remain.
 
@@ -103,7 +106,7 @@ What this book may offer is:
 
 If, after reading, you can explain why you entered, why you exited, and where the result came from—whether the trade won or lost—rather than attributing everything to luck or a strange market, the book has done enough.
 
-The prologue asked:
+The prologue left you an image: every signal said not to short, and people shorted anyway. Hidden in that page was a question nobody asked out loud—
 
 > **If I were there, in that market, what would I do?**
 
