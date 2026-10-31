@@ -92,6 +92,13 @@ The Put side in **Figure 2-1b** carries the same obligation in the opposite dire
 
 (Do not reverse them: Short Call → buy futures; Short Put → sell futures.)
 
+**But that is only the moment of the trade.** The two lines above describe flattening direction the instant a position is opened. What actually moves the tape is everything after: each time price ticks, the hedge has to be adjusted again—and the direction of that adjustment **does not depend on whether the market maker sold a Call or a Put. It depends only on whether its net Gamma is positive or negative**:
+
+- Net Gamma **positive** (the book behaves like an option buyer) → it **sells** into rallies and **buys** into declines → **counter-trend** → volatility is absorbed
+- Net Gamma **negative** (the book behaves like an option seller) → it **buys** into rallies and **sells** into declines → **pro-cyclical** → volatility is amplified
+
+This is the hinge of the whole chapter. Every later mention of a shock absorber or an accelerator comes back to it.
+
 **Machines have no feelings—only hedging obligations.**
 
 In plain language, a market maker is an automatically balancing scale. When one side tips, it adds a weight—futures—to the other side until the scale is level again. There is no emotion, only a balanced book.
@@ -220,6 +227,11 @@ Candles tell you **what has already happened**. GEX tells you that hedging order
 
 A 0DTE buyer who carries only the terrain map and ignores today's wind is dressed for yesterday's forecast. The mismatch is costly.
 
+**Metaphor 3: X-ray machine vs crystal ball**
+
+- GEX is **not a crystal ball**—it never set out to tell you whether the session closes green or red.
+- It is an **X-ray machine**—it lets you see the skeleton beneath the candles: which strikes the hedging pressure is piled on, and whether that bone is soft or hard today.
+
 > *Choose the metaphor that stays with you. You can forget the rest.*
 
 ---
@@ -273,10 +285,10 @@ Providers calculate Dollar GEX somewhat differently. Some multiply by price once
 | --- | --- |
 | Gamma | The contract's sensitivity—how quickly the required hedge changes as the index moves |
 | Open Interest / Volume | Use OI before the open; use the day's Volume intraday |
-| 100 | The SPX option contract multiplier |
+| 100 | The SPX option contract multiplier (one contract covers 100 index points) |
 | S | Index price, included only in Dollar GEX |
 
-In other words: roughly how much must market makers buy or sell to hedge when SPX moves one point? The larger the number, the heavier the structural pressure at that level.
+In other words: Raw GEX reads as “roughly how many futures contracts must market makers move for each one-point change in SPX,” and Dollar GEX converts that into money. The larger the number, the heavier the structural pressure at that level.
 
 **Common chart convention:**
 
@@ -284,6 +296,15 @@ In other words: roughly how much must market makers buy or sell to hedge when SP
 | --- | --- | --- |
 | Call | **Positive** | Green |
 | Put | **Negative** | Red |
+
+**There is a premise here that has to be stated.** Why should Calls count as positive and Puts as negative? Because every mainstream GEX calculation assumes something **about which way market makers are positioned**: institutions persistently **sell Calls for yield and buy Puts for protection**, which leaves the market-maker side **long Calls and short Puts**—long Calls give it positive Gamma, short Puts give it negative Gamma. Green for positive and red for negative follows from that, and from nothing else.
+
+**Note that this is an assumption, not a measurement.** No public data tells you who bought and who sold any individual contract; a platform sees open interest and Volume, and the direction is **inferred**. Two consequences are worth keeping in mind:
+
+- If today's flow runs against the assumption—retail buying 0DTE Calls in size, leaving market makers as the **sellers** of those Calls—then that green bar no longer represents damping. It may represent fuel.
+- This is also the root reason two platforms' GEX readings can disagree: **the positioning they assume is not the same.**
+
+My own practice is simple: **do not treat the sign as settled; test it against price action.** Whether price grinds or cuts through as it approaches a thick bar is something the tape will tell you—and that is far more trustworthy than the color of the bar.
 
 Add the GEX of all Calls and Puts at a strike to obtain its **net pressure bar**—the green or red bar on the map.
 
@@ -318,7 +339,13 @@ That is why the arrows form a loop: **buy a Call → market maker buys futures t
 
 The GEX bars on the right can be understood as the accumulation of countless such loops at different price levels. When options positions cluster around certain strikes, hedging demand clusters there as well, creating the structure we see. GEX is not a mysterious signal. It is the trace left on the market when “buy a Call → hedge → price changes → hedge again” happens repeatedly.
 
-At bottom: **every price move changes hedging demand, and every change in hedging demand feeds back into price.** Under a negative-Gamma configuration, that feedback can amplify a rise.
+At bottom: **every price move changes hedging demand, and every change in hedging demand feeds back into price.**
+
+**But be clear about what the loop just described is: the case where the market maker's net Gamma is negative.** It sold the options, so it can only chase—buying as price rises, selling as price falls. That is the **accelerator** from earlier in the chapter.
+
+**If its net Gamma is positive instead, the same chain runs the other way**: price rises and its hedge is to **sell**; price falls and its hedge is to **buy**. Volatility is not amplified but absorbed, a little at a time. That is the **speed bump**.
+
+**Positive or negative, the mechanism is identical and the direction is exactly opposite.** Reading GEX means reading which way the chain is turning today.
 
 **The key point:** when you buy a Call from a market maker, the other side is not “betting that you will lose.” It **cannot afford to bet on direction**; it must mechanically trade futures to hedge. That is the source of the subsequent flow.
 
@@ -377,7 +404,7 @@ To see the green bar's share, compare absolute magnitudes:
 
 ### Practical Insight 1: Gamma Flip—the Reference Line Where Character Changes
 
-A GEX distribution contains a special level called the **Gamma Flip**:
+Most platforms also give you a line called the **Gamma Flip**. It is **not one of the bars** on the distribution. It is the price at which the curve of **net GEX plotted against spot** crosses zero:
 
 - Price **above the Gamma Flip** → positive-GEX region → the market tends toward **stability and mean reversion**
 - Price **below the Gamma Flip** → negative-GEX region → the market tends toward **acceleration and trend expansion**
@@ -408,7 +435,7 @@ To judge whether the market is currently in a positive- or negative-Gamma regime
 
 ### Practical Insight 2: GEX Extremes—What I Watch When the Data Looks Worst
 
-Intraday Volume GEX can sometimes reach a deeply negative extreme—on the order of −1000B, for example.
+Intraday Volume GEX can sometimes reach a deeply negative extreme—on the order of −1000B, for example. (B is the scale my own platform uses; do not compare that absolute value with another vendor's, as Chapter 1 notes.)
 
 Textbook logic says negative Gamma produces pro-cyclical hedging, so volatility should expand and a decline should accelerate.
 
@@ -587,7 +614,7 @@ OI GEX describes yesterday's terrain. Volume GEX describes what market makers ar
 | Time | Volume GEX | OI GEX | How I use them |
 | --- | --- | --- | --- |
 | Premarket | Low | **High** | Mark the broad overnight structure |
-| Open to ~30 minutes | Rising | Declining | See whether the center of trading moves away from the premarket wall |
+| First 15–30 minutes | Rising | Declining | See whether the center of trading moves away from the premarket wall; watch only, do not commit size |
 | 10:00–15:00 | **Primary** | Secondary | Follow Volume-based Call and Put Walls |
 | 15:00–15:30 | Still important | Begin watching | Compare both for possible Pin levels |
 | 15:30–15:45 | Secondary | **Clearly rising** | Give more weight to OI walls |
@@ -645,17 +672,15 @@ The trade reviews in later chapters contain nearly all of these mistakes. Before
   <figcaption>Figure 2-7 · Five options-wall traps</figcaption>
 </figure>
 
-**Trap 1: treating GEX as direction.** Some traders immediately short when they see negative GEX and buy when they see positive GEX. They forget that GEX describes the character of volatility, not direction. A sounder approach is to examine structure, cost, and price action before acting.
+**Trap 1: treating GEX as direction.** Short on negative GEX, long on positive GEX. But GEX never said a word about up or down—only about whether volatility gets suppressed or amplified. Chapter 1 is the ready-made counterexample: net GEX expanded all the way to 1200B, about as positive as it gets, and the market trended steadily in one direction the entire day. **The sign changes the character, not the direction.**
 
-**Trap 2: watching OI while ignoring Volume.** Some traders hold on to premarket walls as though those levels must remain valid all day, ignoring changes in Volume and actual intraday liquidity. 0DTE is not a premarket prediction game. It requires following the evolving structure and transaction rhythm.
+**Trap 2: watching OI and ignoring Volume.** Mark the three lines before the open, then never look again. But open interest is settled from yesterday's close and **does not update during the session**; everything opened today goes into Volume only. The battlefield can relocate within the first half hour while you are still walking around with last night's map.
 
-**Trap 3: treating walls as an iron floor or ceiling.** The Put Wall is not guaranteed support, and the Call Wall is not guaranteed resistance. A wall expresses probability, not certainty. Waiting to see whether a false break is reclaimed helps distinguish a sweep from a genuine breakdown.
+**Trap 3: treating walls as an iron floor or ceiling.** Buy every touch of the Put Wall, short every touch of the Call Wall, as though it were a physical barrier. But a wall is probability, not a guarantee—on February 13 price swept it and reclaimed immediately (Chapter 4); on March 26 it broke and never came back, and the wall simply collapsed (Chapter 6). One wall, two outcomes. **What deserves your patience is not price reaching the wall. It is the reaction after it gets there.**
 
-**Trap 4: refreshing every second and constantly changing your mind.** The market is not decided in one instant. Major wall locations typically adjust over minutes; a meaningful Gamma Flip crossing can change the structure. Patience is central.
+**Trap 4: refreshing every second and changing your mind constantly.** An individual strike's bar twitches with nearly every trade, but a major wall usually takes 5–30 minutes to genuinely relocate. Make decisions off second-by-second flicker and what you lose is rarely the direction—it is the slippage and commissions of going in and out.
 
-**Trap 5: ignoring a larger force.** On an event day such as CPI or FOMC, forcing a wall-based trade without controlling position size can be disastrous. Waiting for the release and for the structure to become clear is basic risk management.
-
-Trading is not about running fastest. It is about finding a place to stand by distinguishing rhythm within disorder.
+**Trap 5: ignoring forces larger than Gamma.** When CPI, FOMC, or payrolls print, new information is repricing the market directly, and hedging flow stops nothing. On those days my default is not “how do I trade the wall”—it is **do not trade through the release**.
 
 > *A map describes the terrain. During an earthquake, the terrain no longer has the final word.*
 
