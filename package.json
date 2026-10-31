@@ -9,6 +9,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && tsc --noEmit -p tsconfig.worker.json && vite build && vite build --config vite.ssr.config.ts && node scripts/prerender.mjs",
     "deploy": "pnpm run build && wrangler deploy",
+    "deploy:myspx": "pnpm run build && wrangler deploy --config wrangler.myspx.jsonc",
     "preview": "vite preview",
     "preview:worker": "wrangler dev",
     "verify:seo": "node scripts/verify-seo.mjs",

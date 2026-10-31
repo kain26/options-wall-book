@@ -159,7 +159,7 @@ img { max-width: 100%; }
 .text-action { display: inline-flex; gap: 38px; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--line-strong); color: var(--green); font-weight: 750; }
 
 footer { display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; padding: 32px 5vw; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
-footer > span:last-child { justify-self: end; text-align: right; }
+footer > span:last-of-type { justify-self: end; text-align: right; }
 .footer-center { display: flex; gap: 14px; align-items: center; }
 .page-view-count { display: inline-flex; gap: 6px; align-items: baseline; padding: 4px 0; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: .04em; white-space: nowrap; }
 .page-view-mark { display: inline-flex; gap: 4px; align-self: center; margin-right: 3px; }
@@ -277,6 +277,14 @@ footer > span:last-child { justify-self: end; text-align: right; }
 .book-figure { width: min(100%, 860px); margin: 3rem auto; }
 .book-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 16px 46px rgba(24, 28, 25, .1); }
 .book-figure figcaption { max-width: 650px; margin: 12px auto 0; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: 12px; line-height: 1.6; text-align: center; }
+.book-article .reader-voices-note { max-width: 39rem; margin-bottom: 2rem; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: calc(13px * var(--reader-scale)); line-height: 1.75; }
+.reader-voices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 2rem 0 1rem; }
+.reader-voice { display: flex; flex-direction: column; min-width: 0; min-height: 170px; margin: 0; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 78%, transparent), color-mix(in srgb, var(--paper) 92%, transparent)); }
+.book-article .reader-voice blockquote { flex: 1; margin: 0; padding: 0; border: 0; color: var(--ink); font-size: calc(17px * var(--reader-scale)); }
+.book-article .reader-voice blockquote p { margin: 0; }
+.book-article .reader-voice .reader-voice-translation { margin-top: .75rem; color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: calc(12px * var(--reader-scale)); line-height: 1.55; }
+.reader-voice figcaption { display: flex; gap: 10px; justify-content: space-between; align-items: center; margin-top: 24px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: 11px; letter-spacing: .04em; }
+.reader-voice time { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .tool-panel nav { display: flex; flex-direction: column; gap: 10px; padding-left: 12px; border-left: 1px solid var(--line); }
 .tool-panel a { color: var(--muted); font-size: 11px; line-height: 1.5; }
@@ -341,7 +349,7 @@ footer > span:last-child { justify-self: end; text-align: right; }
   .map-section { grid-template-columns: 1fr; padding: 20px 22px 100px; }
   .map-section > div { order: -1; }
   footer { display: flex; flex-direction: column; align-items: flex-start; padding: 28px 22px calc(28px + env(safe-area-inset-bottom)); }
-  footer > span:last-child { text-align: left; }
+  footer > span:last-of-type { text-align: left; }
   .footer-center { flex-wrap: wrap; }
 
   .reader-layout { display: block; padding: 42px 20px 130px; }
@@ -357,6 +365,8 @@ footer > span:last-child { justify-self: end; text-align: right; }
   .book-article .poem-body { padding: 7px 20px 30px; border-radius: 0 0 16px 16px; }
   .book-article .poem-body p { width: auto; max-width: 29em; font-size: calc(16px * var(--reader-scale)); line-height: 1.95; }
   .book-article blockquote { margin-left: 0; padding-left: 18px; }
+  .reader-voices { grid-template-columns: 1fr; }
+  .reader-voice { min-height: 145px; }
   .book-figure { width: calc(100% + 12px); margin-left: -6px; }
   .book-figure img { border-radius: 8px; }
   .chapter-pagination { grid-template-columns: 1fr; margin-top: 72px; }
@@ -383,3 +393,10 @@ footer > span:last-child { justify-self: end; text-align: right; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Small, click-to-open editorial footnotes; preserve the book's typography. */
+.book-article .revision-mark { text-decoration: underline; text-decoration-color: #dc2626; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.book-article .revision-trigger { min-width: 28px; min-height: 28px; padding: 2px 5px; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+.book-article .revision-trigger:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.book-article .revision-note { width: min(34rem, calc(100vw - 40px)); max-height: 75vh; box-sizing: border-box; overflow: auto; padding: 22px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--paper); color: var(--ink); font: 16px/1.8 ui-sans-serif, sans-serif; text-align: left; }
+.book-article .revision-note::backdrop { background: rgb(0 0 0 / .18); }

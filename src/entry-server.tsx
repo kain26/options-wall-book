@@ -18,3 +18,5 @@ export function renderPage(path: string) {
     seo: seoForPath(path),
   };
 }
+
+export { getChapters, chapterImages } from './content';

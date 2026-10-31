@@ -296,7 +296,7 @@ GEX（Gamma Exposure，伽马敞口）衡量的是：**期权持仓通过做市�
 
 **换言之**：原始 GEX 读的是「SPX 每动 1 点，做市商大约要动多少份额的期货」，美元 GEX 则把它折算成钱。这个数越大，这个价位的「结构压力」越重。
 
-**分颜色（行业惯例）：**
+<span class="revision-mark"><strong>分颜色（行业惯例）：</strong></span><sup><button type="button" class="revision-trigger" popovertarget="revision-1" aria-label="修订说明 1">[1]</button></sup><span id="revision-1" class="revision-note" popover="auto"><strong>修订说明 [1]</strong><br>补注，原文保留。“行业惯例”未明确持仓方向假设，描述不完整。Call 记正、Put 记负是一种估算约定，通常假设做市商净持有 Call、净卖出 Put，并不表示做市商整体始终为正 Gamma。前面的“客户买 Call → 做市商卖 Call”是单笔 Short Call 的对冲链，不能直接当成全市场净持仓。读图前先核对平台的持仓方向假设与符号定义；假设改变会改变净 GEX 与 Flip 的读法。参考：<a href="https://spotgamma.com/free-tools/spx-gamma-exposure/">SpotGamma</a>；<a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>。</span>
 
 
 | 类型       | 符号     | 图谱颜色 |
@@ -434,7 +434,7 @@ Net GEX = 所有 Call GEX 之和 + 所有 Put GEX 之和
 
 它会随成交、OI、IV、时间**一直重算、一直移动**——今天的 Flip 不等于昨天，上午也未必等于下午。
 
-不同软件算法不同（看 OI 还是 Volume、NET 还是 GROSS），给出的 Flip 位、甚至此刻的正负**都可能对不上**。
+<span class="revision-mark">不同软件算法不同（看 OI 还是 Volume、NET 还是 GROSS），给出的 Flip 位、甚至此刻的正负都可能对不上。</span><sup><button type="button" class="revision-trigger" popovertarget="revision-2" aria-label="修订说明 2">[2]</button></sup><span id="revision-2" class="revision-note" popover="auto"><strong>修订说明 [2]</strong><br>补注，原文保留。原句只列 OI／Volume、NET／GROSS，遗漏了持仓方向假设。比较软件时先核对这一前提，再比较输入与汇总口径。参考：<a href="https://spotgamma.com/free-tools/spx-gamma-exposure/">SpotGamma</a>；<a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>。</span>
 
 所以判断今天偏正还是偏负 Gamma，**要看软件此刻算出的值，而不是拿某个固定数字去套**。
 

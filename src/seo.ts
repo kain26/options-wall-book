@@ -1,7 +1,7 @@
-import { getChapters, type Chapter } from './content';
+import { getChapters, chapterImages, type Chapter } from './content';
 import { copy, localizedPath, type Language } from './i18n';
 
-export const SITE_URL = 'https://options-wall-book.mmoptions.workers.dev';
+export const SITE_URL = 'https://book.myspx.trade';
 
 export type SeoData = {
   language: Language;
@@ -13,6 +13,7 @@ export type SeoData = {
   type: 'website' | 'article';
   image?: string;
   imageAlt?: string;
+  markdown?: string;
   jsonLd: unknown;
 };
 
@@ -30,8 +31,8 @@ function routeDetails(path: string) {
 
 function homeDescription(language: Language) {
   return language === 'zh'
-    ? '期权墙中文入门与实战指南：系统讲解 SPX 0DTE、GEX、Call Wall、Put Wall、Gamma Flip、做市商对冲与历史交易复盘。'
-    : 'Options Wall is a bilingual field guide to SPX 0DTE, GEX, call and put walls, gamma flips, market-maker hedging, and historical trade reviews.';
+    ? '期权墙买方篇：学习 SPX 0DTE、GEX、Call Wall、Put Wall 与做市商对冲。加入香港美股期权交流社群，聚焦美股期权三巨头 SPY、QQQ、SPX 的日内成交、流动性、交易复盘与风险管理。'
+    : 'Read the SPX 0DTE and GEX buyer guide. Join our Hong Kong community to discuss SPY, QQQ and SPX options, intraday volume, liquidity, trade reviews and risk management.';
 }
 
 function chapterDescription(chapter: Chapter, language: Language) {
@@ -108,6 +109,13 @@ function chapterStructuredData(chapter: Chapter, language: Language, canonical: 
         inLanguage: language === 'zh' ? 'zh-CN' : 'en',
         author: author(),
         isPartOf: bookReference(language),
+        isAccessibleForFree: true,
+        license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+        image: chapterImages(chapter).map((image) => ({
+          '@type': 'ImageObject',
+          contentUrl: absoluteUrl(image.src),
+          caption: image.alt,
+        })),
         about: ['SPX 0DTE', 'GEX', 'Options Wall', 'Market-maker hedging'],
       },
       {
@@ -141,6 +149,7 @@ export function seoForPath(path: string): SeoData {
     : chapter?.title;
   const title = chapter ? `${descriptiveChapterTitle}｜${copy[language].siteName}` : copy[language].title;
   const isHome = !chapter;
+  const leadImage = chapter ? chapterImages(chapter)[0] : undefined;
 
   return {
     language,
@@ -150,12 +159,13 @@ export function seoForPath(path: string): SeoData {
     alternateZh: absoluteUrl(localizedPath('zh', cleanPath)),
     alternateEn: absoluteUrl(localizedPath('en', cleanPath)),
     type: chapter ? 'article' : 'website',
-    image: isHome ? absoluteUrl('/og.png') : undefined,
+    image: isHome ? absoluteUrl('/og.png') : leadImage ? absoluteUrl(leadImage.src) : undefined,
+    markdown: chapter ? absoluteUrl(`/content/${language}/${chapter.slug}.md`) : undefined,
     imageAlt: isHome
       ? language === 'zh'
         ? '《期权墙》SPX 0DTE 与 GEX 中文交易指南'
         : 'Options Wall: an SPX 0DTE and GEX field guide'
-      : undefined,
+      : leadImage?.alt,
     jsonLd: chapter
       ? chapterStructuredData(chapter, language, canonical, description)
       : homeStructuredData(language, description),
@@ -203,8 +213,8 @@ export function applySeoToDocument(seo: SeoData) {
   setMeta('property', 'og:description', seo.description);
   setMeta('property', 'og:url', seo.canonical);
   setMeta('property', 'og:image', seo.image);
-  setMeta('property', 'og:image:width', seo.image ? '1200' : undefined);
-  setMeta('property', 'og:image:height', seo.image ? '675' : undefined);
+  setMeta('property', 'og:image:width', seo.type === 'website' ? '1200' : undefined);
+  setMeta('property', 'og:image:height', seo.type === 'website' ? '675' : undefined);
   setMeta('property', 'og:image:alt', seo.imageAlt);
   setMeta('name', 'twitter:card', seo.image ? 'summary_large_image' : 'summary');
   setMeta('name', 'twitter:title', seo.title);
@@ -212,6 +222,12 @@ export function applySeoToDocument(seo: SeoData) {
   setMeta('name', 'twitter:image', seo.image);
   setMeta('name', 'twitter:image:alt', seo.imageAlt);
   setLink('canonical', seo.canonical);
+  document.head.querySelector('link[type="text/markdown"]')?.remove();
+  if (seo.markdown) {
+    const link = document.createElement('link');
+    link.rel = 'alternate'; link.type = 'text/markdown'; link.href = seo.markdown;
+    document.head.append(link);
+  }
   setLink('alternate', seo.alternateZh, 'zh-CN');
   setLink('alternate', seo.alternateEn, 'en');
   setLink('alternate', seo.alternateZh, 'x-default');

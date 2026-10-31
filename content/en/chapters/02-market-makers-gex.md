@@ -290,7 +290,7 @@ Providers calculate Dollar GEX somewhat differently. Some multiply by price once
 
 In other words: Raw GEX reads as “roughly how many futures contracts must market makers move for each one-point change in SPX,” and Dollar GEX converts that into money. The larger the number, the heavier the structural pressure at that level.
 
-**Common chart convention:**
+<span class="revision-mark"><strong>Common chart convention:</strong></span><sup><button type="button" class="revision-trigger" popovertarget="revision-1" aria-label="Revision note 1">[1]</button></sup><span id="revision-1" class="revision-note" popover="auto"><strong>Revision note [1]</strong><br>Clarification; original retained. “Common chart convention” omitted its positioning assumption. Counting Calls positive and Puts negative is an estimate, typically assuming dealers are long Calls and short Puts; it does not mean aggregate dealer Gamma is always positive. The earlier customer-buys-Call/dealer-sells-Call example describes one Short Call hedge, not the whole market’s net position. Check the platform’s positioning assumptions and sign definitions before interpreting GEX or the Flip. References: <a href="https://spotgamma.com/free-tools/spx-gamma-exposure/">SpotGamma</a>; <a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>.</span>
 
 | Type | Sign | Chart color |
 | --- | --- | --- |
@@ -425,7 +425,7 @@ Whether Gamma is currently positive or negative is calculated from the entire op
 
 It is continuously recalculated and moves with Volume, OI, IV, and time. Today's Flip is not yesterday's; the morning's may not be the afternoon's.
 
-Different platforms use different methods—OI or Volume, net or gross—so their Flip levels, and even their reading of the current sign, may disagree.
+<span class="revision-mark">Different platforms use different methods—OI or Volume, net or gross—so their Flip levels, and even their reading of the current sign, may disagree.</span><sup><button type="button" class="revision-trigger" popovertarget="revision-2" aria-label="Revision note 2">[2]</button></sup><span id="revision-2" class="revision-note" popover="auto"><strong>Revision note [2]</strong><br>Clarification; original retained. The original sentence listed inputs and aggregation methods but omitted dealer-position assumptions. Check that assumption first, then OI/Volume and net/gross methodology. References: <a href="https://spotgamma.com/free-tools/spx-gamma-exposure/">SpotGamma</a>; <a href="https://github.com/kain26/options-wall-book/issues/1">Issue #1</a>.</span>
 
 To judge whether the market is currently in a positive- or negative-Gamma regime, **use the live value from the platform you are reading, not a fixed number carried over from another moment.**
 

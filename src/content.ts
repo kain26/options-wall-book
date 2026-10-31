@@ -118,3 +118,11 @@ export function renderMarkdown(raw: string, language: Language) {
   });
   return marked.parse(raw) as string;
 }
+
+// Extract the existing editorial descriptions; never invent chart claims or licenses.
+export function chapterImages(chapter: Chapter) {
+  return [...chapter.raw.matchAll(/<img\b[^>]*>/g)].map(([tag]) => ({
+    src: tag.match(/src="([^"]+)"/)?.[1] ?? '',
+    alt: tag.match(/alt="([^"]+)"/)?.[1] ?? '',
+  })).filter((image) => image.src.startsWith('/images/') && image.alt);
+}
