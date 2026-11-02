@@ -232,6 +232,8 @@ Because **price is a number; cost basis is real capital.**
 
 Price can jump. Cost cannot pretend. If someone bought 100 contracts at 6800, the day's profit or loss is tied to the current price relative to today's cost basis—not to a 20-day arithmetic average.
 
+**One technical note belongs up front.** SPX is an index; it does not itself trade, so strictly speaking it has no Volume. The SPX average-price line your platform draws is synthesized from component or related instruments. For the hardest cost line available, many traders read the VWAP of **ES futures** or **SPY** instead. The three usually have the same shape; when they genuinely disagree, **go with the one that has real transactions behind it.**
+
 ---
 
 ### Three Uses of VWAP
@@ -241,16 +243,20 @@ Price can jump. Cost cannot pretend. If someone bought 100 contracts at 6800, th
   <figcaption>Figure 5-6 · Three functions of VWAP: institutional benchmark, directional divide, and magnet</figcaption>
 </figure>
 
+*An overview: the institutional benchmark, the directional divide, and the magnet pull after price travels too far. The three are unpacked below.*
+
 **Use 1: an institutional benchmark**
 
-Large investors—pension funds, hedge funds, and market makers—commonly evaluate the execution of large orders against VWAP.
+Large pools of capital—pension funds, mutual funds, insurance asset managers, and the algorithmic desks executing on their behalf—commonly measure **execution performance** against VWAP when working a large order.
 
 Suppose a portfolio manager receives an instruction to buy 100,000 ETF shares. The order will be divided and executed gradually. Later, the manager is asked: “Was your average fill better than VWAP?”
 
 - Better than VWAP = bought below the market's volume-weighted average = good execution
 - Worse than VWAP = paid above the average = poor execution
 
-Institutions therefore operate naturally around VWAP. That is not coincidence; it is their benchmark.
+That kind of capital therefore operates naturally around VWAP. It is not coincidence; it is the yardstick they are measured by.
+
+**But market makers are not on that list.** They are not working a large order—they are hedging, and what forces their hand is Delta and Gamma, not VWAP (Chapter 2). The two forces often collide around the same price, **but they come from entirely different places**. That is also why GVP later keeps VWAP and GEX separate: they are two different books.
 
 **Use 2: a divide between the sides**
 
@@ -258,6 +264,8 @@ VWAP is the day's simplest directional dividing line:
 
 - **Price above VWAP** → today's buyers are profitable in aggregate → greater willingness to hold → bullish atmosphere
 - **Price below VWAP** → today's buyers are losing in aggregate → more pressure to exit → bearish atmosphere
+
+(Strictly, every trade has two sides: above VWAP the buyer is ahead and the seller is behind. Intraday narrative is usually told from the long side, so by convention we read it from the buyer's.)
 
 One question is enough:
 
@@ -309,6 +317,8 @@ The inverse is also true. If price rises from below and reclaims VWAP, short pos
   <img src="/images/figures/figure-031.webp" alt="Figure 5-9 · Short covering after price reclaims VWAP" loading="lazy" decoding="async" />
   <figcaption>Figure 5-9 · Short covering after price reclaims VWAP</figcaption>
 </figure>
+
+*The mirror image of the previous figure: price rebounds from below and reclaims the cost line, shorts sitting on losses cover, and that buying pushes price further up—again real cost bases at work, not a drawing by some dominant player.*
 
 This is VWAP's self-reinforcement: **the more participants respect it, the more consequential it becomes.**
 
@@ -631,13 +641,15 @@ If you buy a 6800 Call near spot and the index rises ten points, the option resp
 
 **How I choose a strike.** I do **not** seek the cheapest option. OTM lottery tickets have low Delta, severe relative Theta, and weaker liquidity.
 
-My preference changes with the day's character:
+My standing range is **Delta 0.45–0.55** (near the money), nudged between 0.4 and 0.6 according to the day's character:
 
 - Positive-Gamma range day → **slightly ATM**, Delta around 0.4–0.5
 - Negative-Gamma trend day → **ATM or slightly ITM**, Delta around 0.5–0.6
 - Entry after trend confirmation → **ATM**; event day → closer to ATM
 
-One thing I do not do: buy a Call above the Call Wall. The February 17 stall at 6850 is the lesson.
+**One thing I absolutely do not do:** buy a Call at the Call Wall, and still less chase one above it.
+
+February 17 is the ready-made lesson. Price stalled the first time it touched 6849.56 and then fell back 40 points. The afternoon's second push did genuinely break 6850 and reached a high near 6868—**and the close was pulled back to 6843, still under the wall** (Chapter 4). Those dozen-odd points above the wall look like a rally, but a Call buyer most likely captured none of them: the advance was too brief, the retracement too fast, and Theta did not pause all day.
 
 I also prefer **round-number SPX strikes**—not because round numbers predict better, but because liquidity is often deeper and transaction cost lower.
 
@@ -663,13 +675,15 @@ Higher Delta makes an option behave more like the underlying.
 
 As a 0DTE buyer, I do not seek extremely high Delta, such as above 0.8. The cost approaches a direct directional position while Theta remains. In that case, ES futures may be more efficient.
 
+**One more thing that matters especially in 0DTE: the Delta you bought does not stay where it was.** As time passes, in-the-money contracts walk toward 1 and out-of-the-money contracts walk toward 0, so an OTM contract tracks the move less and less (Chapter 3, “Charm”). “I bought 0.45 Delta” is true only at the moment of the order; the later it gets in the afternoon, the less true it becomes. That is also why I do not touch far-OTM lottery tickets.
+
 ### Expiration, Execution, and Process
 
-**Expiration-specific rules.** I avoid opening a new long-premium 0DTE position during three windows: **the first five minutes after the open**, **the 30 minutes before an important release**, and **after 15:30**, when Pin, Charm, and Theta overlap.
+**Expiration-specific rules.** I avoid opening a new long-premium 0DTE position during three windows: **the first five minutes after the open**, **the 30 minutes before an important release**, and **after 15:30**, when Pin, Charm, and Theta overlap (Chapter 3). This does not conflict with the earlier rule about the first 15–30 minutes being watch-only: in the first 5 minutes I open **nothing at all**; from 5 to 30 minutes I **may open, but not with size**.
 
 The principle for a 0DTE buyer is simple: **do not wait for 16:00**. Profit is realized by exiting, not by enduring until the final second.
 
-**Execution habits.** I use a **limit order 99% of the time**, usually near the middle of the bid-ask spread and slightly toward the ask. If it does not fill, I do not chase.
+**Execution habits.** I use a **limit order 99% of the time**, usually near the middle of the bid-ask spread and slightly toward the ask. If it does not fill, I do not chase. The closer to the close, the wider a 0DTE bid-ask spread stretches; reaching for a market order to be fast at that hour often costs more than being wrong about direction.
 
 I divide size into two stages: a **test position**, usually 40–50%, then a **confirmation add**. I pay a small cost if the structure fails; I add only after the trade begins to confirm.
 
@@ -746,7 +760,7 @@ Figures 5-17 through 5-19 organize seven common paths into three groups: **wall 
 **2. Rejection at the Call Wall.** A Call Wall does not begin only when price touches an exact line. Pressure can appear in advance. I divide the approach into three rough zones; adjust them for the SPX level and daily volatility:
 
 - **Within roughly five points, price slows before contact.** Hedging flow and profit-taking appear early; incremental buying cannot keep pace. Many Calls die **before** the wall as capital leaves and momentum fades. February 17 displayed this grind before 6850.
-- **At the Call Wall.** Price touches the wall, stalls, and prints small candles as momentum fades. Observe or take profit; do not chase a Call at the wall.
+- **At the Call Wall.** Price touches the wall, stalls, and prints small candles as momentum fades. Observe or take profit; do not chase a Call at the wall. February 17's first touch at 6849.56 in Chapter 4 is this case—it hung there a while, then fell back 40 points.
 - **One to ten points above, followed by an immediate return.** A classic upside **liquidity sweep**: stops and breakout buyers above the wall are consumed, then price falls back. Ask whether the retest can hold the Call Wall. Failure means the wall remains valid. Acceptance points instead toward the next scenario, where the wall has moved.
 
 **3. Rebound from a defended Put Wall.** The Put side is symmetric. Again, the question is not simply whether price crossed the wall but whether the wall still holds after the reclaim:
@@ -766,7 +780,9 @@ Figures 5-17 through 5-19 organize seven common paths into three groups: **wall 
 
 *When force overwhelms the old wall, stop asking whether it still holds and locate the new structure.*
 
-**4. Call Wall breaks and moves higher.** Price crosses the Call Wall on Volume and remains above it. Old overhead pressure has been absorbed; the market accepts a higher range. New Call positions accumulate and the Call Wall moves higher, often alongside trend acceleration. **June 4 in Chapter 1 was the classic example:** after 7550 broke, new walls appeared at 7570, 7575, and 7590 while price stayed above VWAP. Recognize the new wall and stop defending the old one. Require acceptance; do not chase the first print through.
+**4. Call Wall breaks and moves higher.** Price crosses the Call Wall on Volume and remains above it. Old overhead pressure has been absorbed; the market accepts a higher range. New Call positions accumulate and the Call Wall moves higher, often alongside trend acceleration. **June 4 in Chapter 1 was the classic example:** after 7550 broke, new walls appeared at 7560, 7575, and 7590 while price stayed above VWAP. Recognize the new wall and stop defending the old one. Require acceptance; do not chase the first print through.
+
+**But breaking a wall is not the same as the wall moving up.** On the afternoon of February 17, price also pushed through 6850 and reached 6868, spending the afternoon above the wall—only to be dragged back to a 6843 close. The difference is the word *acceptance*: on June 4 price broke through and then operated in the new range while fresh walls grew one tier at a time; on February 17 it broke through, ground around above the wall, and fell back underneath. **To judge whether a wall has moved up, look at which side of it price sits on into the close—not at the highest print it touched.**
 
 **5. Put Wall breaks and collapses.** Price falls below the Put Wall, cannot reclaim it, and continues lower. Existing support has failed. Under negative Gamma, a macro shock, or a powerful trend, the wall may not hold. March 26 in Chapter 6 shows the same wall meeting a different fate. Do not force a rebound trade. Watch for a reclaim, locate VWAP, and wait for new structure.
 

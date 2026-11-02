@@ -40,7 +40,9 @@ A market maker asks something else: **“Has the risk on my book become unbalanc
 
 It does not care whether you are bullish or bearish and does not cheer for either side. If price rises, it adjusts according to a rule; if price falls, it adjusts in the other direction. **No allegiance—only obligation.**
 
-I thought about that for a long time. A major step for an ordinary trader may be replacing the fixation “I think it will rise” with the market maker's calm: “I do not need to bet first. I read flow and manage risk.”
+Which rule applies depends on the **sign of the Gamma on its book**: **long Gamma means sell rallies and buy dips (counter-trend, absorbing volatility); short Gamma means buy rallies and sell dips (pro-cyclical, amplifying volatility)** (Chapter 2). So “what the market maker will do” is not one fixed sentence—**you first have to know which side it is standing on today.** That is also why the three questions below cannot be taken out of order.
+
+I thought about that for a long time, and eventually realized this: **the biggest single step an ordinary trader takes is usually trading the fixation of “I feel it is going up” for the market maker's calm—“I am not betting on direction; I am only watching my own exposure.”**
 
 You may still have a directional view. But restrain the impulse long enough to see which way the machine is being compelled to rebalance.
 
@@ -54,9 +56,9 @@ Before every open, I force myself through the second sequence—the three premar
 
 - Is today more like a **shock absorber** under positive Gamma or an **accelerator** under negative Gamma?
 - Where are the walls and the VWAP cost line?
-- Do GEX, VWAP, and price action align?
+- GVP—GEX, VWAP, and price action (trend)—is any of it pointing the same way?
 
-Only afterward may I ask whether I want to be long or short. Reverse the order and you fall in love with a direction, then mine the chart for supporting evidence. That is not market reading. It is wishing.
+**Only once all of that is read do I allow myself to ask whether I want to be long or short today.** Reverse the order and you fall in love with a direction, then mine the chart for supporting evidence. That is not market reading. It is wishing.
 
 ---
 
@@ -68,7 +70,7 @@ A trader cannot become perfectly mechanical. But the actions most vulnerable to 
 
 - Stop location—set when the order is placed; do not move it impulsively
 - Maximum loss per trade—calculate before the open; do not increase it intraday
-- Event day or losing streak—reduce risk automatically; see Chapter 7
+- Event day or losing streak—reduce risk automatically (Chapter 7, “Position Size” and “After a Large Win or Loss”)
 
 When these become a “program,” the calm premarket version of you governs the vulnerable parts. The impulsive intraday version does not deserve those decisions.
 
@@ -81,7 +83,7 @@ My reconciliation is four review questions:
 3. **Position size:** was it too large, or did I keep adding?
 4. **Identity:** was I trading probability, or trying to recover and repair myself?
 
-The fourth is the hardest. **Once the answer is “filling a hole,” the act is no longer trading. It is anger.** A market maker does not take the market personally; it has no pride requiring validation. I am still learning that.
+On March 26 I got both the second and the third wrong (Chapter 6). The fourth is the most brutal of them. **Once the answer is “filling a hole,” the act is no longer trading. It is anger.** A market maker does not take the market personally; it has no pride requiring validation. I am still learning that.
 
 **A stop is a promise, not a punishment.** Many traders experience a stop as admitting defeat and cannot execute it.
 
@@ -104,6 +106,14 @@ That is difficult for a long-premium trader to internalize. **One trade contains
 I try not to become emotional over one result. Winning does not prove that I was right; losing does not prove that I was wrong. **Whether I followed the rules is the part I control.** Probability and repetition own the result.
 
 That is why this book contains neither signals nor income screenshots. **A way of thinking can be repeated; one trade on one day cannot.**
+
+**The analogy has a boundary, though, and it needs saying plainly, or the lesson is easy to learn crooked.**
+
+That market-maker absence of emotion is not something cultivated through willpower. It has a system, capital, and a process that executes rules automatically—and **what it earns is not direction** in the first place. It earns the spread and the hedge. You and I are exactly the opposite: **a buyer's profit *is* direction**, the worst case on a single trade is the entire premium, and the spread is something we **pay** rather than collect.
+
+So what can be learned from it is the **sequence** (character first, direction second) and the **discipline** (rules written before the hand moves)—**not the position structure.** Do not read “it can repeat ten thousand times” as “therefore I need not care about this one.” Each of its ten thousand bets risks an amount small enough to ignore; if you size this one heavily, you will not survive to the hundredth (Chapter 7, “Position Size”).
+
+> *Learn how it orders its questions, not how it carries risk—it has a balance sheet, you have an account balance.*
 
 **Exercise: trade an edge like a casino.** A casino does not win every hand. It repeatedly accepts bets only under rules that provide an edge and never becomes impulsive over one outcome.
 

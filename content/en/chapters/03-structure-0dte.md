@@ -121,8 +121,8 @@ An OI-based wall is like a **building that already stood in the market**. It tel
 
 There is another axis: does price reclaim the wall after breaking it?
 
-- Positive-Gamma false break → a quick sweep, then **reclaim**, as on February 13
-- Negative-Gamma genuine break → price breaks, **does not return**, and the wall collapses, as on March 26
+- Positive-Gamma false break → a quick sweep, then **reclaim**—and it stays above afterward (February 13)
+- Negative-Gamma genuine break → price breaks and **does not return**, **or it reclaims and cannot hold**, and the wall collapses (March 26, where the reclaim lasted twenty minutes)
 
 > *A wall is not a promise. It is a probability.*
 
@@ -320,7 +320,7 @@ Not necessarily.
 
 In one sentence: **Charm is severe in 0DTE not because time passes faster, but because so little time remains.** Near expiration, Delta changes rapidly along the time axis. Market makers must continuously adjust their hedges. When this adjustment overlaps Gamma, Pin effects, and concentrated OI, the final minutes become exceptionally sensitive.
 
-**Reason 1: Gamma is very large.** Near expiration, Delta becomes highly sensitive to strike and price. Even if SPX does not move, Delta slides along the time axis minute by minute.
+**Reason 1: Delta has to pick a side before the close.** At expiration every option's Delta has only two destinations: it converges to 1 in the money and to 0 out of the money. The closer the close, the faster that separation runs—and even with SPX perfectly still, every passing minute slides Delta further along the time axis toward its destination. That is Charm.
 
 **Reason 2: hedges become stale.** Market makers hold hedges based on current Delta. As Charm changes Delta, those hedges become outdated and futures must be traded to update them.
 
@@ -356,8 +356,9 @@ The danger does not begin only at 16:00. **After 15:30**, the clock and the stru
 ### What Charm Means for an Option Buyer
 
 1. **You can lose while price does not move:** Theta consumes premium while Charm changes Delta
-2. **Profit decays faster than intuition suggests:** an extra 20 minutes exposes the position to Charm and Theta together
-3. **Do not become greedy near the close:** the Pin may pull price toward a strike regardless of your direction, while Charm makes Delta behavior hard to read in the final 15 minutes
+2. **Your position tracks the move less and less:** this is the one that hurts a buyer most. Hold an out-of-the-money Call and every passing minute walks its Delta closer to 0—your position is slowly losing its ability to follow a rally at all. **A far out-of-the-money 0DTE contract is not a cheap lottery ticket; it is a lottery ticket that decays into waste paper on its own.** By the time the move finally arrives, it may no longer be able to keep up. This is why I would rather pay more for something near the money than reach for a distant strike (contract selection in Chapter 5).
+3. **Profit decays faster than intuition suggests:** an extra 20 minutes exposes the position to Charm and Theta together
+4. **Do not become greedy near the close:** the Pin may pull price toward a strike regardless of your direction, while Charm makes Delta behavior hard to read in the final 15 minutes
 
 ### Charm and Vanna: Different Jobs
 

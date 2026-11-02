@@ -27,13 +27,15 @@ share this lamp across a thousand miles.
 
 ---
 
-Not long ago, I read too many trade reviews filled with pain between the lines.
+Not long ago, I read too many trade reviews filled with pain between the lines. One of those sessions I remember especially clearly.
 
-That day, SPX held firmly above 6800. Gamma was in a magnetic, strength-begets-strength regime. The Call Wall sat just overhead, while VWAP and price action broadly pointed the same way. **Given the structure at the time, nearly every signal argued against going short.**
+That day, SPX held firmly above 7500. Net GEX was positive, price traded above VWAP, the Put Wall below kept falling further away, and the Call Wall overhead was pushed through again and again—each time reappearing one step higher. **Given the structure at the time, nearly every signal argued against going short.**
 
-Some traders went short anyway. Then they blew up.
+Some traders went short anyway. They shorted into the move, added as it rose, and were squeezed out.
 
 (Do not worry yet about Gamma, the Call Wall, or VWAP. Just remember the scene: **every signal said not to short, and someone shorted anyway.**)
+
+That day was June 4, 2026. The full review—what the structure looked like, which step the shorts failed at, and what I myself got right and left on the table—is **Chapter 1**.
 
 ---
 
@@ -49,11 +51,13 @@ After a large loss, everyone wants an answer. Most of what you find falls at one
 
 ## How to Read This Book
 
-> **If you are starting from zero:** Never heard of GEX, Gamma, or market-maker hedging? Read **“GEX Map Guide: Understand Options Walls in Half an Hour”** first, then return to Chapter 1.
+> **If you are starting from zero:** Never heard of GEX, Gamma, or market-maker hedging? Read **“GEX Map Guide: Understand Options Walls in Half an Hour”** first, then return to Chapter 1. If Calls and Puts themselves are still unfamiliar, the **Appendix “Before You Trade”** section has a one-page “What is an option.”
 
-The seven trading-day reviews are woven together with GEX, tape reading, and exits; the concepts are not stockpiled first and matched with examples only at the end. **Chapters 2, 3, and 5 focus more on structure; Chapters 4, 6, and 8 focus more on individual days.** Use the **Appendix Glossary** for terminology and the **Appendix Trading Checklist** for a quick premarket reference.
+The seven trading-day reviews are woven together with GEX, tape reading, and exits; the concepts are not stockpiled first and matched with examples only at the end. The chapters fall into roughly three groups: **Chapters 1, 4, 6, and 8 cover individual days** (all seven sessions live in those four), **Chapters 2, 3, and 5 cover structure**, and **Chapters 7 and 9 cover execution and mindset**. Reading straight through is easiest, but entering from any of the three groups works.
 
-**How to read the numbers:** In chapters built around a dated trading session, levels come from that day's actual market. For the other maps, numerical examples, and illustrations, see **“What a GEX Map Looks Like”** in the guide.
+Use the **Appendix Glossary** for terminology and the **Appendix One-Page Trading Checklist** for a quick premarket reference; the date table for all seven sessions is in **Appendix “Before You Trade.”**
+
+**How to read the numbers:** In chapters built around a dated trading session, levels come from that day's actual market. For the other maps, numerical examples, and illustrations, see **“What a GEX Map Looks Like”** in the guide. Two further conventions hold throughout: all times are **U.S. Eastern**, and absolute GEX readings (figures such as 10B or −1000B) reflect the scale my own platform uses and are **not comparable across vendors**—what matters is the direction and magnitude of change on a single chart (Chapter 2).
 
 ---
 

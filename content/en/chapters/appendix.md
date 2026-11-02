@@ -9,7 +9,19 @@
 
 ## 1. Before You Trade
 
-**Four-digit dates** such as 0604 and 0123 refer to 2026 trading days. For example, 0604 means June 4, 2026, and identifies that day's SPX 0DTE review.
+**Every four-digit number in this book is a 2026 trading day**, written as MMDD: 0604 = June 4, 2026, meaning that day's SPX 0DTE review.
+
+Seven days in all, in the order they appear in the text:
+
+| Date | Full date | Chapter | In one line |
+| --- | --- | --- | --- |
+| 0604 | 2026-06-04 | Chapter 1 | The Call Wall stepped up level by level—do not short |
+| 0213 | 2026-02-13 | Chapter 4 | The Put Wall was swept and reclaimed |
+| 0217 | 2026-02-17 | Chapter 4 | Held above the Gamma Flip and pushed to the wall |
+| 0227 | 2026-02-27 | Chapter 6 | A deep V inside negative Gamma |
+| 0318 | 2026-03-18 | Chapter 6 | GVP leaned short; VWAP lost, then a grind down all day |
+| 0326 | 2026-03-26 | Chapter 6 | The Put Wall collapsed |
+| 0123 | 2026-01-23 | Chapter 8 | A round-number stop run |
 
 **Options in one sentence**
 
@@ -113,9 +125,11 @@ The main text uses OI GEX for premarket structure and Volume GEX for intraday up
 | Term | Meaning | In one sentence |
 | --- | --- | --- |
 | Liquidity Sweep | Stop-clearing false break | Break a key level, trigger stops, and reclaim quickly |
-| Stop Run | Hunt through a stop cluster | Pierce 5–10 points beyond a round number, trigger stops, and reclaim |
+| Stop Run | Hunt through a stop cluster | Pierce a few points below a round number, trigger the stops, and reclaim |
 
-A false break and reclaim at a Put Wall is commonly called a liquidity sweep, as on February 13. A sweep around a psychological round number is called a stop run here, as on January 23.
+How to read it: a false break and reclaim at a Put Wall is usually called a liquidity sweep, as on February 13; a pure round-number stop cluster is called a stop run, as on January 23. **A stop run is one kind of liquidity sweep, not a second, parallel thing.**
+
+**On depth:** both instances in this book measured **about four and a half points**—January 23 was 4.5 points below 6900 (6895.50), February 13 was 4.5 points below 6800 (6795.49). Do not treat that as a fixed value, but do not expect it to hand you a buffer of ten points either.
 
 **Positive- and negative-Gamma regimes**
 
@@ -155,10 +169,10 @@ Spot vs Gamma Flip:
 **Intraday rhythm**
 
 ```text
-Premarket            → mark walls with OI
-Open to 30 minutes   → see whether the center of trading moves
-10:00–15:00          → Volume dominates; follow Volume walls
-Final 30–15 minutes  → OI regains weight; read possible Pin
+Premarket                → mark walls with OI
+First 15–30 minutes      → see whether the center of trading moves (watch only, no size)
+10:00–15:00              → Volume dominates; follow Volume walls
+Final 30–15 minutes      → OI regains weight; read possible Pin
 ```
 
 In one sentence: follow Volume intraday; invite OI back for the final half hour.
@@ -170,11 +184,18 @@ GEX (structure) + VWAP (cost) + Price Action (trend)
 Act only when aligned; remain still when they conflict.
 ```
 
+**Contract selection**
+
+- Standing range **Delta 0.45–0.55** (around ATM), nudged within 0.4–0.6 by the day's character
+- Delta drifts (Charm): “I bought the 0.45” is true only at the moment of the order
+
 **Three exit stages**
 
 1. Profit reaches roughly 50% of the expected move → reduce half
 2. Price reaches Call / Put Wall → reduce again or exit
 3. Structure reverses—Flip or VWAP fails → exit the remainder
+
+There is also a **time stop**: once the Gamma window (roughly 5–30 minutes after entry) has closed and the push is gone, leave. **Structure, time, and premium are three brakes—whichever triggers first is the one you follow.**
 
 **Position-size check, ten seconds before entry**
 
@@ -187,8 +208,10 @@ After three consecutive losses, reduce size or stop. Do not double for 72 hours 
 
 **False break vs genuine break**
 
-- False break: cross → pause → quick reclaim
-- Genuine break: cross → no return → continuation
+- False break: cross → pause → quick reclaim, **and it does not come back under the level afterward**
+- Genuine break: cross → no return, **or it reclaims and then cannot hold** → continuation
+
+Judge it in two steps: **first ask whether it reclaimed, then ask whether it held.**
 
 **Event-day principle**
 
@@ -220,10 +243,12 @@ Do not guess the number. Control size, wait 15–30 minutes, and respect IV pric
 
 **False break vs genuine break**
 
-| Type | Characteristics |
-| --- | --- |
-| False break | Cross → pause → quick reclaim, a liquidity sweep |
-| Genuine break | Cross → no return → continuation |
+| Type | Characteristics | Instance |
+| --- | --- | --- |
+| False break | Cross → pause → quick reclaim, **and it does not return below the level** (liquidity sweep) | February 13: reclaimed on the same candle |
+| Genuine break | Cross → no return; **or it reclaims and still cannot hold**, and the wall then moves down | March 26: it did reclaim, and held for twenty minutes |
+
+**So the judgment has two steps:** first ask whether it reclaimed, then ask whether it held. Stop at the first step and March 26 gets misread as a false break—it genuinely did reclaim that day (Chapters 6 and 8).
 
 ---
 
@@ -237,6 +262,7 @@ Do not guess the number. Control size, wait 15–30 minutes, and respect IV pric
 | Stage | Tendency |
 | --- | --- |
 | Learning | Smaller and slower |
+| Stable | Set your own ceiling and enforce it strictly |
 | Losing streak | Reduce rather than increase |
 | After a large win | No doubling for 72 hours |
 
@@ -251,15 +277,19 @@ Do not guess the number. Control size, wait 15–30 minutes, and respect IV pric
 
 **Principle:** do not guess the data; control size, wait for structure, and respect IV pricing.
 
+**“Respect IV pricing” in one line:** whatever the day's ATM straddle is quoted at, in points, is how large a move the market has already priced in. Guess the direction right without exceeding that distance and a single leg still loses (Chapter 7).
+
 ---
 
 **Three Exit Stages**
 
 | Stage | Trigger | Action |
 | --- | --- | --- |
-| 1 | First target or meaningful time decay | Reduce part |
-| 2 | Momentum exhaustion, such as sideways action at a Call Wall | Reduce again |
-| 3 | Structural reversal—Gamma Flip breaks or VWAP fails | Exit the remainder |
+| 1 | Profit reaches roughly 50% of the expected move | Reduce half |
+| 2 | Price reaches the Call / Put Wall, or a profit-taking signal appears | Reduce again or exit fully |
+| 3 | Structural reversal—Gamma Flip breaks or VWAP fails | Exit everything remaining |
+
+**There is also a gate on time:** once the Gamma-burst window (roughly 5–30 minutes after entry) has closed and the push is gone, leave even if no level has been touched. **Structure, time, and premium are three brakes—act on whichever triggers first** (Chapter 7).
 
 ---
 
@@ -269,7 +299,7 @@ Do not guess the number. Control size, wait 15–30 minutes, and respect IV pric
 2. Know three lines: Call Wall—the ceiling; Put Wall—the floor; Gamma Flip—the character switch.
 3. A market maker is not “the house.” It is a machine compelled to hedge, not a directional bettor.
 4. Positive Gamma = shock absorber—sell rallies, buy declines, suppress volatility. Negative Gamma = accelerator—buy rallies, sell declines, amplify volatility.
-5. Walls move, collapse, and break. Never treat them as an iron floor or ceiling.
+5. Walls move, collapse, and break—never treat them as an iron floor or ceiling. After a break, first ask whether it reclaimed, then ask whether it held.
 6. Vanna can create a mechanical rebound as fear cools. Charm changes Delta with time, so a flat market can still lose money for the buyer.
 7. Do not become greedy near the close. Pin can attract price, Charm accelerates, and Theta consumes premium.
 8. Act when GVP—GEX + VWAP + price action—aligns; do nothing when it conflicts.
@@ -280,9 +310,9 @@ Do not guess the number. Control size, wait 15–30 minutes, and respect IV pric
 
 ## 5. References
 
-**Statistics cited in the main text**
+**Probability calibration: where “a wall is probability, not a guarantee” comes from**
 
-The following data comes from public historical statistics published by SpotGamma, using SPX trading days from 2019–2024. It calibrates probabilities; it is not a prediction or guarantee. Calculations and levels can differ by provider.
+The main text repeats “a wall is probability, not a guarantee” and “do not buy Calls at the Call Wall.” The statistical basis for both sentences is here. The following data comes from public historical statistics published by SpotGamma, using SPX trading days from 2019–2024. It calibrates probabilities; it is not a prediction and not a trading guarantee. Calculations and levels need not agree across providers.
 
 > [1] SpotGamma. *SPX Key Levels Statistics*, 2024.
 >
